@@ -1,0 +1,28 @@
+From: Richard Alain <allainr@sympatico.ca>
+Reply-To: allainr@sympatico.ca
+To: Achurch@cmu.edu
+Date: Mon, 21 Oct 1996 09:04:17 -0500
+Subject: AmosIntuition
+
+Amos intuition 1.3b
+The Command
+K=Imouse Key
+
+No Work.. 
+You have update or short example.
+The mx=Imouse x   work
+The my=Imouse y   work
+The k=Imouse key  NO WORK
+
+Tank
+Al.
+
+If you have update ship to mail uucode  tank.
+-- 
+Amiga 1200 mbx 1230 50 mz  2 meg chip 16 meg fast 1.7 gig for hd
+
+Alain Richard 2477 Bellerive Jonquiere P.Q. CANADA G7X 9A4
+La folie de ce monde reside en nous meme...
+
+
+

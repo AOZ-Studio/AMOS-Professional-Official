@@ -1,0 +1,36 @@
+
+IF EXISTS AP2:Securite/AP2_9.Lha
+	Delete AP2:Securite/AP2_9.Lha
+ENDIF
+IF EXISTS AP2:Securite/AP2_8.Lha
+	Rename AP2:Securite/AP2_8.Lha To AP2:Securite/AP2_9.Lha
+ENDIF
+IF EXISTS AP2:Securite/AP2_7.Lha
+	Rename AP2:Securite/AP2_7.Lha To AP2:Securite/AP2_8.Lha
+ENDIF
+IF EXISTS AP2:Securite/AP2_6.Lha
+	Rename AP2:Securite/AP2_6.Lha To AP2:Securite/AP2_7.Lha
+ENDIF
+IF EXISTS AP2:Securite/AP2_5.Lha
+	Rename AP2:Securite/AP2_5.Lha To AP2:Securite/AP2_6.Lha
+ENDIF
+IF EXISTS AP2:Securite/AP2_4.Lha
+	Rename AP2:Securite/AP2_4.Lha To AP2:Securite/AP2_5.Lha
+ENDIF
+IF EXISTS AP2:Securite/AP2_3.Lha
+	Rename AP2:Securite/AP2_3.Lha To AP2:Securite/AP2_4.Lha
+ENDIF
+IF EXISTS AP2:Securite/AP2_2.Lha
+	Rename AP2:Securite/AP2_2.Lha To AP2:Securite/AP2_3.Lha
+ENDIF
+IF EXISTS AP2:Securite/AP2_1.Lha
+	Rename AP2:Securite/AP2_1.Lha To AP2:Securite/AP2_2.Lha
+ENDIF
+IF EXISTS AP2:Securite/AP2_0.Lha
+	Copy AP2:Securite/AP2_0.Lha To AP2:Securite/AP2_1.Lha
+ENDIF
+
+Lha u AP2:Securite/AP2_0.Lha +#?.s 
+
+AMOSPro -W Work:Utiles/Dir_Clone.AMOS Work:AMOS.s/Pro2/ IDH0:Work/AMOS.s/Pro2/
+

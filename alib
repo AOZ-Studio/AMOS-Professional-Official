@@ -1,0 +1,9 @@
+echo "***Making Token Table +Toktab_Verif.Bin"
+c/Make_Toktable
+echo "***Making Label Files"
+c/Make_Labels
+echo "***Assembling AMOSPro.Lib"
+c/genam FROM +lib.s TO AMOS/APSystem/AMOSPro.Lib
+delete >NIL: +ILib_Functions.s
+delete >NIL: +ILib_Size.s
+delete >NIL: +lib_size.s

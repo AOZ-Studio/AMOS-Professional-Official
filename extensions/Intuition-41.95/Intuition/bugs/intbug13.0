@@ -1,0 +1,95 @@
+Date: Sat, 16 Dec 95 01:48:00 GMT
+X-Mailviewer: RRR/DIGITAL CANDY E-Mail
+From: Paul Wellstead <Steve@dcandy.demon.co.uk>
+To: achurch@goober.mbhs.edu
+Subject: Int Ext
+X-Smtp-Posting-Host: dcandy.demon.co.uk [Sat, 16 Dec 95 12:31:30 GMT]
+X-Smtp-Posting-Host: post.demon.co.uk [Sat, 16 Dec 95 12:33:44 GMT]
+
+achurch@goober.mbhs.edu
+
+Hi Andy
+
+I am sending you this privately cos I don't want to show myself up :-)
+
+Right the Intuition Ext. Does it draw buttons on the screen as you would
+expect it to?
+
+When I use Igadget it defines (and reacts) to the zone where the button
+should be but there is no visible button, surely we don't have to write in
+our own button drawing routines do we? I did this and it slows things down
+quite horribly. I am sure it's summit stupid I am doing, so can you put 
+me straight please?
+
+
+I was attempting to write an easy to use Archiver/de-archiver called Exarc.
+By the way the text gadget and sliders work fine.
+I am using an A1200 4meg Amos Pro V2.
+
+'requester title  
+Irequest Def Title "ExArc Request"
+
+Iwindow_open Wb 0,0,0,640,200,"ExArc V1.0"
+
+Itext 24,18,"Extract"
+Itext 24,38,"Archive"
+
+Reserve Igadget 2
+Set Igadget Hit 1,24,10,64,12
+Set Igadget Hit 2,24,30,64,12
+
+Igadget On 
+Amos To Back 
+
+'main loop 
+
+Do 
+Multi Wait 
+   EVENT=Iwait Event
+
+A=Igadget Read(1)
+  If A=True
+  _EXTRACT
+End If 
+
+A=Igadget Read(1)
+  If A=True
+  _ARCHIVE
+End If 
+
+If EVENT=Ievent Close
+   Exit 
+   End If 
+Loop 
+
+Itrap On 
+Iscreen Close 0
+Itrap Off 
+Iwindow Close Wb 0
+Amos To Front 
+Edit 
+
+
+Procedure _EXTRACT
+Iwrite "extract ok"
+End Proc
+
+Procedure _ARCHIVE
+Iwrite "archive ok"
+End Proc
+
+
+
+I haven't put the extension in the F1 cat yet as I would like to see how
+this problem turns out. Our Amos customers would have my balls if you have
+to write your own buttons (I am sure you don't but this needs to be sorted)
+
+/\Steve Bye/\    steve@dcandy.demon.co.uk
+
+
+ 
+
+
+--------------------
+|  F1 Licenceware  |
+--------------------

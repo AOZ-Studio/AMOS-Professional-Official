@@ -1,0 +1,6 @@
+echo "***Assembling Compiler.Lib"
+c/Library_Digest compiler/+CLib.s
+c/Check_CLib
+c/Genam FROM compiler/+CLib.s TO AMOS/APSystem/Compiler.Lib
+delete >NIL: compiler/+CLib_Labels.s
+delete >NIL: compiler/+CLib_Size.s

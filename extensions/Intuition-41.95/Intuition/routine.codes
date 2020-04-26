@@ -1,0 +1,174 @@
+intuition.a
+-----------
+465F30	L_0 (startup)
+2D4341	  CloseAll
+2D5175	  Quit
+
+amosfuncs.a
+-----------
+474241	L_GetBankAdr
+
+iutils.a
+--------
+464963	L_FindIcon
+C64D75	L_FreeImenu
+C64D49	L_FreeImenuItem
+464D75	L_FindImenu
+464D49	L_FindImenuItem
+464D53	L_FindImenuSub
+4757FF	L_GetCurWin
+534352	L_SetCoordsRel
+414D43	L_AllocMemClear
+415452	L_AllocTmpRas
+C65452	L_FreeTmpRas
+537441	L_StrAlloc
+5374C6	L_StrFree
+465363	L_FindIscr
+475363	L_GetCurIscr
+465764	L_FindIwin
+465757	L_FindWBIwin
+475764	L_GetCurIwin
+475732	L_GetCurIwin2
+475250	L_GetCurRP
+434353	L_CheckCloseIscr
+435363	L_CloseIscr
+435764	L_CloseIwin
+435757	L_CloseWBIwin
+47496E	L_GetCurInput
+43524B	L_ConvRawKey
+444576	L_DoEvent
+6B655F	L__GetKey
+6D655F	L__GetMouse
+75655F	L__GetMenu
+4D756C	L_LongMul
+446976	L_LongDiv
+53436F	L_SetCoords
+475746	L_GetWinFlags
+47D746	L_GetSomeWinFlags
+535746	L_SetWinFlags
+53D746	L_SetSomeWinFlags
+474157	L_GetActiveWin
+53744C	L_StrLen
+527453	L_ReturnString
+475253	L_GetRetStr
+525453	L_RTS
+415271	L_AllocRequest
+455A52	L_EZRequest
+437250	L_CreatePort
+446C50	L_DeletePort
+525078	L_ReadPixel
+575078	L_WritePixel
+
+screens.a
+---------
+48414D	L_HAM
+454842	L_EHB
+534869	L_SuperHires
+414741	L_AGA
+454353	L_ECS
+58484D	L_XHardMin
+59484D	L_YHardMin
+534F70	L_IscreenOpen
+534F32	L_IscreenOpenNT
+534F31	L_IscreenOpenNM
+534F30	L_IscreenOpen0
+534F50	L_IscrOpenPublic
+534FB2	L_IscrOpenPubNT
+534FB1	L_IscrOpenPubNM
+534FB0	L_IscrOpenPub0
+536343	L_IscreenClose
+536347	L_IscreenGet
+536353	L_IscreenSet
+536346	L_IscrFront
+435346	L_CurIscrFront
+536342	L_IscrBack
+435342	L_CurIscrBack
+534273	L_IscreenBase
+536344	L_IscreenDisp
+53634F	L_IscreenOfs
+534757	L_GetIscrWidth
+534357	L_GetCISWidth
+534748	L_GetIscrHeight
+534348	L_GetCISHeight
+534743	L_GetIscrCols
+534343	L_GetCISCols
+53474D	L_GetIscrMode
+53434D	L_GetCISMode
+534370	L_IscreenCopy
+534332	L_IscreenCopy2
+584968	L_XIhard
+584973	L_XIscreen
+594968	L_YIhard
+594973	L_YIscreen
+436F47	L_IcolourGet
+436F53	L_IcolourSet
+503X3Y	L_IpaletteXY
+505370	L_IgetSprPal
+505330	L_IgetSprPal0
+504963	L_IgetIconPal
+504930	L_IgetIconPal0
+
+windows.a
+---------
+574FFF	L_IwinOpen
+57644F	L_IwindowOpen
+5764CF	L_IwindowOpenNT
+57574F	L_IwindowOpenWB
+5757CF	L_IwindowOpenWB_NT
+576443	L_IwindowClose
+575743	L_IwindowCloseWB
+576453	L_IwindowSet
+576447	L_IwindowGet
+575753	L_IwindowSetWB
+575742	L_IwindowOnWB
+576446	L_IwindowToFront
+575746	L_CurIwinToFront
+576442	L_IwindowToBack
+575742	L_CurIwinToBack
+57644D	L_IwindowMove
+57645A	L_IwindowSize
+576458	L_IwindowX
+435758	L_CurIwindowX
+576459	L_IwindowY
+435759	L_CurIwindowY
+576457	L_IwindowWidth
+435757	L_CurIwindowWidth
+576448	L_IwindowHeight
+435748	L_CurIwindowHeight
+574273	L_IwindowBase
+576441	L_IwindowActivate
+574163	L_IwindowActive
+57414E	L_IwindowActiveNum
+574142	L_IwindowActiveBase
+435753	L_CurIwindowStatus
+574753	L_IwindowStatus
+
+fonts.a
+-------
+547842	L_ItextBase
+54784C	L_ItextLength
+544653	L_SetIfont
+5446D3	L_SetIfont1
+54464E	L_IfontName
+544642	L_IfontBase
+544648	L_IfontHeight
+
+gadgets.a
+---------
+524767	L_ReserveIgadget
+524730	L_ReserveIgadget0
+534754	L_SetIgadToggle
+534748	L_SetIgadHslider
+534756	L_SetIgadVslider
+534753	L_SetIgadString
+534749	L_SetIgadInt
+474F6E	L_IgadgetOn
+476E41	L_IgadgetOnAll
+474F66	L_IgadgetOff
+476641	L_IgadgetOffAll
+474163	L_IgadgetActive
+474141	L_IgadgetActiveAll
+47496E	L_IgadgetInactive
+474941	L_IgadgetInactiveAll
+475265	L_IgadgetRead
+475253	L_IgadgetReadStr

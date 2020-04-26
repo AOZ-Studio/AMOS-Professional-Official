@@ -1,0 +1,76 @@
+                 AMOS Professional Misc Extension
+                 --------------------------------
+
+This extension should originally be shareware, but now AMOS won't be
+updated and it's a bit old too. So this extension is now Public Domain
+and includes source code (written in DevPac assembler). You may expand
+this extension or copy some routines to the code of your extension, but
+please, enter my name in the manual, such like: "Greetings to Frank Otto"
+or "some routines from Misc Extension by Frank Otto". Thanks!
+
+Maybe you already noticed that this extension is very buggy. Some commands
+force AMOS to crash. Maybe I'll create a new version, but why don't you?
+Just debug this extension and send it to Aminet. Do what you want with it,
+it's Public Domain!
+
+OK, to install it to AMOS Pro, just copy the "AMOSPro_Misc.Lib" to your
+APSystem folder, load the Interpreter config and enter at number 23
+"AMOSPro_Misc.Lib". Reboot AMOS Pro and...ready...!
+
+Now the new commands:
+
+Dled On                       Turns on drive led, don't ask me, where
+                              this is for, but maybe when the drive led
+                              doesn't stop reading, use the next command.
+
+Dled Off                      Turns off drive led.
+
+Display Off                   Turns display off. What you do, opening
+                              screens etc., you don't see anything.
+
+Display On                    Turns on display.
+
+Multi Off                     Turns off Multitasking and increases about
+                              10 % speed.
+
+Multi On                      Turns Multitasking on. --WARNING-- you have to
+                              turn it on again before you go back to the
+                              editor or AMOS will crash.
+
+Mouse Off                     Hides mouse and sprite 0. Better than "hide"
+                              because the mouse is hidden forever, even in
+                              the editor. 
+                            -->Suggestion: If you want to expand this 
+                              extension, why not make a "Mouse On" command?
+
+Reset                         Resets your Amiga as if you press Ctrl+A+A and
+                              destroys all (?) viruses.
+
+Clear Ram                     Cleans up Memory by deleting all not-used
+                              fonts, libs, etc.
+
+Disk Wait                     Waits until you insert a new disk.
+
+Firewait                      Waits until pressing fire button. Nothing else
+                              than "While Fire(1)=0 : Wend" but more effective,
+                              cause it's in assembler. A great command for
+                              a pause function in a game.
+                           -->Suggestion: You can make more wait-commands that
+                              wait for left-mouse, right-,...
+
+Pal On                        Forces AMOS to display everything in PAL
+                              This command is not ready yet, it's very
+                              buggy and forces AMOS to crash, so be careful!
+                           -->Suggestion: debug this command and add "Pal Off"
+                              command that switches to Ntsc.
+
+If you want to send me your new Misc Extension or just write me for any
+reason, here's my adress:
+
+    Frank Otto
+    Grelckstr. 27
+    22529 Hamburg
+    Germany
+
+E-Mail: FRANK@ZINOCAVE.wind.dbn.sub.org
+

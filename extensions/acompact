@@ -1,0 +1,5 @@
+echo "***Assembling AMOSPro_Compact.Lib"
+c/Library_Digest extensions/+Compact.s
+c/Genam FROM extensions/+Compact.s TO AMOS/APSystem/AMOSPro_Compact.Lib
+delete >NIL: extensions/+Compact_Labels.s
+delete >NIL: extensions/+Compact_Size.s

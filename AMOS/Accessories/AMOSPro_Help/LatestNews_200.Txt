@@ -1,0 +1,277 @@
+About AMOS Professional Version 2.0
+
+This  section  of help describes the modifications done to AMOSPro since the
+previous version V1.12.  Please select one of these options:
+
+                 {[IFeatures     ,4,3]            Features added to AMOSPro          }
+                 {[IResource     ,4,3]            The Resource Bank Creator          }
+                 {[IUserGuide    ,4,3]         Corrections  to  the User Guide       }
+                 {[IFuture       ,4,3]             The   future  updates             }
+
+                 {[IHelpInfo     ,4,3]           Latest  News of Version 1.12        }
+
+
+Features added to AMOS Professional
+
+When you run it, you'll realise that AMOSPro has not changed very much since
+V1.12.   V1.12  had  fixed  many bugs and had major enhancements compared to
+V1.00.
+
+Even  at  V1.12  we  realised  we'd  need  to  update AMOSPro so that it was
+structured  more  modular - thus ensuring it was modern in terms of software
+design.   We  are  now  able  to  update  AMOSPro  much more easily than was
+possible.   In  otherwords  we've thought ahead to make our life easier when
+creating  new  updates  like  AGA support.  It has also ensured the Compiler
+intergrates wonderfully.
+
+Here's the list of modifications:
+
+
+* AMOSPro
+
+
+The  re-write of AMOSPro has resulted in a vast reduction in the size of the
+"AMOSPro"  file.   It is now only a mere 20K.  AMOSPro is now only a loader:
+it  loads  "AMOS.library",  the  main  instruction  set ("AMOSPro.Lib"), the
+various extensions, the editor and the monitor files.  That's all it does.
+
+
+* The Main Instruction Set
+
+The  main  instruction  set is now treated as a normal extension to AMOSPro.
+Every  instruction  routine  is  now  callable  from another extension.  The
+system is now fully modular.
+	AMOSPro.Lib  is  common  to  both  the  AMOSPro  Interpreter and the
+Compiler.   This means that a new AGA update for example, would add commands
+to  AMOSPro.Lib  and  these  would  be  available under both interpreter and
+Compiler.
+
+
+* The Extensions
+
+With  the  extension  system  being  extended to cope with all the different
+syntaxes of the AMOSPro instruction set, it is now much more versatile.  You
+can  create  reserved  variables  within  extension,  have  single or double
+floating point parameters etc.  The extension system is also compatible with
+all the extensions written for AMOSPro since V1.00.
+
+Extension  writers  should  wait  for  the  AGA  version  of  AMOSPro before
+releasing  their  code  into  the  public  domain:   AGA  will  induce  many
+modifications within the screen structures of AMOS.  Information about these
+new screen structures will become available when we release the AGA version.
+
+
+* The AMOS.Library
+
+- The requester routines are now part of the library. This reduces the size
+  of the requester extension to a mere 250 Bytes
+
+-  The default Mouse.Abk has been included within the library.  If you want
+   to,  you  can  remove  it  from  your  APSystem  folder,  so long as your
+   AMOSPro_Interpreter_Config does not call it.
+
+- AMOSPro_Default.Font is no longer necessary:  AMOS.Library now asks for a
+  system font to create the AMOSPro window font.  As a default this font is
+  Topaz 8, but you can change it to whatever 8x8 fixed size font you wish
+  using Interpreter_Config.
+
+You'll  be  glad  to  here  that the default font is now the same throughout
+AMOSPro:  In the menus, the graphical text instructions and in windows.
+
+
+* Default resource banks
+
+The  resource  banks  have been cleaned up.  Some icons have been redrawn to
+offer  a  better  graphical  interface.   The  Default resource includes new
+graphic elements to create new kinds of buttons and editing zones.
+
+
+* AMOSPro Interpreter Config
+
+The  default  screen  setup  has  been  rewritten  to  accept the future AGA
+palettes.
+
+
+* AMOSPro Editor Config
+
+The  editor  screen  setup has also been rewritten to cope with the extended
+AGA palettes, availables when AMOSPro works in AGA.
+
+
+* New function: =ZDialog (Channel,X,Y)
+
+This  new  instruction  can  be  very  useful:  it returns the number of the
+interface zone under X and Y coordinates - without waiting.
+
+Channel:	Number of an opened dialogue channel
+X : 		X screen coordinate to test
+Y : 		Y screen coordinate to test
+
+Result:
+-1:		the coordinate does not point to a zone
+>-1:		the number of the zone
+
+{[IHelpInf ,4,3] Back to main menu }
+
+
+
+Problems removed from Version 1.0
+
+* Block in the editor.
+The  editor used to add garbage at the end of a block when cutting the block
+which included a non-tokenised line.
+
+* Program to menu problems: you could totally mess-up the editor's menu by
+adding/removing   "Programs   to   Menu"  on  certain  menus,  like  "Help",
+"Configuration" etc...
+
+* From V1.12 of AMOSPro, INPUT could not be seen from the monitor.
+
+* Doing  a screen close in direct mode on a screen which included an active
+dialogue channel, resulted in AMOSPro stuck within an infinite loop.
+
+* Such a line:
+
+Vdialog$(0,1)=Array(a$(1)) 
+
+was  accepted  by  the  test.   This  line  was false, as the Array function
+returns an integer (the base of the array) and Vdialog waits for a string.
+
+* Integer multiplication.
+From  the  very  start  of AMOS a bug in integer multiplication caused false
+results  for certain numbers.  Not very annoying because no one has reported
+it in 3 years!
+
+ 
+{[IHelpInf ,4,3] Back to main menu }
+
+Resource Bank Maker Enhancements
+
+The  resource bank maker has been enhanced and now offers the possibility to
+store interface programs within a resource bank.
+
+To reach the new functions of the resource bank maker, just click on the new
+button  from  the  main  menu:   'Edit dialog programs' You will enter a new
+panel with the list of programs currently present within the resource bank.
+
+The  purpose  of  these new function is to allow you to insert the Interface
+programs  within  the middle of a resource bank.  The interface strings will
+no  longer  be  required  within your AMOS Program - line like:  "A$=A$+" or
+"Data".  The interface program can be edited using any ASCII editor and then
+simply loaded into the bank.
+
+* Loading a program:
+
+You can load any ASCII file into the list by clicking on the 'LOAD' button.
+
+* Editing programs:
+
+Edit  your  interface  programs  within  any  ASCII  editor (ED, CygnusED or
+others...)  and  then  import  them  into  the Resource_Bank_maker using the
+'LOAD' button.
+
+Large Ram or Hard-disk users (only):
+
+It's   possible   to  call  up  any  CLI  Ascii  editor  directly  from  the
+Resource_Bank_Maker.AMOS accessory.
+	To  Edit an existing program, select it with mouse from the list and
+then  click  on the 'Edit' Button.  If you do this when the selected program
+is empty, a requester will ask you if you want to create a new one.
+
+The editor called by this button is defined by the varable string 'ED_NAME$'
+which  can  be changed by editing the actual Resource bank maker AMOS source
+program  file  (around  line  56).   Or  by  clicking on the 'Change Default
+Editor' Button.  Be aware that these rules must apply to your editor:
+
+1) The ASCII editor must freeze CLI multitasking during editing. So you
+cannot have a 'run' command before the editor's name. With CygnusED you'll
+have to add the option '-keepio' to ensure the editor presents itself to you
+and not hide in the background.
+	Workbench's ED works fine, you might use a line like:
+
+	c:ED {f}
+
+For CygnusED:
+
+	c:CED {f}
+
+2)  The  {f}  parameter  is a dummy filename which your Ascii Editor usually
+expects when you request an edit from CLI or Shell.  It carries the dialogue
+program  position  within the bank.  When you've finished editing, just save
+the  file  and  quit the editor.  You'll then be back in the resource editor
+with the Ascii file stored within the bank.
+
+If  the Resource bank maker cannot find the Editor described by ED_NAME$, it
+will only display your DBL program using the 'Readtext' AMOS function.
+
+
+* Copy, Cut, Paste & Rename:
+
+Use  these  buttons  to duplicate, move and rename any Interface programs in
+the list.
+
+* Remove unusued characters:
+
+By  clicking  here,  you  can  filter  and  optimise  the currently selected
+dialogue  program  in  order  to  save  precious  bytes and speed up (just a
+little),  your  AMOS interfaces.  Warning!  Always keep a backup of your DBL
+programs  before removing unusued characters.  You'll hardly be ably to read
+them  after  they've had spaces removed.  Only perform this operation at the
+very end of you interface programming.
+
+* How to access dialogue programs in banks from within AMOS?
+
+This is very simple. Just call your dialogues by:
+
+Resource Bank x  (x = number of the bank where your DBL programs are)
+Dialog Open 1,n  (n = number of the DBL program within resource bank x)
+
+This is much better that using:
+S$=S$+... (initialising string S$)
+S$=S$+...
+Dialog Open 1,S$ ( S$ = big string containing your DBL programs)
+
+The initialisation phase will be faster and you'll gain some variable buffer
+space!
+
+The other interface instrunctions are working exactly the same way.
+(D=Dialog Run(1,label), Vdialog(1,va) and so on...)
+
+{[IHelpInf ,4,3] Back to main menu }
+
+
+Corrections to the AMOS Pro User Guide
+
+Also read the "Correction to the User Guide" chapter in 1.12 help files.
+
+Page 05.07.06
+Read Text$ should read Read Text
+
+Page 07.06.23
+"Move On" should read "Movon"
+
+Page 11.01.04
+XGRAPHIC / YGRAPHIC
+"Xtext" should read "Xgraphic"
+"Ytext" should read "Ygraphic"
+
+Page 11.04.04
+EXEC instruction does not accept an "Output" parameter.
+
+{[IHelpInf ,4,3] Back to main menu }
+
+
+
+The future updates
+
+We will continue with our update  policy.  Here are some of the things you
+can wait for in the future:
+
+- AGA Update
+- Intuition On  /  Off  to  display  an  AMOS  Screen  under intuition and
+  therefore create real workbench applications.
+- New instructions to handle intuition screens.
+- More and more integration to the Amiga's system.
+- and all your good ideas!
+
+{[IHelpInf ,4,3] Back to main menu }

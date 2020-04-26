@@ -1,0 +1,54 @@
+From nicholas@triode.apana.org.au Fri Sep 16 05:40:00 1994
+Subject: Re: Intuition Extension 1.2a (for real this time!) Demo
+To: achurch@goober.mbhs.edu (Andy Church)
+Date: Fri, 16 Sep 1994 18:20:58 +1000 (EST)
+From: "Nicholas FitzRoy-Dale" <nicholas@triode.apana.org.au>
+
+<>Suggestions
+
+Well, first if you plan on making _any_ money at all, if you're going to 
+disable screen closing, you should really get rid of the instructions to 
+find the screen base.  This works quite well:
+
+Amos To Back
+IWindow Open Wb 1,20,20,400,100,"Watch me disappear!"
+B=Iwindow Base
+Wait 100
+_CLOSED=Intcall(-72)
+Wait 20
+Amos To Front
+
+Do I get a registered version for that? ;-)
+
+Also, is there any chance of incorporating the Intuition Wait() commands, 
+instead of having to check the menus, all the gadgets etc in the main 
+loop?  Something like this:
+
+EVENT = IWait Event (WINDOWNUMBER)
+
+Even would equal something like:
+
+1 - menu selected
+2 - gadget clicked
+3 - Window flags changed (moved etc)
+
+etc
+
+then you could use:
+
+_DATA = IEvent Data
+
+which would be the gadget number that was clicked, the window that was 
+changed, the menu number that was selected, etc.
+
+This would be a lot neater and use less CPU time.
+
+Other than that, this is a great extension and something I really plan on 
+using to write my next (first :) ) "Major" program - a BBS.  I especially 
+like the way you can past icons onto Intuition screens, and copy between 
+AMOS and Intuition screens.  This easy way of assing graphics could 
+really liven up some programs :)
+
+Anyway, keep it up, it's looking good.  I'll do some examples for you :) 
+(us
+

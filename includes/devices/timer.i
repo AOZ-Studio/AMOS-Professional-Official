@@ -1,0 +1,41 @@
+	IFND	DEVICES_TIMER_I
+DEVICES_TIMER_I SET	1
+**
+**	$Filename: devices/timer.i $
+**	$Release: 1.3 $
+**
+**	
+**
+**	(C) Copyright 1985,1986,1987,1988 Commodore-Amiga, Inc.
+**	    All Rights Reserved
+**
+
+	IFND	EXEC_IO_I
+	INCLUDE "exec/io.i"
+	ENDC	; EXEC_IO_I
+
+* unit defintions
+UNIT_MICROHZ	EQU	0
+UNIT_VBLANK	EQU	1
+
+TIMERNAME	MACRO
+		DC.B	'timer.device',0
+		DS.W	0
+		ENDM
+
+ STRUCTURE TIMEVAL,0
+	ULONG	TV_SECS
+	ULONG	TV_MICRO
+	LABEL	TV_SIZE
+
+ STRUCTURE TIMEREQUEST,IO_SIZE
+	STRUCT	IOTV_TIME,TV_SIZE
+	LABEL	IOTV_SIZE
+
+* IO_COMMAND to use for adding a timer
+	DEVINIT
+	DEVCMD	TR_ADDREQUEST
+	DEVCMD	TR_GETSYSTIME
+	DEVCMD	TR_SETSYSTIME
+
+	ENDC	; DEVICES_TIMER_I

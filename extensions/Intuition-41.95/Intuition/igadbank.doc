@@ -1,0 +1,57 @@
+Bank format not understood (37)
+
+The extension couldn't understand the format of a data bank.  Either
+the bank is not of the appropriate type (for example, Bank To Igadget
+requires a bank previously created with Igadget To Bank), or the
+bank was created with a newer version of the extension which used a
+different bank format.
+
+
+Bank not defined (36)
+
+You tried to access a bank that did not exist (for example, trying to
+retrieve gadget definitions from a bank with Bank To Igadget).
+
+
+Inconsistent data (38)
+
+Usually indicates that a memory bank (e.g. for Bank To Igadget) has
+become corrupted.  Re-create the bank; if this does not solve the
+problem, then there may be a bug in the Intuition Extension itself.
+Send me the program which causes the error so I can fix it.
+
+
+@node C_BankToIgad "Intuition Extension 1.2 Command: Bank To Igadget"
+@next C_Ecs
+@prev C_AIscrCopy
+
+BANK TO IGADGET
+---------------
+
+Bank To Igadget n
+
+Sets up gadgets for a window according to information stored in a bank
+previously created with the @{" Igadget To Bank " link C_IgadToBank} command.  String gadgets
+are reset to the empty string (""), and integer gadgets are reset to
+zero.  All other gadgets retain their previous values.
+
+@endnode
+
+@node C_IgadToBank "Intuition Extension 1.2 Command: Igadget To Bank"
+@next C_IgetIconPal
+@prev C_IgadgetRead
+
+IGADGET TO BANK
+---------------
+
+Igadget To Bank n
+
+Stores information about the gadgets in the current window in bank
+number n.  The position and size of each gadget are recorded, as are
+the values of sliders and toggle gadgets; however, the values of
+string and integer gadgets are NOT recorded.
+
+See also: @{" Bank To Igadget " link C_BankToIgad}
+
+@endnode
+

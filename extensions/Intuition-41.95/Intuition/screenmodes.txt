@@ -1,0 +1,37 @@
+From achurch@goober Mon, 10 Apr 95 06:32:00
+To: achurch@goober.mbhs.edu
+
+Greetings:
+
+ Screen modes reported as follows:
+
+        NTSC      - 00011000
+        Multiscan - 00031000
+        Euro 72   - 00061000
+        Euro 36   - 00071000
+        DBLNTSC   - 00091000
+
+ Dblntsc reported some extra screen modes at 00091200, 
+    but $91000 works perfectly.
+
+ As for my Ipalette problem, I'm using AMOS 2.0 compiler, and amiga dos
+ 2.04 and 3.0.
+ This is enough to crash my computer:
+    Iscreen Open 1,640,200,4,Hires,"s_test" : Iwait Vbl
+    Ipalette $987,$0,$EEF,$6C
+
+ How do I set the X,Y,W,H of requestor windows?
+
+ allso heres some ideas for new commands:
+
+   Iscreen Height Wb
+   Iscreen Width Wb
+   Iscreen Colour Wb
+   Iscreen Mode Wb
+
+   you need a screen setting (eg. hires, lowres) for Productivity.
+
+ If I and my 1200 can be of any more help, just mail :)
+
+Brad G. 
+

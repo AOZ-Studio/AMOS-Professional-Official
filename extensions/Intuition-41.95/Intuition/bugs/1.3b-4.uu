@@ -1,0 +1,44 @@
+Date: Fri, 8 Mar 96 16:04:02 GMT
+From: secb2%teach@dcs.shef.ac.uk (Allatt MD)
+To: achurch@cmu.edu
+Subject: problems with intuition extension v1.3b
+
+I emailed you with a an error report concerning an error when handling string 
+gadgets a couple of weeks ago. After doing some better testing i have found
+that it is not the string gadget that produces the Guru, but any odd-numbered
+gadget. I have included a uuencoded segment which recreates the errors.
+
+Matt.
+
+begin 777 testgads.amos
+M04U/4R!"87-I8R!6,3,T(   !.PF 092 $0@069T97(@9&]I;F<@<V]M92!PX
+M<F]P97(@=&5S=&EN9R!)(&AA=F4@9F]U;F0@=&AA="!T:&4@<W1R:6YG(&=AX
+M9&=E=   )@$&4@!$(&YO="!A="!F875L="P@8G5T('1H92!P<F]B;&5M(&QIX
+M97,@=VAE;B!Y;W4@<V5L96-T(&%N(&]D9"UN=6UB97)E9"   "8!!E( 1"!GX
+M861G970N(%1H92!P<F]G<F%M(&)E;&]W('=I;&P@9&5M;VYS=')A=&4@=&AAX
+M="!W:&5N('EO=2!S96QE8W0@86X@   E 092 $(@;V1D+6YU;6)E<F5D(&=AX
+M9&=E="!T:&4@8V]M<'5T97(@=VEL;"!G=7)U+"!B=70@:68@>6]U('-E;&5CX
+M="!A;B   !T!!E( ,B!E=F5N+6YU;6)E<F5D(&=A9&=E="P@=&AE('!R;V=RX
+M86T@=VEL;"!W;W)K(&9I;F4N   4 0GJ #X      %P /@   H  7  ^   !X
+M  !< #X    " %P,A    P$DO@  )0$ 3@X'$FP /@      7  ^    H !<X
+M #X    , %P /@   4  7  ^    O !< "8 "U1E<W0@5VEN9&]W  !< #8 X
+M   .   ( 0!.#@$"S  ^        " $ 3@X!$70 /@       !D!  8   ("X
+M<P#_H@ F "!396QE8W0@<V]M92!O9B!T:&4@9V%D9V5T<R!B96QO=P  (0$ X
+M3@X#!A@ /@   *#_R@!T $X. 05P '0 !@   @)S  !\_^P /@    ( ? !<X
+M #X    / %P !@   @)S    " $ 3@X!#S( /@    D   P! $X. A%. #X X
+M   " %P /@    $  "<! $X." _Z #X    ! %P /@   %  7  ^    '@!<X
+M #X   "@ %P /@    P 7  ^    % !< "8 "$=A9&=E=" Q %P /@    $ X
+M "<! $X." _Z #X    " %P /@   %  7  ^    +0!< #X   "@ %P /@  X
+M  P 7  ^    % !< "8 "$=A9&=E=" R %P /@    $  !,! CP!%@ &  8(X
+M &-O=6YT97( _Z( /@    , E  ^    "0  *@$ 3@X%$3  !@ &" !C;W5NX
+M=&5R  !< #X   !0 %P /@    __X@!T  8 !@@ 8V]U;G1E<@#_P  ^    X
+M 0!\ %P /@   *  7  ^    #   %P$ !@   @)S /^B "8 !D=A9&=E=/_ X
+M!9@ =  &  8( &-O=6YT97(  'P  "\! $X. P88 #X   "@_\H = !.#@$%X
+M< !T  8   ("<P  ?/_L #X    " 'P 7 !T  8 !@@ 8V]U;G1E<@#_X@ ^X
+M    #P!\_\  /@   !< 7  &   " G,    * 0)&  8 !@@ 8V]U;G1E<@  X
+M  4! $X. !!6   $ 0)0 '8   L!  8 # 0 979E /^B $X. !+8   B 0*^X
+M $  !@ ,! !E=F4 _Z( 3@X $QX 5 1V "8 "D=A9&=E="!.;RX 9 !.#@ 2X
+MZ@!D "8 !2!H:70N  !4 MH   P! EP !@ ,! !E=F4 _Z( 3@X $T0   @!X
+: $X. 0*T #X        # 22J  !!;4)S   ,X
+ X
+end

@@ -1,0 +1,3 @@
+Genam +Default_DBL.s TO "(Default_DBL.o)"
+GetChunk (Default_DBL.o) Default_DBL.Bin
+Insert_DBL APro:APSystem/AMOSPro_Default_Resource.Abk Default_DBL.Bin 2

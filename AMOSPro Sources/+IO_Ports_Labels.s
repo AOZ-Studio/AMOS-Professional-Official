@@ -1,0 +1,57 @@
+; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; +IO_Ports.s, list of the library functions on the 06-06-1996 01:49:06
+;
+; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+L_IOCold:		set	0
+L_InSerialOpen2:	set	2
+L_InSerialOpen5:	set	3
+L_InSerialClose1:	set	4
+L_InSerialClose0:	set	5
+L_InSerialSend:		set	6
+L_InSerialOut:		set	7
+L_FnSerialGet:		set	8
+L_FnSerialInput:	set	9
+L_InSerialSpeed:	set	10
+L_InSerialBits:		set	11
+L_InSerialParity:	set	12
+L_InSerialX:		set	13
+L_InSerialBuf:		set	14
+L_InSerialFast:		set	15
+L_InSerialSlow:		set	16
+L_FnSerialCheck:	set	17
+L_FnSerialError:	set	18
+L_FnSerialStatus:	set	19
+L_FnSerialBase:		set	20
+L_InSerialAbort:	set	21
+L_GetSerA1:		set	22
+L_GetSerial:		set	23
+L_Stpar:		set	24
+L_FnPrinterBase:	set	25
+L_FnPrinterCheck:	set	26
+L_InPrinterOpen:	set	27
+L_InPrinterClose:	set	28
+L_FnPrinterError:	set	29
+L_InPrinterSend:	set	30
+L_InPrinterOut:		set	31
+L_InPrinterAbort:	set	32
+L_FnPrinterOnline:	set	33
+L_InPrinterDump0:	set	34
+L_InPrinterDump4:	set	35
+L_InPrinterDump7:	set	36
+L_Dump3a:		set	37
+L_Dump2a:		set	38
+L_Dump:			set	39
+L_GetScr:		set	40
+L_FnParallelBase:	set	41
+L_FnParallelCheck:	set	42
+L_InParallelOpen:	set	43
+L_InParallelClose:	set	44
+L_InParallelSend:	set	45
+L_InParallelOut:	set	46
+L_InParallelAbort:	set	47
+L_FnParallelStatus:	set	48
+L_FnParallelError:	set	49
+L_FnParallelInput1:	set	50
+L_FnParallelInput2:	set	51
+L_ParInput:		set	52
+L_IOFonc:		set	53

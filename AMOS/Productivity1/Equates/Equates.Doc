@@ -1,0 +1,311 @@
+#HYP2000
+	           {[000,4,7]                                       }
+	           {[000,4,7]    AMOS Professional System Equate    }
+	           {[000,4,7]                                       }
+
+
+Welcome  to  the AMOS Pro System Equates!  This powerfull system enable you
+to directly access all Amiga Equates, in a symbolic manner.  AMOS Pro allow
+you to have a clean, system friendly access to the ROM's library.
+
+Please select an option:
+
+	           {[32 ,6,3]           How does it work?           }
+	           {[90 ,6,3]      Which equates are included?      }
+	           {[140,6,3]      How to add your own equates.     }
+
+	           {[ADD,4,7]  RUN and add equates to current file  }
+	           {[CRE,4,7]  RUN and create a new equate file     }
+
+	           {[QUT,4,7]                  Quit                 }
+
+
+
+
+
+
+
+
+
+
+
+	           {[000,4,7]                                       }
+	           {[000,4,7]           How does it work?           }
+	           {[000,4,7]                                       }
+
+
+AMOS  Pro  offers  four new instructions to deal with the equates (for more
+information, please refer to the AMOS Pro User Guide).
+
+	=Equ("The_Equate")
+	=Lvo("System_Function")
+	=Struc(Address,"Position")=
+	=Struc$(Address,"Position")=
+
+If during testing time AMOS Pro encounters one of the above instructions it
+will load the following file into memory:
+
+	"AMOSPro_Tutorial:AMOSPro_System_Equates"
+
+AMOS  Pro  explores  it,  looking  for  the specified equate value.  If the
+equate is found, its value is poked directly into the AMOS source code.  It
+remains  there  until  you  change the line with the editor.  Next time you
+test  the  program,  AMOS  Pro  will simply verify that the equate has been
+defined and skip the instruction.
+
+This means that once the program has been tested, AMOS Pro will not need to
+load the Equate file (unless you change the source again).  This allows you
+to  send  programs  which  contain  Equates  that someone else doesn't have
+access  too.   Or  to  someone who doesn't even have the equates file!  For
+safe  keeping,  it's  a  good  idea to place the =Equ("") instructions into
+closed procedures, ensuring they won't be changed by mistake.
+
+The  Equate  file remains in memory wherever possible.  As long as a memory
+flush  does  not  occur.   So if you have enough RAM it will only be loaded
+once.   Floppy  disc  users  will  have to keep inserting the disc with the
+equates  file  on  if they don't have enough RAM.  (If you're serious about
+developing  you must have plenty of RAM and a hard disc).  Close Editor and
+Kill  Editor  are  the  only instructions which will erase the Equate file.
+(If  they  are enabled within your configuration file.) This ensures enough
+RAM is freed when needed.
+
+ATTENTION:   Set  Equate Bank is no longer used.  We have realised that the
+above  method was much better.  It saves using a bank for storage.  To keep
+AMOS  Pro's  compatible,  it  is necessary to leave this command within the
+instruction set.  But it has absolutely NO EFFECT!
+
+
+	           {[001,4,3]             Back to Menu              }
+
+
+
+
+
+
+
+
+
+
+
+
+	           {[000,4,7]                                       }
+	           {[000,4,7]      Which equates are included?      }
+	           {[000,4,7]                                       }
+
+
+The  Amiga  system  has  a  LOT of equates.  Inserting all of them into the
+equate file would have made it as big as 400k!
+
+Here is the list of files included in this file:
+
+	All: dos.library, exec.library, math(s).library,
+        icon.library _LVOs,
+	"exec/exec.i"
+	"dos/dos.i"
+	"dos/dosextens.i"
+	"libraries/locale.i"
+
+	"devices/audio.i"
+	"devices/bootblock.i"
+	"devices/clipboard.i"
+	"devices/gameport.i"
+	"devices/parallel.i"
+	"devices/printer.i"
+	"devices/prtbase.i"
+	"devices/prtgfx.i"
+	"devices/scsidisk.i"
+	"devices/serial.i"
+	"devices/timer.i"
+	"devices/trackdisk.i"
+	"hardware/Custom.i"
+	"rexx/errors.i"
+	"rexx/rexxio.i"
+	"rexx/rxslib.i"
+	"rexx/storage.i"
+
+This means you have total control over dos and exec, any devices, arexx and
+the  hardware  chipset.   If  you  can't find the equates you need for your
+applications then read the next chapter.
+
+	           {[001,4,3]             Back to Menu              }
+
+
+
+
+
+
+
+
+
+
+
+	           {[000,4,7]                                       }
+	           {[000,4,7]     How to add your own equate.       }
+	           {[000,4,7]                                       }
+
+
+There  are two methods to achieve this task and it depends on the number of
+equates you want to add.
+
+
+1. Simple method - using a text editor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The  equate  file  is  a plain ASCII file. Just load it into your favourite
+text  editor.   You  will see immediately that the structure of the file is
+very simple:
+
+	The_Equate:$XXXXXXXX,Type
+
+* The_Equate is the name of the equate to be defined.  Beware!  Case is
+  important.  A colon must lie right at the end of name (no spaces).
+
+* $XXXXXXXX is the value of this equate.  It can be hexadecimal, decimal,
+  or binary (with a %).
+
+* Type defines the type of the equate:
+
+	0 Byte
+	1 Word, Bool
+	2 Long
+	3 UByte
+	4 UWord
+	5 ULong
+	6 APTR, FPRT, CPRR
+	7 No special type.
+
+The =Equ("") function returns any kind of equate, regardless of its kind.
+
+The  =Lvo("")  function also returns any kind of equates, but add an "_LVO"
+to the name of the specified equate before looking for it in the file.
+
+=STRUC= only works with equates of type 0 to 6
+
+=STRUC$= only works with equates of type 6
+
+How to add your new equate:
+
+* Go to the bottom of the file.
+* Type in your equate, no spaces and respecting the types (choose type 7 if
+  you do not know).
+* Continue for every other equate you're adding.
+* Save your file.
+
+
+2. Using Make_Equate.AMOS.
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+This program automatically converts a listing produced by an assembler into
+a  file  which  AMOS Pro will understand.  Make_Equates was used to produce
+the "AMOSPro_System_Equate" file on you master disc.
+
+How to proceed?
+
+* You should use Genam2 (or 3), in fact the assembler, Genim2.
+
+* You must create a source listing which includes all the files you want to
+  grab the equates from.  Here is the source used for the default equate
+  file:
+
+
+; Make sure all macros are listed
+		OPT M+
+
+; My own include directory,
+		IncDir  "Work:includes/i/"	
+
+; Let's go with the includes
+		Include "exec/exec.i"
+		Include "dos/dos.i"
+		Include "dos/dosextens.i"
+		Include "libraries/locale.i"
+
+		Include "devices/audio.i"
+		Include "devices/bootblock.i"
+		Include "devices/clipboard.i"
+		Include "devices/gameport.i"
+		Include "devices/parallel.i"
+		Include "devices/printer.i"
+		Include "devices/prtbase.i"
+		Include "devices/prtgfx.i"
+		Include "devices/scsidisk.i"
+		Include "devices/serial.i"
+		Include "devices/timer.i"
+		Include "devices/trackdisk.i"
+		Include "hardware/Custom.i"
+		Include "rexx/errors.i"
+		Include "rexx/rexxio.i"
+		Include "rexx/rxslib.i"
+		Include "rexx/storage.i"
+
+* Under a CLI, you must assemble the source, with the "-p" option, this
+  informs the assembler to produce a 2 pass assembly listing.  Here is an
+  example of the listing produced for the default file:
+
+   22 00.00000000                      * unit defintions
+   23   =00000000                      UNIT_MICROHZ    EQU     0
+   24   =00000001                      UNIT_VBLANK     EQU     1
+   25   =00000002                      UNIT_ECLOCK     EQU     2
+   26   =00000003                      UNIT_WAITUNTIL  EQU     3
+   27   =00000004                      UNIT_WAITECLOCK EQU     4
+   28 00.00000000                      
+   29 00.00000000                      TIMERNAME       MACRO
+   30 00.00000000                                      DC.B    'timer.device',0
+   31 00.00000000                                      DS.W    0
+   32 00.00000000                                      ENDM
+   33 00.00000000                      
+   34 00.00000000                       STRUCTURE TIMEVAL,0
+   34   =00000000+                     TIMEVAL     EQU     0
+   34   =00000000+                     SOFFSET     SET     0
+   34 00.00000000                                  ENDM
+   35 00.00000000                              ULONG   TV_SECS
+   35   =00000000+                     TV_SECS     EQU     SOFFSET
+   35   =00000004+                     SOFFSET     SET     SOFFSET+4
+   35 00.00000000                                  ENDM
+   36 00.00000000                              ULONG   TV_MICRO
+   36   =00000004+                     TV_MICRO            EQU     SOFFSET
+   36   =00000008+                     SOFFSET     SET     SOFFSET+4
+   36 00.00000000                                  ENDM
+   37 00.00000000                              LABEL   TV_SIZE
+   37   =00000008+                     TV_SIZE     EQU     SOFFSET
+   37 00.00000000                                  ENDM
+   38 00.00000000                      
+   39 00.00000000                       STRUCTURE ECLOCKVAL,0
+   39   =00000000+                     ECLOCKVAL           EQU     0
+   39   =00000000+                     SOFFSET     SET     0
+   39 00.00000000                                  ENDM
+   40 00.00000000                              ULONG   EV_HI
+   40   =00000000+                     EV_HI       EQU     SOFFSET
+   40   =00000004+                     SOFFSET     SET     SOFFSET+4
+   40 00.00000000                                  ENDM
+   41 00.00000000                              ULONG   EV_LO
+   41   =00000004+                     EV_LO       EQU     SOFFSET
+   41   =00000008+                     SOFFSET     SET     SOFFSET+4
+   41 00.00000000                                  ENDM
+   42 00.00000000                              LABEL   EV_SIZE
+   42   =00000008+                     EV_SIZE     EQU     SOFFSET
+   42 00.00000000                                  ENDM
+   43 00.00000000                      
+
+  No need to tell you that this can can be enormous (the default one is
+  600k!).  I suggest you work on a hard-drive!
+
+* Once the .LST file is created, you run Make_Equates.AMOS.  The program
+  will explore the .LST file, line by line, and take any labels out of it.
+  It automatically detects the type of the label from the listing,
+  and creates the proper line for AMOS Pro.
+
+  For security reasons the program works on a temporary file on the
+  Ram Disc (you can set the path of the temporary file at the beginning of
+  the program).  When everything is finished you have the option of
+  copying the new file over the old one.
+
+  You can either:
+
+		a) Create a new file
+		b) Add labels to the existing file.
+
+  In both cases, any label defined twice will not be added to the file.  At
+  the  end  of  the  process  the  number  of  new and duplicated labels is
+  reported.
+
+
+	           {[001,4,3]             Back to Menu              }

@@ -1,0 +1,3 @@
+Genam FROM "+APComp.s" TO "AP2:APCmp" -d
+Copy APCmp To APro:APSystem
+Copy APCmp to C:APCmp

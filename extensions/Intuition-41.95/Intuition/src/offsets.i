@@ -1,0 +1,7 @@
+	incdir	"includes:"
+	include	"diskfont.Offsets"
+	include	"dos.Offsets"
+	include "exec.Offsets"
+	include	"graphics.Offsets"
+	include	"intuition.Offsets"
+	include "reqtools.Offsets"

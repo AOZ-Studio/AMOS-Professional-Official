@@ -1,0 +1,47 @@
+
+IF EXISTS AP2:+Debug_On
+	ECHO "------------------------------------------------------------------"
+	ECHO "---------------------------Mode debug ON--------------------------"
+	ECHO "------------------------------------------------------------------"
+ENDIF
+
++Assigns
+
+Compiler
+
+Delete APC_Compiler:APSystem/#? ALL
+
+Copy AMOSPro_System:APSystem/AMOSPro.Lib 		APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/AMOSPro_Compact.Lib 	APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/AMOSPro_Request.Lib 	APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/AMOSPro_Music.Lib 		APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/AMOSPro_IOPorts.Lib 	APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/AMOSPro_Compiler.Lib 	APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/Compiler.Lib 		APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/APCmp 			APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/Header_CLI.Lib 		APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/Header_Backstart.Lib 	APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/Header_AMOS.AMOS 		APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/Def_Compiled.info		APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/AMOSPro_Default_Resource.Abk	APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/AMOSPro_CompilerA_Resource.Abk	APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/AMOSPro_Editor_Config		APC_Compiler:APSystem/
+Copy AMOSPro_System:APSystem/Locate_APSystem.info	APC_Compiler:APSystem/
+
+Copy S:AMOSPro_Interpreter_Config 			APC_Compiler:S/
+Copy S:AMOSPro_Compiler_Config 				APC_Compiler:S/
+Copy Libs:AMOS.Library	 				APC_Compiler:Libs/
+
+Copy AMOSPro_Compiler:Compiler_Shell.AMOS To 		APC_Compiler:
+Copy AMOSPro_Compiler:Tiny_Shell.AMOS To 		APC_Compiler:
+
+APCmp AMOSPro_Compiler:Compiler_Shell.AMOS TO AMOSPro_System:Compiler_Shell TYPE=1 NOERR NODEF LIBS=APro:APSystem/
+Copy AMOSPro_System:Compiler_Shell TO APC_Compiler:
+APCmp AP2:Dot_AMOS/Compiler_Install.AMOS TO APC_Compiler:Compiler_Install TYPE=1 NOERR NODEF LIBS=APro:APSystem/
+Squash APC_Compiler:Compiler_Install
+
+APCmp AP2:Dot_AMOS/Locate_APSystem.AMOS TO AMOSPro_System:APSystem/Locate_APSystem TYPE=1 NOERR NODEF WB LIBS=APro:APSystem/
+Squash AMOSPro_System:APSystem/Locate_APSystem
+Copy AMOSPro_System:APSystem/Locate_APSystem 		APC_Compiler:APSystem/
+
+Francois

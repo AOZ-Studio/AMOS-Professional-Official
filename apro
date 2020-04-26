@@ -1,0 +1,7 @@
+echo "***Assembling AMOSPro"
+IF NOT EXISTS +internal_jumps.s
+execute alib
+ENDIF
+c/Genam FROM +B.s TO AMOS/AMOSPro
+delete >NIL: +internal_jumps.s
+List AMOS/AMOSPro

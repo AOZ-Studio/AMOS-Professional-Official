@@ -1,0 +1,45 @@
+From ph@doc.ic.ac.uk Tue Nov 29 05:39:25 1994
+To: achurch@goober.mbhs.edu (Andy Church)
+Cc: ph@doc.ic.ac.uk
+Subject: Re: Intuition Extension
+Date: Tue, 29 Nov 1994 10:37:51 +0000
+From: Paul Hickman <ph@doc.ic.ac.uk>
+
+> >Somehow I seem to have ended up with the documentation for version 1.2b,
+> >but the .lib file for version 1.1! However, the 1.2b documentation does
+> >not say that any of these bugs have been fixed...
+> 
+>   Did you get it on the disk?  Looks like I'll have to yell at Ryan again...
+> 
+No, nothing to do with him - I've only got beta versions that you've sent me 
+direct -
+but somehow I've manage to cock up the installation.
+
+> >Palettes
+> >=======
+> >
+> >How about an instruction to set palettes using colour values from 0 to 255 
+> >instead of 0-15
+> 
+>   As soon as you find a way to get 256 numbers on a single line, sure. :-)
+> 
+>   --Andy Church
+
+You misunderstand me - I don't mean a way to specify all 256 colours of an AGA
+screen - I mean instead of specifing RGB values with 0-$F for each of red, 
+green,
+and blue, allow the use of 0-$FF for each component so the full AGA palette can
+be used instead of every 16th colour.
+
+
++-------------------------+------------------------------------+
+|                         |    _____                           |
+| PAUL HICKMAN            |   /     \   ON A HOT SUMMER NIGHT  |
+| (ph@doc.ic.ac.uk)       |  /  O O  \  WOULD YOU  OFFER YOUR  |
+| DEPARTMENT OF COMPUTING | |    _    | THROAT  TO  THE  WOLF  |
+| IMPERIAL COLLEGE LONDON |  \  / \  /  WITH THE RED  ROSES ?  |
+|                         |   \_____/                          |
++-------------------------+------------------------------------+
+Machines: Amiga 500  WB1.3 - 1mb Memory - External Disk Drive.
+          Amiga 1200 WB3.0 - 6mb Memory - 200Mb Hard Disk.
+

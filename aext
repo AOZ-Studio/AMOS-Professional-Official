@@ -1,0 +1,5 @@
+echo "***Assembling Extensions"
+execute extensions/amusic
+execute extensions/acompact
+execute extensions/arequest
+execute extensions/aio

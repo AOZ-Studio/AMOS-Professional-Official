@@ -1,0 +1,41 @@
+Date: Tue, 27 Feb 96 16:30:48 GMT
+From: secb2%teach@dcs.shef.ac.uk (Allatt MD)
+To: achurch@dragon.res.cmu.edu
+Subject: Intuition Extension problems
+
+Thanks for sending me the latest version of the intuition extension. I used it
+on a program I have been making, and it works fine except for the string gadget
+which causes a guru every time i press return after altering its contents.
+I am using WB2.04 and KS2.04 as well. I have included a uuencoded program that
+recreates the error
+
+Matt.
+
+
+begin 777 teststringgad.amos
+M04U/4R!"87-I8R!V,3,T(   ! HB 092 #P@02!'=7)U+7-T>6QE(&-R87-HX
+M('=I;&P@:&%P<&5N('=H96X@>6]U(&%L=&5R('1H92!C;VYT96YT<R   " !X
+M!E( ."!O9B!T:&4@<W1R:6YG(&=A9&=E="!A;F0@=&AE;B!P<F5S<R!%;G1EX
+M<BX@5&AE('-O9G1W87)E   8 092 "@@9F%I;'5R92!C;V1E('=A<R X,# PX
+M,# S('1A<VL@,# S-T,Y,S @   A 092 #H@:68@>6]U('-E;&5C="!T:&4@X
+M8VQO<V4@9V%D9V5T(&]N('1H92!W:6YD;W<L('1H92!P<F]G<F%M   B 092X
+M #P@9&]E<R!A;B!)9V%D9V5T(%)E860D*"D@8V]M;6%N9"!A;GEW87DL('=IX
+M=&AO=70@86YY('!R;V)S+"   ",!!E( /B!S;RP@:2!W;W5L9"!N;W0@<V%YX
+M(&ET('=A<R!A('!R;V)L96T@=VET:"!T:&4@26=A9&=E="!296%D)"@I   )X
+M 092  H@8V]M;6%N9"X@   # 22^   E 0!.#@<2;  ^      !< #X   "@X
+M %P /@    P 7  ^   !0 !< #X   "\ %P )@ +5&5S="!7:6YD;W<  %P X
+M-@    X   @! $X. 0+, #X        ( 0!.#@$1=  ^        & $ !@  X
+M @)S /^B "8 'E-E;&5C="!T:&4@<W1R:6YG(&=A9&=E="!B96QO=P  #P$ X
+M!@ & @)T /^B "8 #%!R97-S(%)E='5R;@  (0$ 3@X#!A@ /@   *#_R@!TX
+M $X. 05P '0 !@   @)S  !\_^P /@    ( ? !< #X    9 %P !@   @)SX
+M    (0$ 3@X#!A@ /@   *#_R@!T $X. 05P '0 !@ & @)T  !\_^P /@  X
+M  ( ? !< #X    C %P !@ & @)T    " $ 3@X!#S( /@    $   P! $X.X
+M A%. #X    " %P /@    $  "8! $X." _Z #X    ! %P /@   %  7  ^X
+M    ,@!< #X   "@ %P /@    P 7  ^    % !< "8 !4AE;&QO  !< #X X
+M   !   % 0!.#@ 05@  ! $"4 !J   + 0 &   $ &5V90#_H@!.#@ 2V   X
+M'@$"O@    8   0 979E /^B $X. !,> %0 !@  ! )T97@ _Z( 3@X $,@ X
+M=  ^     0!\ %0"V@  # $"7  &   $ &5V90#_H@!.#@ 31   $ $ !@  X
+M! )T97@ _Z( 3@X $,@ =  ^     0!\   ( 0!.#@$"M  ^         P$DX
+9J@  " $$=@ & !($ G1E>    $%M0G,    (X
+ X
+end

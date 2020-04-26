@@ -1,0 +1,31 @@
+From: xcszjmp@scs.leeds.ac.uk
+Date: Fri, 26 Apr 1996 16:54:27 +0100
+To: achurch%dragonfire.net@gps0.leeds.ac.uk
+Subject: Intuition...arrrghhh!
+
+
+OK, got the library installed last night and then tried to run my program....
+
+set Igadget Hslider and Vslider crash the machine with guru message
+
+#80000004
+
+when Igadget On is called.
+
+Itrap won't stop this guru...so I have to reload every time....
+
+Please let me know what you think the problem may be....I'm using the AMOS 2
+files that you sent me, so there shouldn't be a problem....although my copy of
+AMOS 2 get spurious bytes of data in the menu texts and stuff...which might of
+(errm might have I mean (bad english)) a problem with initial UU Transfer....
+everything else works fine though...Compiler etc etc
+
+While i think about it is there any chance of writing an AMOS Procedure that
+will stop GURUS from being fatal...ie make them recoverable or is that not
+possible...it's a nightmare having to boot up (off floppy) each time.
+
+As far as I could work out from the brief tests I did, it was only these 2 sliders that crashed trhe machine....toggle and hit were ok, I didn't try string
+gadget...
+
+Thanks
+JOE

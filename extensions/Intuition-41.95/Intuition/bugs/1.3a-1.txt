@@ -1,0 +1,51 @@
+From: "Mr. Giark To You" <joehick@golden.net>
+To: achurch@cmu.edu
+Date: Thu, 17 Oct 1996 10:10:29 -0500
+Subject: Intuition
+
+Here's an example code.  It works fine until the gadget is defined.
+If a mouse button is pressed, the Amiga locks up completely.
+Do you have to open a window for gadgets to work?
+
+Also, the Iwindow Activate Wb N command is not in the docs
+I have. 40.44 (12/10/94)
+
+I'm still unable to sense the pressing of a close button on a
+window on the workbench.
+
+Amos To Back 
+
+SCR=Irequest Screen("Gadget Test")
+WID=Ireq Scr Width
+HGT=Ireq Scr Height
+CLR=Ireq Scr Colour
+RES=Ireq Scr Mode(0)
+Iscreen Open 66,WID,HGT,CLR,RES,"Gadget Test"
+
+Reserve Igadget 1
+Set Igadget Hit 1,20,20,20,20
+Igadget Active 
+
+Iwait Key 
+Iscreen Close 66
+Amos To Front 
+
+I have an A500 020 14MHz with 1C/4F RAM OS3.1
+I use AMOS Pro V2 and I have the registered Intuition
+extension version 41.65.
+
+Is there a newer version available?  Is the Ibeep command
+going to be in the next one?
+
+Well met and godspeed,
+                      Giark
+                                          joehick@golden.net
+                                    http://www.golden.net/~joehick/
+     ______  ______    _____  .------------------------------------------.
+    / ____/ / __  /   / ___ \ !     AMOS games, utilities, demos, etc.   !
+   / /__   / /_/ /   / /  / / !                                          !
+  / ___/  / ___  |  / /  / /  !       CyberSpace BBS (519)579-0072       !
+ / /     / /__/ /  / /  / /   !       A2000/060 50MHz(519)579-0173       !
+/_/     /______/  /_/  /_/    !                                          !
+   Fly By Nite Videe-Oh!      !  FBN Amiga 500/020 14MHz 1C/5F RAM 3.1OS !
+                              `------------------------------------------'

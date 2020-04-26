@@ -1,0 +1,3 @@
+Genam +Editor_DBL.s TO "(Editor_DBL.o)"
+GetChunk (Editor_DBL.o) Editor_DBL.Bin
+Insert_DBL APro:APSystem/AMOSPro_Editor_Resource.Abk Editor_DBL.Bin 2

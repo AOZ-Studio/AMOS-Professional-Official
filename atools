@@ -1,0 +1,14 @@
+echo "***Re-Compiling Build Tools"
+cd AMOS
+APSystem/APCmp /c/Check_CLib.AMOS TYPE=0 WB NOERR NODEF
+APSystem/APCmp /c/Get_Chunk.AMOS TYPE=0 WB NOERR NODEF
+APSystem/APCmp /c/Library_Digest.AMOS TYPE=0 WB NOERR NODEF
+APSystem/APCmp /c/Make_Labels.AMOS TYPE=0 WB NOERR NODEF
+APSystem/APCmp /c/Make_Toktable.AMOS TYPE=0 WB NOERR NODEF
+cd /
+delete >NIL: c/Check_CLib.info
+delete >NIL: c/Get_Chunk.info
+delete >NIL: c/Library_Digest.info
+delete >NIL: c/Make_labels.info
+delete >NIL: c/Make_Toktable.info
+

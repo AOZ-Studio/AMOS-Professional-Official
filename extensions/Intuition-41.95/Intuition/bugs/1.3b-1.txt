@@ -1,0 +1,73 @@
+Date: Wed, 6 Dec 1995 12:37:41 +0100 (MET)
+From: calendin <calendin@massilia.univ-mrs.fr>
+To: Church Andy <achurch@cmu.edu>
+Subject: Bug Report 1
+Mime-Version: 1.0
+
+
+    Hello Andy ! First bug report ! (fast, heh ?)
+
+    Well, I tested the beta version of your extension, and I even didn't
+manage to run Intuiviewer !!
+
+    When I run it, the window appears normaly. Then I select the LOAD option :
+the file requester appears and I choose an HAM6 640x512 pixels picture.
+
+    I wait, but nothing happens. Then I switch back to AMOS, and I see that
+an "OUT OF MEMORY" error occured on the IREQUEST FILE$("Select an IFF ILBM
+picture") command.
+
+
+    Hum, well, rather strange. I try to avoid this problem by putting a
+remark at the beginning of this line. Then I insert the line :
+
+    F$ = "DH2:test.iff"
+
+    I re-run the program, and select the LOAD option. The program loads the
+picture... and crashes totally my system !!!
+
+
+    I tried several times, even by booting with no startup-sequence, but
+that's always the same result... The intuiviewer worked fine with the 
+demo version, though...
+
+
+    So I started from scratch, opened a 4 colors hires screen and called 
+a file requester : same problem (out of memory). I've got the latest 
+version of the reqtools library, so I think it is not the source of the 
+problem...
+
+
+
+	Now, something different :
+
+	First, about the demos I'll code : I think that the user would be 
+interested in small and simple demos. Indeed, if someone wants to know 
+how to use gadgets or requesters, he won't feel like reading a 1000 lines 
+program just to find the topic he's interested in... So I suggest small 
+programs, each devoted to a specific feature of your extension 
+(requesters, gadgets, sliders, and so on). Do you agree with me ?
+
+
+	Now, to develop Collector (sorry I forgot it at home ! I'll send 
+you as soon as possible), I'll need a special feature that is not yet 
+available in your extension : the possibility to unpack packed pictures 
+into an intuition screen. So, could you implement it ? Only unpacking is 
+needed, and no change must be made to the code by Francois Lionet (only 
+redirection to an intuition screen). I need to unpack 4 bitplanes pics at 
+any coordinates on the screen (16 pixels boundaries for X coordinates are 
+okay for me). Hope this will be done soon ;-)
+
+
+    Okay, that's all for today ! See you !
+
+___          *
+_|_|       * |*
+_|_|   _    \| *
+_|_|  | |  *-|/
+    __`:'__ \_/
+   /._/|\_.\      MiNd CoNtRoL...
+  /  _.|,_  \
+ /   \_/_/   \    Fred. Calendini (calendin@massilia.univ-mrs.fr)
+/_____________\
+

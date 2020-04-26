@@ -1,0 +1,3 @@
+echo "***Assembling APCmp Command Line Compiler"
+c/Genam FROM compiler/+APComp.s TO AMOS/APSystem/APCmp
+List AMOS/APSystem/APCmp

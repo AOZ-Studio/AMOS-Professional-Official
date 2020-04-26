@@ -1,0 +1,24 @@
+
+Copy APro:APSystem/AMOSPro.Lib Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/AMOSPro_Compact.Lib Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/AMOSPro_Request.Lib Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/AMOSPro_Music.Lib Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/AMOSPro_IOPorts.Lib Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/AMOSPro_Editor Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/AMOSPro_Monitor Net:Work/AMOS_Pro/APSystem/
+Copy APro:AMOSPro Net:Work/AMOS_Pro/
+
+Copy APro:APSystem/AMOSPro_Compiler.Lib Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/Compiler.Lib Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/APCmp Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/APCmp Net:Sys/C/
+Copy APro:APSystem/Header_CLI.Lib Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/Header_Backstart.Lib Net:Work/AMOS_Pro/APSystem/
+Copy APro:APSystem/Header_AMOS.AMOS Net:Work/AMOS_Pro/APSystem/
+
+Copy S:AMOSPro_Interpreter_Config Net:Sys/s/
+Copy S:AMOSPro_Compiler_Config Net:Sys/s/
+
+;Copy Instructions_ATester.Asc Net:Work/AMOS_Pro/
+;Copy Instructions_Testees.Asc Net:Work/AMOS_Pro/
+

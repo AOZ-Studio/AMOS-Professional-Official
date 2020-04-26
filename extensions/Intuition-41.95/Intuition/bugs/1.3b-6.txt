@@ -1,0 +1,32 @@
+From: MRLUCKY@cup.portal.com
+To: Achurch@goober.mbhs.edu
+Subject: AMOS INTUITION EXTENSION V1.3
+Lines: 25
+Date: Thu, 29 Feb 96 16:22:50 PST
+X-Origin: The Portal System (TM)
+
+DEAR MR. CHURCH,
+     LET ME SAY I ENJOY YOUR EXTENSION FOR AMOS VERY MUCH. I CURRENTLY
+USE IT WITH AMOS PROFESSIONIAL V2.0 ON MY AMIGA 1200.
+
+     I HAVE A PROBLEM WITH THE Iclear Mouse and Iclear All commands and
+i am hopeful you that you can help me. These two commands when used in
+in a loop when you want to deactivate a imouse click don't always work.
+By the way I have written many programs using Amos and Amos professional
+and I have one or two on Fred Fish CDs. I only tell you this to let you
+know that I usually know what I am doing. My loop looks something like
+this:
+      If imouse key=1
+          iclear mouse
+   if X>amount and X<amount and Y>amount and Y<amount
+       proc name
+    end if
+end if
+
+X and Y are x=imouse x and y=imouse y
+
+)Problem: mouse key goes off sometimes without button being pressed.
+          this only happens when I am over the coordinates.
+Any help would be appreciated. I am using V1.3 of your extension.
+yours truly - Kenneth McCormick
+mrlucky@cup.portal.com

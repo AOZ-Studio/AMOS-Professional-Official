@@ -1,0 +1,5 @@
+echo "***Assembling AMOSPro_Music.Lib"
+c/Library_Digest extensions/+Music.s
+c/Genam FROM extensions/+Music.s TO AMOS/APSystem/AMOSPro_Music.Lib
+delete >NIL: extensions/+Music_Labels.s
+delete >NIL: extensions/+Music_Size.s

@@ -1,0 +1,10 @@
+echo "***Assembling the Compiler Configuration"
+c/Genim2 compiler/+Compiler_Config.s -oRAM:Compiler_Config.o
+c/Get_Chunk RAM:Compiler_Config.o AMOS/Tutorial/Extra_Configs/Compiler_Config.Backup
+
+echo "***Installing compiler configuration"
+Copy AMOS/Tutorial/Extra_Configs/Compiler_Config.Backup AMOS/AMOSPro_Compiler_Config
+
+echo "***Installing compiler configuration to s:"
+Copy AMOS/Tutorial/Extra_Configs/Compiler_Config.Backup s:AMOSPro_Compiler_Config
+

@@ -1,0 +1,63 @@
+From: "Jacek Kubica  " <KUBICA@ch.wssk.am.wroc.pl>
+To: achurch@CMU.EDU
+Date:          Sat, 24 Feb 1996 19:39:26 0100
+Subject:       Intuition Extension 1.3b bugs report
+X-Pmrqc:       1
+Return-Receipt-To: "Jacek Kubica  " <KUBICA@ch.wssk.am.wroc.pl>
+X-Mailer:     Pegasus Mail v3.1 (R1)
+
+
+                              Hello Andy!
+
+               THX for ur famous Intuition Extension :))
+               
+I`m testing AmosPro version of this extension on my machine:
+
+A3000/KS3.1/WB3.1/25MHz/FPU/2mb chip and 8 mb fast
+AmosPro & Compiler 2.0
+Pal/ECS
+reqtools.library 38.1266
+additionaly MUI 3.2 and MagicWB
+
+and now I want to send U my first short bug report:
+
+1. Imouse Key function don't work :( on my machine
+   see example /bad_tests/Imouse_Key.amos
+   
+2. Irequest Font$ return bad value <long unusualy string,and crashes 
+   my system just after secound runing my example program>
+   see example /bad_tests/IReq_Font$_test.amos
+   
+   BTW.In ur guide U wrote :
+   "font$=IRequest Font$"   
+   but font$ its AMOS internal command i.e. A$=Font$(fontnumber)
+   so better syntax example is F$=IReqest Font$
+
+3. After calling Iwindow close WB(after using Iwindow To Front) 
+   amos always reported Error( Window not opened)
+   only with wb window, with own Iscreen all is OK
+   see example /bad_tests/WBwinsWintofront.amos 
+
+4. IWindow Move working OK but not at all good
+   see example /bad_tests/IWindow_Move.amos 
+
+Irequest File$,Set Ifont,Ifont$,Itext Base,Itext Length,Ifont Height
+see examples in dir /OK_Tests :)
+
+I send U example files with next mail ... and sorry for my poor 
+english :)
+Tomorrow I want to test this example on my A500/KS2.05&KS1.3/4MB ram
+
+   With greetings from pl
+
+          Jacek
+
+              
+______________________________________________________________________
+
+                \\\\                Jacek Kubica
+                 \\\\   ////  kubica@ch.wssk.am.wroc.pl
+                  \\\\ ////    Regional Hospital Wroclaw
+                   \\\X///             POLAND
+                    =====
+______________________________________________________________________

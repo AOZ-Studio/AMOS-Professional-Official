@@ -1,0 +1,4090 @@
+@database intuition.guide
+@$VER: Intuition.guide 41.22 (1 May 1998)
+
+----------------------------------------------------------------------
+Wait a minute!  You're not using AmigaGuide!
+
+This is an AmigaGuide document.  In order to read it correctly, you'll
+need a program that can display such documents.  Workbench 3.0 users
+can use MultiView to read this.  Other users should find a copy of
+AmigaGuide; disc 870 of the Fred Fish library has it.
+----------------------------------------------------------------------
+
+@node main "The AMOS Intuition Extension - Version 1.3b"
+
+                          Intuition Extension
+                          ===================
+
+                              Version 1.3b
+
+
+	@{" About            " link About} - So what is this thing, anyway?
+	@{" History          " link History} - History of the Intuition Extension
+	@{" Requirements     " link Requirements} - What it needs in order to run
+	@{" Installation     " link Installation} - How to tell AMOS you've got it
+	@{" Notes            " link Notes} - Important things to know. Read them first!
+	@{" Bug reporting    " link BugReporting} - What?  A bug in the Intuition Extension?
+	@{" Misc. stuff      " link Misc} - Copyrights and acknowledgements
+	@{" The future       " link Future} - What to look for in future versions
+	@{" Author           " link Me} - How to reach me, the author
+
+        Commands in the Intuition Extension:
+
+	@{" Display Info     " link DispInfo} - Information about the hardware and display
+	@{" Screens          " link Screens} - Opening, closing, and manipulating screens
+	@{" Windows          " link Windows} - Playing around with windows
+	@{" Input/Output     " link IO} - Listening to the user and talking back
+	@{" Fonts            " link Fonts} - Making your responses look nice
+	@{" Requesters       " link Requesters} - For special kinds of input
+	@{" Menus            " link Menus} - How to give the user control
+	@{" Gadgets          " link Gadgets} - How to give the user more control
+	@{" Other functions  " link Other} - Functions not in the above categories
+
+	@{" Command Index    " link Index} - Alphabetical list of commands
+	@{" Errors           " link Errors} - Error messages and what they mean
+
+
+	@{" IntuiViewer      " link IntuiViewer.guide/main} - an Intuition-compatible picture viewer
+
+@endnode
+
+@node About "What is the Intuition Extension?"
+@next History
+
+Although AMOS is an excellent language, with hundreds of commands for
+graphics, sound, I/O, and much more, it has had, until now, one
+serious lack: support for Intuition, the Amiga's native graphics
+system.  The Intuition Extension fills this gap.
+
+The Intuition Extension was designed as an interface between AMOS and
+Intuition.  Most of the commands included, therefore, function almost
+identically to AMOS commands.  For most instructions, you can simply
+add an "I" in front of the instruction to make it work with Intuition
+rather than the AMOS graphics system.  However, additional Intuition-
+specific instructions have been included, so that AMOS programmers can
+take full advantage of the Intuition graphical interface.
+
+@endnode
+
+@node History "Intuition Extension - Version History"
+@next Requirements
+@prev About
+
+----------------------------------------------------------------------
+Version 1.3b (revision 41.95, documentation 41.22) - 1 May 1998
+
+Source code released into the public domain.
+
+----------------------------------------------------------------------
+Version 1.3b (revision 41.95, documentation 41.21) - 22 February 1996
+
+Added screen and window title manipulation commands.
+Added Workbench window variants for most window commands.
+Added Iscreen Open Front/Back to allow "hiding" of new screens.
+Implemented I Flush command to deal with several potential temporary
+    memory leaks.
+Fixed problems with gadget and window border colors.
+Fixed some stupid errors in the docs.  For those who wondered what
+    "Kickstart 1.3a" was, it was "Kickstart 1.3" mutilated by a
+    global search-and-replace.  Oops.
+Added Iscreen Amos Copy, companion command to Amos Iscreen Copy.
+Fixed a bug which corrupted the current window pointer when switching
+    from a Workbench window to a non-workbench window and caused
+    crashes.
+Various other bug fixes.
+
+
+----------------------------------------------------------------------
+Version 1.3a (revision 41.65) - 8 April 1995
+
+Added Ipoint function.
+Extension will now print error messages if it fails to start up
+    properly.
+Minor (but important) bug fixes.
+
+
+----------------------------------------------------------------------
+Version 1.3 (revision 41.55) - 23 March 1995
+
+Added two sorely needed sets of functions: flags for controlling the
+    opening of windows (Iwindow Open and Iwindow Open Wb), and OS-
+    compliant event-waiting (Iwait Event and associated functions).
+    No more busy-waiting loops!
+Fixed bug resulting from using Igadget On on a gadget that was already
+    displayed, or Igadget Off on a gadget that was not displayed.
+Fixed screen handling under Kickstart 2.0 and above.  Windows will now
+    look "right" on 4-or-more-color screens.
+Rearranged the extension code to avoid a bug in AMOS's extension
+    handling.
+Fixed various minor bugs.
+
+
+----------------------------------------------------------------------
+Version 1.2b (revision 40.312) - 25 September 1994
+
+Added hit-select gadget (Set Igadget Hit).
+Gadget border pens can now be selected within a program.
+"Down" status of gadget (whether gadget is currently selected) can be
+    accessed through the Igadget Down function.
+Added Iwindow Activate Wb (Workbench counterpart to Iwindow Activate).
+Created a branch table allowing other extensions to access Intuition
+    Extension data.
+Added Iget Icon command.
+Fixed some stupid bugs in the Iwindow Width/Height routines.
+Added Iwindow Actual Width/Height to return usable area of a window.
+Fixed problem with reading vertical sliders (Igadget Read always
+    returned zero).
+Added Set Igadget Value to allow a gadget's value to be changed
+    without having to redefine and redraw the gadget.
+
+
+----------------------------------------------------------------------
+Version 1.2a (revision 40.259) - 29 August 1994
+
+Fixed MAJOR bug caused by an assembler upgrade.
+HAM8 screens can now be opened correctly.
+Auto-height for string and integer gadgets fixed.
+
+
+----------------------------------------------------------------------
+Version 1.2 (revision 40.253) - 14 August 1994
+
+Added gadget support.
+Added Icentre command.
+Added Amos Iscreen Copy command.
+
+
+----------------------------------------------------------------------
+Version 1.1b (revision 40.225) - 23 July 1994
+
+ReqTools.library is now optional, not required.  (Requester functions
+    still require it, though.)
+Added a missing memory deallocation bit.
+Added function "=Reqtools Here" to check for presence of ReqTools.
+
+
+----------------------------------------------------------------------
+Version 1.1a (revision 40.222) - 3 July 1994
+
+Added subcode field to "Internal error" error string.
+Fixed Iscreen Display bug which did not set the display width and
+    height correctly.
+
+
+----------------------------------------------------------------------
+Version 1.1 (revision 40.217) - 23 June 1994
+
+Basic menu support added.
+Extension number changed to 14 (from 20).
+New instructions:
+    Ipaste Icon
+    Iget Sprite Palette
+    Iget Icon Palette
+Fixed a nasty bug in Iscreen Close which resulted in system crashes.
+Fixed bugs in the input routines that would sometimes crash on input
+    buffer overflow.
+
+
+----------------------------------------------------------------------
+Version 1.0a (revision 40.152) - 18 May 1994
+
+Argh.  Just after releasing the first version, I discovered left-out
+    version numbers and text.
+Message requesters (Irequest Message/Warning/Error) now recognise a
+    title when it is given to them.
+
+
+----------------------------------------------------------------------
+Version 1.0 (revision 40.151) - 15 May 1994
+
+First public release.
+
+@endnode
+
+@node Requirements "What does the Intuition Extension need to run?"
+@next Installation
+@prev History
+
+To use the Intuition Extension, you need:
+
+- An Amiga (of course!)
+- AMOS Creator version 1.3 or higher, or AMOS Professional.  However,
+    the Intuition Extension will NOT work under AMOS Pro version 1.12.
+- Kickstart/Workbench version 1.3 or higher.  Lower versions may work,
+    but have not been tested.  Under Kickstart 1.3, some features of
+    the extension will be unusable.
+
+Also strongly recommended:
+
+- ReqTools.library version 2 (revision 38.xxx) or higher.
+
+@endnode
+
+@node Installation "How to install the Intuition Extension"
+@next Notes
+@prev Requirements
+
+Included in this distribution are two versions of the Intuition
+Extension, one for AMOS Creator and the other for AMOS Professional.
+They are in the directories "AMOS_System" and "APSystem", respectively.
+
+To install the extension, copy the appropriate "Intuition.Lib" file
+into your AMOS_System or APSystem folder.  Then run AMOS, run the
+configuration program, and enter "Intuition.Lib" in extension slot
+number 14.  Exit and reload AMOS to access the new Intuition Extension
+commands.
+
+@endnode
+
+@node Notes "Notes on the Intuition Extension"
+@prev Installation
+@next BugReporting
+
+The Intuition Extension does not function when installed in AMOS Pro
+version 1.12.  The cause of this is currently unknown, but is believed
+to be a bug in that version of AMOS.  If you do have that version, I
+strongly urge you to upgrade to version 2.0, which includes a compiler,
+more commands, and bug fixes - and the Intuition Extension will work
+with it. :-)
+
+
+A note for those who are upgrading from earlier versions:
+
+If you are upgrading from version 1.0a (revision 40.152) or earlier,
+you will need to convert any programs that use Intuition Extension
+instructions so that they will work correctly with the new version.
+With the old version of the extension still installed, do this for
+each program:
+
+	- Open/Unfold all procedures.
+	- Select the entire text as a block.
+	- (AMOS Pro only) Store the block in memory.
+	- Save the block as an ASCII file.
+
+Then change to the new version of the extension, and do a "Merge ASCII"
+for each ASCII file.
+
+If you are upgrading from version 1.2b (revision 40.312) or earlier,
+you may notice an underscore ("_") in a few command names.  That
+indicates that a program was written using an old version of the
+extension.  The commands will function exactly as expected, but unless
+you remove the underscore, you will not be able to use any new features
+of the command.
+
+As of version 1.3b, the changed commands include Iscreen Open and many
+of the window commands.
+
+Although virtually all of the instructions in the Intuition Extension
+will function identically in both AMOS Creator and AMOS Pro, there are
+a couple of exceptions:
+
+	- In Creator, the @{" X Hard Min " link C_XHardMin} and @{" Y Hard Min " link C_YHardMin} functions are
+	  called "Xhard Min" and "Yhard Min", since Creator tokenises
+	  X Hard before X Hard Min.  However, this does not affect the
+	  program itself; a program written in either environment
+	  using these functions will work in the other environment as
+	  well.
+
+	- For a similar reason, the functions @{" Ifont$ " link C_IfontName}, @{" Ifont Base " link C_IfontBase},
+	  and @{" Ifont Height " link C_IfontHeight} had to be renamed in the Creator version
+	  to Fonti$, Fonti Base, and Fonti Height to avoid problems
+	  with the If statement.  This also does not affect the
+	  program itself, but is merely a cosmetic difference.
+
+I know this may (and probably will) cause a bit of confusion for
+Creator users, but I'm developing this mainly as a Pro extension,
+since that's what I use almost exclusively.  I knew from the start
+that many people owned Creator and would want to use the extension, so
+I decided to make a Creator port of it as well.
+
+Other things to note:
+
+	- Several commands can accept a coordinate range (X1,Y1 To
+	  X2,Y2).  In AMOS, some instructions will interpret this to
+	  mean that the bottom right corner is (X2,Y2), while others
+	  will think that the corner is (X2-1,Y2-1).  In the Intuition
+	  Extension, the first interpretation is always used; in other
+	  words, when you give X2 and Y2, those are the actual
+	  coordinates of the bottom right corner.  (I've often
+	  wondered why some AMOS instructions use the other behaviour;
+	  it doesn't make much sense.)
+
+	- On a related note, ranges must ALWAYS be specified with the
+	  upper left corner first, followed by the lower right corner.
+	  Failure to follow this standard will result in a "Backward
+	  coordinates" error.
+
+	- The Default instruction closes all screens and windows that
+	  are open at the time.  However, it does not reset any
+	  requester buffers, so loaded directories and fonts remain
+	  in memory (see @{" Requesters " link Requesters}).
+
+	- Any input from ANY window opened by an AMOS program gets to
+	  AMOS.  If your program uses multiple windows (remember that
+	  the screens are windows too!) then it is the program's job
+	  to determine which window is the active one and act
+	  accordingly.
+
+	- If an error occurs while using an Intuition instruction,
+	  and you began your program with an Amos To Back instruction
+	  (which you probably should have), the program will appear to
+	  freeze in its tracks.  When this happens, press LeftAmiga+"A"
+	  to see if there's an AMOS error message.  This is,
+	  unfortunately, another limitation of AMOS extensions.
+
+	- Screens and windows must be closed before they can be
+	  reopened.
+
+	- The Pro Compiler will not compile any Ipalette statements
+	  that have more than nine parameters, due to an apparent bug
+	  in the compiler.  Use For/Next, Read/Data and Set Icolour
+	  instead.
+
+	- The Close Editor instruction seems to interact badly with the
+	  extension, sometimes causing the computer to crash.  Don't
+	  use it if at all possible.
+
+@endnode
+
+@node BugReporting "Reporting bugs in the Intuition Extension"
+@next Misc
+@prev Notes
+
+Although I have done my best to eliminate all the bugs I can from the
+Intuition Extension, an error or two may have slipped past my notice.
+If you happen to find one, please tell me as soon as possible.
+
+However, in order to fix the problem, I'll probably have to have a
+program that demonstrates it.  So, before you tell me about it, write
+a simple program that causes the bug to happen.  Then, send it to me,
+along with a description of the bug, one of the following ways:
+
+- Through Internet e-mail - I prefer this method, since I can receive
+  and act on the report much more quickly.  If you have Internet
+  access, send me a uuencoded LhA'd copy of the program and bug
+  description.
+
+- Through normal mail - If you don't have Internet access, then type
+  (or write) a description of the problem and the sample program that
+  causes it, and send it to me.
+
+If your problem involves AMOS being unable to start up, run it from a
+shell window and include in your description the output produced.
+
+There may be some cases where you encounter a bug only occasionally,
+and you can't always reproduce it.  If that's the case, send me a
+description anyway, and I'll try to solve it, but there's no guarantee
+I'll be able to.  Also, try running without a Startup-Sequence or from
+an unmodified Workbench startup disc, and see if that eliminates the
+problem; if it does, then the problem is most likely in your Amiga's
+setup.
+
+@endnode
+
+@node Misc "Copyrights and acknowledgements"
+@next Future
+@prev BugReporting
+
+The Intuition Extension was originally created by Andrew Church.  It is
+public domain software, and may be redistributed freely, provided that
+no charge is assessed beyond the cost of media or duplication for such
+distribution.
+
+AMOS the Creator and AMOS Professional are copyright © François Lionet.
+
+reqtools.library is copyright © Nico François.
+
+@endnode
+
+@node Future "The future of the Intuition Extension"
+@next Me
+@prev Misc
+
+The future of the Intuition Extension will be up to those who choose to
+continue its development as public-domain software.  I simply don't
+have the time to work on it anymore.
+
+  --Andy Church
+
+@endnode
+
+@node Me "The author of the Intuition Extension"
+@prev Future
+
+The Intuition Extension was developed by Andrew Church
+<achurch@dragonfire.net> through 22 February 1996.  As of 1 May 1998
+it was placed in the public domain.
+
+@endnode
+
+@node DispInfo "Intuition Extension 1.3b - Display Information Commands"
+@next Screens
+
+These instructions return information about the custom chips in the
+computer, the hardware coordinates of the display, and some screen
+mode constants.
+
+	@{"=Aga        " link C_Aga}
+	@{"=Ecs        " link C_Ecs}
+	@{"=Ehb        " link C_Ehb}
+	@{"=Ham        " link C_Ham}
+	@{"=Superhires " link C_Superhires}
+	@{"=X Hard Min " link C_XHardMin}
+	@{"=Y Hard Min " link C_YHardMin}
+
+@endnode
+
+@node Screens "Intuition Extension 1.3b - Screen Commands"
+@next Windows
+@prev DispInfo
+
+These instructions control opening, closing, positioning, and general
+manipulation of Intuition screens, and return information about them.
+
+	@{" Iscreen Open         " link C_IscreenOpen}
+	@{" Iscreen Open Public  " link C_IscrOpenPublic}
+	@{" Iscreen Open Front   " link C_IscrOpenFront}
+	@{" Iscreen Open Back    " link C_IscrOpenBack}
+	@{" Iscreen Close        " link C_IscreenClose}
+	@{" Set Iscreen          " link C_SetIscreen}
+	@{"=Iscreen              " link C_GetIscreen}
+
+	@{" Iscreen Display      " link C_IscreenDisplay}
+	@{" Iscreen Offset       " link C_IscreenOffset}
+	@{" Iscreen To Back      " link C_IscreenToBack}
+	@{" Iscreen To Front     " link C_IscreenToFront}
+	@{" Set Iscreen Title    " link C_SetIscreenTitle}
+	@{"=Iscreen Width        " link C_IscreenWidth}
+	@{"=Iscreen Height       " link C_IscreenHeight}
+	@{"=Iscreen Title Height " link C_IscreenTitleHeight}
+	@{"=Iscreen Colour       " link C_IscreenColour}
+	@{"=Iscreen Mode         " link C_IscreenMode}
+	@{"=Iscreen Base         " link C_IscreenBase}
+
+	@{" Set Icolour          " link C_SetIcolour}
+	@{"=Icolour              " link C_GetIcolour}
+	@{" Ipalette             " link C_Ipalette}
+	@{" Iget Sprite Palette  " link C_IgetSprPal}
+	@{" Iget Icon Palette    " link C_IgetIconPal}
+	@{" Icls                 " link C_Icls}
+	@{" Iscreen Copy         " link C_IscreenCopy}
+	@{" Amos Iscreen Copy    " link C_AIscrCopy}
+	@{" Iscreen Amos Copy    " link C_AIscrCopy}
+	@{"=X Ihard              " link C_XIhard}
+	@{"=Y Ihard              " link C_YIhard}
+	@{"=X Iscreen            " link C_XIscreen}
+	@{"=Y Iscreen            " link C_YIscreen}
+
+@endnode
+
+@node Windows "Intuition Extension 1.3b - Window Commands"
+@next IO
+@prev Screens
+
+These instructions handle opening, closing, and manipulation of
+windows.  Note that each screen's windows are completely separate, so
+you need to select the right screen before you start doing anything.
+(Workbench windows are an exception to this rule.)
+
+	@{" Iwindow Open          " link C_IwindowOpen}
+	@{" Iwindow Open Wb       " link C_IwindowOpenWB}
+	@{" Iwindow Close         " link C_IwindowClose}
+	@{" Iwindow Close Wb      " link C_IwindowCloseWB}
+	@{"=Iwindow               " link C_GetIwindow}
+	@{" Set Iwindow           " link C_SetIwindow}
+	@{" Set Iwindow Wb        " link C_SetIwindowWB}
+	@{"=Iwindow On Wb         " link C_IwindowOnWB}
+
+	@{" Iwindow To Front      " link C_IwindowToFront}
+	@{" Iwindow To Back       " link C_IwindowToBack}
+	@{" Iwindow Move          " link C_IwindowMove}
+	@{" Iwindow Size          " link C_IwindowSize}
+	@{" Set Iwindow Title     " link C_SetIwindowTitle}
+	@{"=Iwindow X             " link C_IwindowX}
+	@{"=Iwindow Y             " link C_IwindowY}
+	@{"=Iwindow Width         " link C_IwindowWidth}
+	@{"=Iwindow Height        " link C_IwindowHeight}
+	@{"=Iwindow Actual Width  " link C_IwindowActual}
+	@{"=Iwindow Actual Height " link C_IwindowActual}
+	@{"=Iwindow Base          " link C_IwindowBase}
+	@{"=Iwindow Status        " link C_IwindowStatus}
+
+	@{" Iwindow Activate      " link C_IwindowActivate}
+	@{"=Iwindow Active        " link C_IwindowActive}
+	@{"=Iwindow Active Num    " link C_IwindowActiveNum}
+	@{"=Iwindow Active Base   " link C_IwindowActiveBase}
+
+	@{" Iclw                  " link C_Iclw}
+
+@endnode
+
+@node IO "Intuition Extension 1.3b - Input/Output Commands"
+@next Fonts
+@prev Screens
+
+These instructions allow you to get information from the user and give
+information back to him, both textually and graphically.
+
+Input:
+	@{"=Imouse X    " link C_ImouseX}
+	@{"=Imouse Y    " link C_ImouseY}
+	@{"=Imouse Key  " link C_ImouseKey}
+	@{"=Iget$       " link C_Iget}
+	@{"=Iread Char$ " link C_IreadChar}
+	@{"=Iread Str$  " link C_IreadStr}
+	@{"=Iread Int   " link C_IreadInt}
+	@{"=Iscan       " link C_Iscan}
+	@{"=Ishift      " link C_Ishift}
+
+Waiting for input:
+	@{" Iwait Mouse " link C_IwaitMouse}
+	@{" Iwait Key   " link C_IwaitKey}
+	@{"=Iwait Event " link C_IwaitEvent}
+	@{"=Ievent Data " link C_IeventData}
+	@{"=Ievent      " link C_IeventType}
+	@{" Iclear      " link C_Iclear}
+
+Output:
+	@{" Ilocate     " link C_Ilocate}
+	@{" Ilocate Gr  " link C_IlocateGr}
+	@{"=Ixgr        " link C_Ixgr}
+	@{"=Iygr        " link C_Iygr}
+	@{" Iink        " link C_Iink}
+	@{" Igr Writing " link C_IgrWriting}
+	@{" Itext       " link C_Itext}
+	@{" Icentre     " link C_Icentre}
+	@{" Iwrite      " link C_Iwrite}
+	@{" Iplot       " link C_Iplot}
+	@{" Idraw       " link C_Idraw}
+	@{" Ibox        " link C_Ibox}
+	@{" Ibar        " link C_Ibar}
+	@{" Icircle     " link C_Icircle}
+	@{" Iellipse    " link C_Iellipse}
+	@{" Set Ipens   " link C_SetIpens}
+
+	@{" Iget Icon   " link C_IgetIcon}
+	@{" Ipaste Icon " link C_IpasteIcon}
+
+@endnode
+
+@node Fonts "Intuition Extension 1.3b - Font Commands"
+@next Requesters
+@prev IO
+
+These instructions select a font to be used and return information
+about it.
+
+	@{" Set Ifont    " link C_SetIfont}
+	@{"=Ifont$       " link C_IfontName}
+	@{"=Ifont Height " link C_IfontHeight}
+	@{"=Itext Base   " link C_ItextBase}
+	@{"=Itext Length " link C_ItextLength}
+	@{"=Ifont Base   " link C_IfontBase}
+
+@endnode
+
+@node Requesters "Intuition Extension 1.3b - Requester Commands"
+@next Menus
+@prev Fonts
+
+These instructions ask the user for a specific kind of input and
+return it.
+
+	@{" Irequest Def Title   " link C_IreqDefTitle}
+	@{"=Irequest File$       " link C_IrequestFile}
+	@{"=Irequest File Multi$ " link C_IreqFileMulti}
+	@{"=Irequest File Next$  " link C_IreqFileNext}
+	@{"=Irequest Font$       " link C_IrequestFont}
+	@{"=Irequest Screen      " link C_IrequestScreen}	(Kickstart 2.0 only)
+	@{"=Ireq Scr Colour      " link C_IreqScrCols}	(Kickstart 2.0 only)
+	@{"=Ireq Scr Height      " link C_IreqScrHeight}	(Kickstart 2.0 only)
+	@{"=Ireq Scr Mode        " link C_IreqScrMode}	(Kickstart 2.0 only)
+	@{"=Ireq Scr Width       " link C_IreqScrWidth}	(Kickstart 2.0 only)
+
+	@{" Irequest Error       " link C_IrequestError}
+	@{"=Irequest Warning     " link C_IrequestWarning}
+	@{"=Irequest Message     " link C_IrequestMessage}
+
+As of version 1.2b, ReqTools.library is no longer required.  However,
+if you try to use any of the above instructions and ReqTools is not
+installed, an error will be generated.  To check whether the library
+is present in the system, use this function:
+
+	@{"=Reqtools Here        " link C_ReqtoolsHere}
+
+@endnode
+
+@node Menus "Intuition Extension 1.3b - Menu Commands"
+@next Gadgets
+@prev Requesters
+
+These instructions control the creation of menus, and let you find out
+which menu item the user has selected.
+
+	@{" Set Imenu " link C_SetImenu}
+	@{"=Ichoice   " link C_Ichoice}
+	@{" Imenu On  " link C_ImenuOnOff}
+	@{" Imenu Off " link C_ImenuOnOff}
+
+@endnode
+
+@node Gadgets "Intuition Extension 1.3b - Gadget Commands"
+@next Other
+@prev Menus
+
+These instructions allow you to create, display, and respond to
+gadgets of various types.
+
+	@{" Reserve Igadget     " link C_ReserveIgadget}
+	@{" Set Igadget Toggle  " link C_SetIgadToggle}
+	@{" Set Igadget Hit     " link C_SetIgadHit}
+	@{" Set Igadget Hslider " link C_SetIgadSlider}
+	@{" Set Igadget Vslider " link C_SetIgadSlider}
+	@{" Set Igadget String  " link C_SetIgadString}
+	@{" Set Igadget Int     " link C_SetIgadInt}
+
+	@{" Igadget On          " link C_IgadgetOn}
+	@{" Igadget Off         " link C_IgadgetOff}
+	@{" Igadget Active      " link C_IgadgetActive}
+	@{" Igadget Inactive    " link C_IgadgetInactive}
+	@{"=Igadget Read        " link C_IgadgetRead}
+	@{"=Igadget Down        " link C_IgadgetDown}
+
+	@{" Set Igadget Value   " link C_SetIgadValue}
+	@{" Set Igadget Value$  " link C_SetIgadValue}
+
+@endnode
+
+@node Other "Intuition Extension 1.3b - Other Commands"
+@prev Gadgets
+
+These instructions don't fit into any of the other categories, so they
+go here.
+
+	@{" Iwait     " link C_Iwait}
+	@{" Iwait Vbl " link C_IwaitVbl}
+
+	@{"=Ierr      " link C_Ierr}
+	@{"=Ierr$     " link C_IerrStr}
+	@{" Ierror    " link C_Ierror}
+	@{" Itrap On  " link C_Itrap}
+	@{" Itrap Off " link C_Itrap}
+	@{"=Ierrtrap  " link C_IerrTrap}
+
+	@{" I Flush   " link C_IFlush}
+
+@endnode
+
+@node Index "Intuition Extension 1.3b - Command Index"
+@next Errors
+
+	@{"=Aga                   " link C_Aga}
+	@{" Amos Iscreen Copy     " link C_AIscrCopy}
+
+	@{"=Ecs                   " link C_Ecs}
+	@{"=Ehb                   " link C_Ehb}
+
+	@{"=Ham                   " link C_Ham}
+
+	@{" I Flush               " link C_IFlush}
+	@{" Ibar                  " link C_Ibar}
+	@{" Ibox                  " link C_Ibox}
+	@{" Icentre               " link C_Icentre}
+	@{"=Ichoice               " link C_Ichoice}
+	@{" Icircle               " link C_Icircle}
+	@{" Iclear All            " link C_Iclear}
+	@{" Iclear Key            " link C_Iclear}
+	@{" Iclear Menu           " link C_Iclear}
+	@{" Iclear Mouse          " link C_Iclear}
+	@{" Icls                  " link C_Icls}
+	@{" Iclw                  " link C_Iclw}
+	@{"=Icolour               " link C_GetIcolour}
+	@{" Idraw                 " link C_Idraw}
+	@{" Iellipse              " link C_Iellipse}
+	@{"=Ierr                  " link C_Ierr}
+	@{"=Ierr$                 " link C_IerrStr}
+	@{" Ierror                " link C_Ierror}
+	@{"=Ierrtrap              " link C_IerrTrap}
+	@{"=Ievent                " link C_IeventType}
+	@{"=Ievent Data           " link C_IeventData}
+	@{"=Ifont Base            " link C_IfontBase}
+	@{"=Ifont Height          " link C_IfontHeight}
+	@{"=Ifont$                " link C_IfontName}
+	@{" Igadget Active        " link C_IgadgetActive}
+	@{"=Igadget Down          " link C_IgadgetDown}
+	@{" Igadget Inactive      " link C_IgadgetInactive}
+	@{" Igadget Off           " link C_IgadgetOff}
+	@{" Igadget On            " link C_IgadgetOn}
+	@{"=Igadget Read          " link C_IgadgetRead}
+	@{" Iget Icon             " link C_IgetIcon}
+	@{" Iget Icon Palette     " link C_IgetIconPal}
+	@{" Iget Sprite Palette   " link C_IgetSprPal}
+	@{"=Iget$                 " link C_Iget}
+	@{" Igr Writing           " link C_IgrWriting}
+	@{" Iink                  " link C_Iink}
+	@{" Ilocate               " link C_Ilocate}
+	@{" Ilocate Gr            " link C_IlocateGr}
+	@{" Imenu Off             " link C_ImenuOnOff}
+	@{" Imenu On              " link C_ImenuOnOff}
+	@{"=Imouse Key            " link C_ImouseKey}
+	@{"=Imouse X              " link C_ImouseX}
+	@{"=Imouse Y              " link C_ImouseY}
+	@{" Ipalette              " link C_Ipalette}
+	@{" Ipaste Icon           " link C_IpasteIcon}
+	@{" Iplot                 " link C_Iplot}
+	@{"=Iread Char$           " link C_IreadChar}
+	@{"=Iread Int             " link C_IreadInt}
+	@{"=Iread Str$            " link C_IreadStr}
+	@{"=Ireq Scr Colour       " link C_IreqScrCols}	(Kickstart 2.0 only)
+	@{"=Ireq Scr Height       " link C_IreqScrHeight}	(Kickstart 2.0 only)
+	@{"=Ireq Scr Mode         " link C_IreqScrMode}	(Kickstart 2.0 only)
+	@{"=Ireq Scr Width        " link C_IreqScrWidth}	(Kickstart 2.0 only)
+	@{" Irequest Def Title    " link C_IreqDefTitle}
+	@{" Irequest Error        " link C_IrequestError}
+	@{"=Irequest File$        " link C_IrequestFile}
+	@{"=Irequest File Multi$  " link C_IreqFileMulti}
+	@{"=Irequest File Next$   " link C_IreqFileNext}
+	@{"=Irequest Font$        " link C_IrequestFont}
+	@{"=Irequest Message      " link C_IrequestMessage}
+	@{"=Irequest Screen       " link C_IrequestScreen}	(Kickstart 2.0 only)
+	@{"=Irequest Warning      " link C_IrequestWarning}
+	@{"=Iscan                 " link C_Iscan}
+	@{"=Iscreen               " link C_GetIscreen}
+	@{" Iscreen Amos Copy     " link C_AIscrCopy}
+	@{"=Iscreen Base          " link C_IscreenBase}
+	@{" Iscreen Close         " link C_IscreenClose}
+	@{"=Iscreen Colour        " link C_IscreenColour}
+	@{" Iscreen Copy          " link C_IscreenCopy}
+	@{" Iscreen Display       " link C_IscreenDisplay}
+	@{"=Iscreen Height        " link C_IscreenHeight}
+	@{"=Iscreen Mode          " link C_IscreenMode}
+	@{" Iscreen Offset        " link C_IscreenOffset}
+	@{" Iscreen Open          " link C_IscreenOpen}
+	@{" Iscreen Open Back     " link C_IscrOpenBack}
+	@{" Iscreen Open Front    " link C_IscrOpenFront}
+	@{" Iscreen Open Public   " link C_IscrOpenPublic}	(Kickstart 2.0 only)
+	@{"=Iscreen Title Height  " link C_IscreenTitleHeight}
+	@{" Iscreen To Back       " link C_IscreenToBack}
+	@{" Iscreen To Front      " link C_IscreenToFront}
+	@{"=Iscreen Width         " link C_IscreenWidth}
+	@{"=Ishift                " link C_Ishift}
+	@{" Itext                 " link C_Itext}
+	@{"=Itext Base            " link C_ItextBase}
+	@{"=Itext Length          " link C_ItextLength}
+	@{" Itrap Off             " link C_Itrap}
+	@{" Itrap On              " link C_Itrap}
+	@{" Iwait                 " link C_Iwait}
+	@{"=Iwait Event           " link C_IwaitEvent}
+	@{"=Iwait Event Vbl       " link C_IwaitEvent}
+	@{" Iwait Key             " link C_IwaitKey}
+	@{" Iwait Mouse           " link C_IwaitMouse}
+	@{" Iwait Vbl             " link C_IwaitVbl}
+	@{"=Iwindow               " link C_GetIwindow}
+	@{" Iwindow Activate      " link C_IwindowActivate}
+	@{"=Iwindow Active        " link C_IwindowActive}
+	@{"=Iwindow Active Base   " link C_IwindowActiveBase}
+	@{"=Iwindow Active Num    " link C_IwindowActiveNum}
+	@{"=Iwindow Actual Width  " link C_IwindowActual}
+	@{"=Iwindow Actual Height " link C_IwindowActual}
+	@{"=Iwindow Base          " link C_IwindowBase}
+	@{" Iwindow Close         " link C_IwindowClose}
+	@{" Iwindow Close Wb      " link C_IwindowCloseWB}
+	@{"=Iwindow Height        " link C_IwindowHeight}
+	@{" Iwindow Move          " link C_IwindowMove}
+	@{"=Iwindow On Wb         " link C_IwindowOnWB}
+	@{" Iwindow Open          " link C_IwindowOpen}
+	@{" Iwindow Open Wb       " link C_IwindowOpenWB}
+	@{" Iwindow Size          " link C_IwindowSize}
+	@{"=Iwindow Status        " link C_IwindowStatus}
+	@{" Iwindow To Back       " link C_IwindowToBack}
+	@{" Iwindow To Front      " link C_IwindowToFront}
+	@{"=Iwindow Width         " link C_IwindowWidth}
+	@{"=Iwindow X             " link C_IwindowX}
+	@{"=Iwindow Y             " link C_IwindowY}
+	@{"=Ixgr                  " link C_Ixgr}
+	@{"=Iygr                  " link C_Iygr}
+
+	@{"=Reqtools Here         " link C_ReqtoolsHere}
+	@{" Reserve Igadget       " link C_ReserveIgadget}
+
+	@{" Set Icolour           " link C_SetIcolour}
+	@{" Set Ifont             " link C_SetIfont}
+	@{" Set Igadget Hit       " link C_SetIgadHit}
+	@{" Set Igadget Hslider   " link C_SetIgadSlider}
+	@{" Set Igadget Int       " link C_SetIgadInt}
+	@{" Set Igadget String    " link C_SetIgadString}
+	@{" Set Igadget Toggle    " link C_SetIgadToggle}
+	@{" Set Igadget Value     " link C_SetIgadValue}
+	@{" Set Igadget Value$    " link C_SetIgadValue}
+	@{" Set Igadget Vslider   " link C_SetIgadSlider}
+	@{" Set Imenu             " link C_SetImenu}
+	@{" Set Ipens             " link C_SetIpens}
+	@{" Set Iscreen           " link C_SetIscreen}
+	@{" Set Iscreen Title     " link C_SetIscreenTitle}
+	@{" Set Iwindow           " link C_SetIwindow}
+	@{" Set Iwindow Title     " link C_SetIwindowTitle}
+	@{" Set Iwindow Wb        " link C_SetIwindowWB}
+	@{"=Superhires            " link C_Superhires}
+
+	@{"=X Hard Min            " link C_XHardMin}
+	@{"=X Ihard               " link C_XIhard}
+	@{"=X Iscreen             " link C_XIscreen}
+
+	@{"=Y Hard Min            " link C_YHardMin}
+	@{"=Y Ihard               " link C_YIhard}
+	@{"=Y Iscreen             " link C_YIscreen}
+
+@endnode
+
+@node Errors
+@prev Index
+
+Backward coordinates (25)
+
+Coordinate ranges (x1,y1 To x2,y2) must ALWAYS have the upper-left
+corner first, followed by the lower-right corner.  Otherwise, you'll
+get this error.  (But it's better than visiting the Guru!)
+
+
+Error text not available (22)
+
+You compiled a program without error messages, and later tried to use
+the Ierr$ function.  You'll never actually see this message text, but
+the error number can be useful in conjunction with error trapping.
+
+
+Font not available (15)
+
+Set Ifont couldn't find the font you requested.  Make sure it is
+available in the FONTS: directory.  If you included the ".font"
+extension to the font name, make sure it is all lower case - something
+like Set Ifont "fontname.Font" won't work.
+
+
+Gadget already active (31)
+
+You tried to change the definition of a gadget that was already
+displayed.  Make sure you call Igadget Off first.
+
+
+Gadget not defined (33)
+
+You tried to use (enable, display, etc.) a gadget that was not first
+defined with Set Igadget.
+
+
+Gadget not reserved (34)
+
+You tried to define a gadget with a number higher than the one you
+gave to Reserve Igadget.  This error also occurs if you try to define
+or use a gadget and do not first use Reserve Igadget.
+
+
+Icon bank not defined (21)
+
+The program does not have an icon bank.
+
+
+Icon not defined (20)
+
+The icon number given to Ipaste Icon represented a nonexistent icon.
+
+
+Illegal function call (13)
+
+A general catch-all error.  Something is wrong with a value you gave
+to a command.  Check the command's documentation and your code to find
+out exactly where the problem is.
+
+
+Illegal number of colours (18)
+
+Screens can only have certain numbers of colours, all powers of 2; a
+screen can't have only 12 colours, for example.  Check the
+@{" Iscreen Open " link C_IscreenOpen} documentation for details.
+
+
+Illegal screen parameter (17)
+
+A screen must be at least one pixel in each dimension.  If either the
+width or the height of a new screen is less than or equal to zero,
+this error will be generated.
+
+
+Illegal window parameter (9)
+
+You gave an illegal parameter to the Iwindow Open instruction; for
+example, a window position that is off the screen.
+
+
+Internal error (27, 28)
+
+These errors should never occur; if they do, it means the Intuition
+Extension has become very confused.  The error is followed by an
+eight-digit code and possibly an eight-digit subcode; record these
+codes and send them to me, preferably with a code sample.
+
+
+Menu already active (26)
+
+Before adding items to a menu or deleting items from a menu, or adding
+or deleting menus, you must first disable the menus with Imenu Off.
+
+
+Need Kickstart 2.0 or higher (2)
+
+You called a function that requires Kickstart 2.0 or higher, such as
+Irequest Screen, on a Kickstart 1.3b system.
+
+
+Object bank not defined (24)
+
+The program does not have an object bank.
+
+
+Object not defined (23)
+
+An instruction tried to use a nonexistent object (sprite or bob).
+
+
+Only 16 colours allowed on non-AGA hires screen (0)
+
+On original-chipset and ECS Amigas, high resolution screens are
+limited to 16 colours.  If you try to open a hires screen with more
+colours, this error will be generated.  You can check whether the
+Amiga your program is running on has the AGA chipset with the @{" Aga " link C_Aga}
+function.
+
+
+Only 65535 gadgets allowed (30)
+
+You cannot reserve space for more than 65535 gadgets with the Reserve
+Igadget command.  (This is not usually a problem.)
+
+
+Out of memory (14)
+
+Some function ran out of memory while trying to do its stuff.  If the
+Editor status line says you've still got lots of memory, save your
+program and reboot your Amiga.  If you really are low on memory, try
+using one or more of Close Editor, Kill Editor, and Kill Workbench
+(although the last won't help if you're trying to use Workbench
+windows!).
+
+
+Program interrupted (12)
+
+You pressed Ctrl-C to stop your program.  Note that this "error"
+cannot be caught with Itrap.
+
+
+ReqTools.library version 2 or higher required (29)
+
+For any of the requester commands to work, ReqTools.library must be
+installed in your system.  If it is not, those commands will generate
+this error.
+
+
+Screen not closed (19)
+
+An open screen can't be reopened.  You have to close it first.
+
+
+Screen not opened (16)
+
+You tried to use a command that requires a screen (e.g. Icls), but
+there are no screens open; or you tried to set the current screen
+to a nonexistent screen.
+
+
+Unable to open screen (1)
+
+Some error (e.g. out of memory) occurred while trying to open a
+screen.  If you get this error, then the problem occurred inside
+Intuition's internal open-screen routine, rather than in the
+Intuition Extension, and therefore there's no specific error
+message that can be given.
+
+
+Unable to open window (3)
+
+An error occurred while trying to open a window.
+
+
+Unable to open Workbench (11)
+
+The Workbench screen couldn't be opened (for example, to put a
+Workbench window on).
+
+
+Valid AMOS screen numbers range from 0 to 7 (35)
+
+You gave Amos Iscreen Copy an invalid AMOS screen number.
+
+
+Window 0 can't be closed (4)
+Window 0 can't be modified (5)
+
+Window 0 is the base window on the screen.  It fills the whole screen,
+and has to remain open as long as the screen is open.  (The Workbench
+doesn't have this limitation, as it doesn't need a background window.)
+
+
+Window not closed (10)
+
+This error appears for one of two reasons:
+
+	- You tried to close a screen that still had open windows.
+
+	- You tried to open a window, but another window with the same
+	  number was already open.
+
+
+Window not opened (6)
+
+You tried to use a window-related command (e.g. Iclw) without an open
+window; or you gave Set Iwindow a number for a nonexistent window.
+
+This error does not always mean you need a window opened with Iwindow
+Open; remember that each screen has a base window as well!
+
+
+Window too large (8)
+
+A window can't be opened or resized so that it would extend past the
+bottom or right side of the screen.
+
+
+Window too small (7)
+
+The minimum size of a window is 80x48 pixels.  If you try to open or
+resize a window to smaller dimensions, you'll get this error.
+
+
+Wrong gadget type (32)
+
+You tried to use Igadget Read$ with a non-string gadget, or Igadget
+Read with a string gadget.
+
+@endnode
+
+
+***COMMANDS BEGIN HERE
+@node C_Aga "Intuition Extension 1.3b Command: =Aga"
+@next C_AIscrCopy
+
+=AGA
+----
+
+x=Aga
+
+Returns True (-1) if the Amiga has the Advanced Graphics Architecture
+(AGA) chipset; returns False (0) otherwise.  At the moment, the only
+Amigas with the AGA chipset are the A1200 and A4000.
+
+See also: @{" Ecs " link C_Ecs}
+
+@endnode
+
+@node C_AIscrCopy "Intuition Extension 1.3b Command: Amos Iscreen Copy"
+@next C_Ecs
+@prev C_Aga
+
+AMOS ISCREEN COPY
+ISCREEN AMOS COPY
+-----------------
+
+Amos Iscreen Copy source To destination
+Amos Iscreen Copy source,x1,y1,x2,y2 To destination,x,y
+Iscreen Amos Copy source To destination
+Iscreen Amos Copy source,x1,y1,x2,y2 To destination,x,y
+
+Copies part or all of an AMOS screen to an Intuition screen (first two
+forms), or all or part of an Intuition screen to an AMOS screen (last
+two forms).  The command's parameters are the same as those for
+@{" Iscreen Copy " link C_IscreenCopy}, except that the source screen number (for Amos Iscreen
+Copy) or destination screen number (Iscreen Amos Copy) refers to an
+AMOS screen rather than an Intuition screen, and hence must be from 0
+to 7 inclusive.
+
+@endnode
+
+@node C_Ecs "Intuition Extension 1.3b Command: =Ecs"
+@next C_Ehb
+@prev C_AIscrCopy
+
+=ECS
+----
+
+x=Ecs
+
+Returns True (-1) if the Amiga has the Enhanced Chip Set; returns
+False (0) otherwise.  If the Amiga has half of the ECS (e.g. an ECS
+Agnus and normal Denise), this returns False.
+
+See also: @{" Aga " link C_Aga}
+
+@endnode
+
+@node C_Ehb "Intuition Extension 1.3b Command: =Ehb"
+@next C_Ham
+@prev C_Ecs
+
+=EHB
+----
+
+x=Ehb
+
+Returns the screen mode value for the ExtraHalfBrite mode.
+
+See also: @{" Ham        " link C_Ham}
+	  @{" Superhires " link C_Superhires}
+
+@endnode
+
+@node C_Ham "Intuition Extension 1.3b Command: =Ham"
+@next C_IFlush
+@prev C_Ehb
+
+=HAM
+----
+
+x=Ham
+
+Returns the screen mode value for Hold And Modify mode.
+
+See also: @{" Ehb        " link C_Ehb}
+	  @{" Superhires " link C_Superhires}
+
+@endnode
+
+@node C_IFlush "Intuition Extension 1.3b Command: I Flush"
+@next C_Ibar
+@prev C_Ham
+
+I FLUSH
+-------
+
+I Flush
+
+Frees any temporary memory the Intuition Extension has allocated.
+
+WARNING: Because of the way AMOS handles strings, some of this memory
+         may still be in use!  This can occur if you assign the result
+         of a string-returning function directly to a string variable;
+         for example,
+
+A$=Irequest File$
+
+         If you then execute the I Flush command, A$ will probably
+         contain garbage!  This can be circumvented by adding the
+         empty string to any variables you intend to save:
+
+A$=Irequest File$+""
+
+         Normally, string functions would use AMOS's string space to
+         return values which might later be cleaned up during "garbage
+         collection", but unfortunately, I can't take advantage of
+         that.  The functions which handle allocation of string space
+         for extensions work inconsistently between AMOS Creator and
+         AMOS Pro, and are known to not work at all in at least one
+         version.  Yes, this is really a kludge to avoid having memory
+         get filled up, but due to AMOS's poor design, it is the only
+         workable option.
+
+@endnode
+
+@node C_Ibar "Intuition Extension 1.3b Command: Ibar"
+@next C_Ibox
+@prev C_IFlulsh
+
+IBAR
+----
+
+Ibar x1,y1 To x2,y2
+
+Draws a filled-in box from (x1,y1) to (x2,y2) in the current colour.
+
+@endnode
+
+@node C_Ibox "Intuition Extension 1.3b Command: Ibox"
+@next C_Icentre
+@prev C_Ibar
+
+IBOX
+----
+
+Ibox x1,y1 To x2,y2
+
+Draws a box from (x1,y1) to (x2,y2) in the current colour.
+
+@endnode
+
+@node C_Icentre "Intuition Extension 1.3b Command: Icentre"
+@next C_Ichoice
+@prev C_Ibox
+
+ICENTRE
+-------
+
+Icentre s$
+
+Centres the string s$ on the current line.
+
+@endnode
+
+@node C_Ichoice "Intuition Extension 1.3b Command: =Ichoice"
+@next C_Icircle
+@prev C_Icentre
+
+=ICHOICE
+--------
+
+num=Ichoice(level)
+
+Returns the last menu number, item number, or subitem number selected,
+depending on the value of level.  A value of 1 for level returns the
+menu number; a value of 2 returns the item number; and a value of 3
+returns the subitem number.  If the user has not selected a menu item
+since the last call to Ichoice WITH THE SAME LEVEL VALUE, 0 is
+returned.  Note that the different levels are distinct, so that, for
+example, calling Ichoice(2) after Ichoice(1) returns the item number,
+as you would expect, instead of 0.
+
+As an example, this code determines what to do based on the user's
+selection:
+
+C1=Ichoice(1)
+If C1=1
+  C2=Ichoice(2)
+  If C2=1
+    'stuff for item 1
+  End If
+  If C2=2
+    'stuff for item 2
+  End If
+  ...
+End If
+If C1=2
+  ...
+End If
+...
+
+The "If ... End If / If ... End If" constructs above could have been
+replaced in AMOS Pro by "If ... Else If ... End If".
+
+Note that the following code will NOT work:
+
+If Ichoice(1)=1
+  If Ichoice(2)=1
+    ...
+  Else If Ichoice(2)=2
+    ...
+  End If
+Else If Ichoice(1)=2
+  ...
+End If
+...
+
+The second call to Ichoice(2) will return 0, no matter what the user
+selected.  Likewise, the second call to Ichoice(1) will also return 0.
+
+@endnode
+
+@node C_Icircle "Intuition Extension 1.3b Command: Icircle"
+@next C_Iclear
+@prev C_Ichoice
+
+ICIRCLE
+-------
+
+Icircle cx,cy,r
+
+Draws a circle with centre (cx,cy) and radius r.  Equivalent to
+Iellipse cx,cy,r,r.  Either or both of cx and cy may be omitted.
+
+See also: @{" Iellipse " link C_Iellipse}
+
+@endnode
+
+@node C_Iclear "Intuition Extension 1.3b Command: Iclear"
+@next C_Icls
+@prev C_Icircle
+
+ICLEAR
+------
+
+Iclear {Key | Mouse | Menu}
+Iclear All
+
+Input from windows and screens is stored in three buffers: one for
+keystrokes, one for mouse button clicks, and one for menu selections.
+When you read a key from the keyboard, for example, you are actually
+reading from the keystroke buffer.
+
+To clear any one of these buffers, so that any events that have
+already been typed but not read are discarded, use the first form of
+the command with the name of the buffer you want to clear.  To clear
+all of the buffers, use the second form of the command.
+
+@endnode
+
+@node C_Icls "Intuition Extension 1.3b Command: Icls"
+@next C_Iclw
+@prev C_Iclear
+
+ICLS
+----
+
+Icls
+Icls colour
+Icls colour,x1,y1 To x2,y2
+
+Clears the current screen.  If colour is given, the screen is cleared
+to that colour; otherwise, it is cleared to colour 0.  If any windows
+are open on the screen, they are left intact.  So the statement
+
+Icls 0
+
+is essentially the same as
+
+W=Iwindow : Set Iwindow 0 : Iclw : Set Iwindow W
+
+although the first is faster and easier to understand.
+
+The Icls statement can also clear a portion of the screen, if you
+specify a range; for example:
+
+Icls 0,20,20 To 180,100
+
+See also: @{" Iclw " link C_Iclw}
+
+@endnode
+
+@node C_Iclw "Intuition Extension 1.3b Command: Iclw"
+@next C_GetIcolour
+@prev C_Icls
+
+ICLW
+----
+
+Iclw
+Iclw colour
+Iclw colour,x1,y1 To x2,y2
+
+Clears the current window.  If colour is given, the window is cleared
+to that colour; otherwise, it is cleared to colour 0.  If a range is
+giben, only that range of the window is cleared.
+
+See also: @{" Icls " link C_Icls}
+
+@endnode
+
+@node C_GetIcolour "Intuition Extension 1.3b Command: =Icolour"
+@next C_Idraw
+@prev C_Iclw
+
+=ICOLOUR
+--------
+
+rgb=Icolour(n)
+
+Returns the RGB value of colour n.
+
+See also: @{" Ipalette    " link C_Ipalette}
+	  @{" Set Icolour " link C_SetIcolour}
+
+@endnode
+
+@node C_Idraw "Intuition Extension 1.3b Command: Idraw"
+@next C_Iellipse
+@prev C_GetIcolour
+
+IDRAW
+-----
+
+Idraw x1,y1 To x2,y2
+Idraw To x,y
+
+Draws a line from the first pair of coordinates to the second.  If the
+first pair is omitted, the line starts from the current coordinates
+(the coordinates where the last output occurred).
+
+@endnode
+
+@node C_Iellipse "Intuition Extension 1.3b Command: Iellipse"
+@next C_Ierr
+@prev C_Idraw
+
+IELLIPSE
+--------
+
+Iellipse cx,cy,rx,ry
+
+Draws an ellipse with centre (cx,cy) and radii rx and ry.  Either or
+both of cx and cy may be omitted.
+
+See also: @{" Icircle " link C_Icircle}
+
+@endnode
+
+@node C_Ierr "Intuition Extension 1.3b Command: =Ierr"
+@next C_IerrStr
+@prev C_Iellipse
+
+=IERR
+-----
+
+errnum=Ierr
+
+Returns the error number of the last error that occurred.  This is
+useful in conjunction with error trapping.
+
+See also: @{"=Ierr$  " link C_IerrStr}
+	  @{" Ierror " link C_Ierror}
+
+@endnode
+
+@node C_IerrStr "Intuition Extension 1.3b Command: =Ierr$"
+@next C_Ierror
+@prev C_Ierr
+
+=IERR$
+------
+
+err$=Ierr$
+
+Returns the text corresponding to the last error that occurred.  This
+is useful in conjunction with error trapping.
+
+See also: @{"=Ierr   " link C_Ierr}
+	  @{" Ierror " link C_Ierror}
+
+@endnode
+
+@node C_Ierror "Intuition Extension 1.3b Command: Ierror"
+@next C_Ierrtrap
+@prev C_IerrStr
+
+IERROR
+------
+
+Ierror n
+
+Generates error number n.  Unless trapped, the program is halted and
+the appropriate Intuition Extension error message is displayed.
+(Remember to press LeftAmiga+A to get back to the AMOS screen if
+you're on the Workbench!)
+
+See also: @{"=Ierr  " link C_Ierr}
+	  @{"=Ierr$ " link C_IerrStr}
+
+@endnode
+
+@node C_Ierrtrap "Intuition Extension 1.3b Command: =Ierrtrap"
+@next C_IeventType
+@prev C_Ierror
+
+=IERRTRAP
+---------
+
+x=Ierrtrap
+
+If error trapping is enabled (see @{" Itrap On/Off " link C_Itrap}), this function
+returns True if an error occurred since the last call to Ierrtrap (or
+since the call to Itrap On), and False if no errors have occurred.  If
+True is returned, the @{" Ierr " link C_Ierr} and @{" Ierr$ " link C_IerrStr} functions can be used to
+determine which error occurred.
+
+After calling this function, its value is automatically reset to False.
+
+@endnode
+
+@node C_IeventType "Intuition Extension 1.3b Command: =Ievent"
+@next C_IeventData
+@prev C_Ierrtrap
+
+=IEVENT
+-------
+
+event=Ievent type
+
+This is a special kind of function which does not use parentheses
+around its argument.  It returns a value which is the "event number"
+of the event type passed to it.  The type can be any of:
+
+	Vbl	    Vertical blank occurred
+	Close	    Window's close gadget clicked on
+	Menu	    Menu item selected
+	Gadget	    Gadget clicked on
+	Key	    Key pressed
+
+This is commonly used in conjunction with the @{" Iwait Event " link C_IwaitEvent} function
+to determine what action to take after an event has occurred.
+
+@endnode
+
+@node C_IeventData "Intuition Extension 1.3b Command: =Ievent Data"
+@next C_IfontBase
+@prev C_IeventType
+
+=IEVENT DATA
+------------
+
+data=Ievent Data
+
+This function is used in conjunction with @{" Iwait Event " link C_IwaitEvent} to give extra
+information about an event that has occurred.  Currently, only a
+gadget event has extra data to be read by this function; it returns
+the number of the gadget that was clicked on.
+
+See also: @{"=Ievent " link C_IeventType}
+
+@endnode
+
+@node C_IfontBase "Intuition Extension 1.3b Command: =Ifont Base"
+@next C_IfontHeight
+@prev C_IeventData
+
+=IFONT BASE
+-----------
+
+address=Ifont Base
+
+Returns the address of the TextFont structure of the current font.
+
+NOTE: This command is Fonti Base in AMOS Creator.
+
+@endnode
+
+@node C_IfontHeight "Intuition Extension 1.3b Command: =Ifont Height"
+@next C_IfontName
+@prev C_IfontBase
+
+=IFONT HEIGHT
+-------------
+
+h=Ifont Height
+
+Returns the height, in pixels, of the current font.
+
+NOTE: This command is Fonti Height in AMOS Creator.
+
+See also: @{" Set Ifont " link C_SetIfont}
+	  @{"=Ifont$    " link C_IfontName}
+
+@endnode
+
+@node C_IfontName "Intuition Extension 1.3b Command: =Ifont$"
+@next C_IgadgetActive
+@prev C_IfontHeight
+
+=IFONT$
+-------
+
+font$=Ifont$
+
+Returns the name of the current font, including the ".font" extension.
+
+NOTE: This command is Fonti$ in AMOS Creator.
+
+See also: @{" Set Ifont    " link C_SetIfont}
+	  @{"=Ifont Height " link C_IfontHeight}
+
+@endnode
+
+@node C_IgadgetActive "Intuition Extension 1.3b Command: Igadget Active"
+@next C_IgadgetDown
+@prev C_IfontName
+
+IGADGET ACTIVE
+--------------
+
+Igadget Active
+Igadget Active n
+
+Activates gadget number n, or (if n is omitted) all defined gadgets
+for the current window.
+
+See also: @{" Igadget Inactive " link C_IgadgetInactive}
+
+@endnode
+
+@node C_IgadgetDown "Intuition Extension 1.3b Command: =Igadget Down"
+@next C_IgadgetInactive
+@prev C_IgadgetActive
+
+=IGADGET DOWN
+-------------
+
+down=Igadget Down(n)
+
+Returns whether gadget number n is currently selected or depressed.
+For string and integer gadgets, this function returns True if the
+gadget is in use (the user is typing in the gadget); for hit-select
+and toggle gadgets, it returns True if the pointer is over the gadget
+and the left mouse button is depressed; for sliders, it returns True
+if the pointer is over the slider bar and the left mouse button is
+depressed.
+
+This function is useful for selective updating of a display; for
+example, if a gadget were used to scroll through a list of images, and
+and the program had a "preview" window in which it displayed a scaled-
+down version of the image, the program could update only the image
+name and description while the user was moving the slider, then update
+the preview window when the user released the mouse button, allowing
+for faster response to the user's actions.  This could be implemented
+in code similarly to the following:
+
+While Not QUIT
+   ...
+
+   'See if the slider moved
+   If Igadget Read(1)<>IMAGENUM
+      'See if the user is moving the slider with the mouse.  This does
+      '   not necessarily have to be the case - the user could have
+      '   clicked in the container but not on the slider itself.
+      '
+      'We use a Repeat/Until loop because, even if the slider is not
+      '   "down", we need to get the new image number and display the
+      '   name.
+      Repeat
+         IMAGENUM=Igadget Read(1)
+         UPDATE_IMAGE_NAME[IMAGENUM] : Rem Only update the image name
+      Until Not Igadget Down(1)
+      'Now update the preview window
+      UPDATE_PREVIEW_WINDOW[IMAGENUM]
+   End If
+
+   ...
+Wend
+
+@endnode
+
+@node C_IgadgetInactive "Intuition Extension 1.3b Command: Igadget Inactive"
+@next C_IgadgetOff
+@prev C_IgadgetDown
+
+IGADGET INACTIVE
+----------------
+
+Igadget Inactive
+Igadget Inactive n
+
+Deactivates gadget number n, or (if n is omitted) all defined gadgets
+for the current window.  An inactive gadget cannot be selected, and is
+"ghosted" (overlaid with a pattern of dots).
+
+See also: @{" Igadget Inactive " link C_IgadgetInactive}
+
+@endnode
+
+@node C_IgadgetOff "Intuition Extension 1.3b Command: Igadget Off"
+@next C_IgadgetOn
+@prev C_IgadgetInactive
+
+IGADGET OFF
+-----------
+
+Igadget Off
+Igadget Off n
+
+Removes one or all gadgets from the current window.  When a gadget is
+removed, it disappears from the window; however, its value remains in
+memory unless it is redefined or a @{" Reserve Igadget " link C_ReserveIgadget} command is
+executed.
+
+See also: @{" Igadget On " link C_IgadgetOn}
+
+@endnode
+
+@node C_IgadgetOn "Intuition Extension 1.3b Command: Igadget On"
+@next C_IgadgetRead
+@prev C_IgadgetOff
+
+IGADGET ON
+----------
+
+Igadget On
+Igadget On n
+
+Adds one or more gadgets to the current window.  If n is given, that
+gadget is added; otherwise, all defined gadgets are added (unless
+they have been added previously).  After an Igadget On command, the
+current value of a gadget can be obtained with the @{" Igadget Read " link C_IgadgetRead}
+function.
+
+See also: @{" Igadget On " link C_IgadgetOff}
+
+@endnode
+
+@node C_IgadgetRead "Intuition Extension 1.3b Command: =Igadget Read"
+@next C_IgetIcon
+@prev C_IgadgetOn
+
+=IGADGET READ
+-------------
+
+value=Igadget Read(n)
+value$=Igadget Read$(n)
+
+Returns the current value of the specified gadget.  Igadget Read$ can
+only be used with string gadgets; Igadget Read can be used with any
+gadget type other than string gadgets.  If the gadget type is
+inappropriate for the function, the "Wrong gadget type" error is
+generated.
+
+The value returned by the Igadget Read function depends on the type
+of gadget.  String gadgets return the text in the gadget; integer
+gadgets return the value in the gadget; sliders return the position
+of the slider in units (as specified in the @{" Set Igadget Hslider " link C_SetIgadSlider}
+or @{" Set Igadget Vslider " link C_SetIgadSlider} instruction; toggle gadgets return True if
+the gadget is "on", False if it is "off".
+
+@endnode
+
+@node C_IgetIcon "Intuition Extension 1.3b Command: Iget Icon"
+@next C_IgetIconPal
+@prev C_IgadgetRead
+
+IGET ICON
+---------
+
+Iget Icon n,x1,y1 To x2,y2
+Iget Icon screen,n,x1,y1 To x2,y2
+Iget Icon screen,window,n,x1,y1 To x2,y2
+
+Grabs an image and stores it in the icon bank.  N is the icon number
+to store the image in; it must already exist, so you should use the
+built-in Ins Icon instruction to create it if necessary.  For example,
+if you needed to grab 10 icons, you could use code similar to the
+following:
+
+Ins Icon 1 To 10
+Iget Icon 1,0,0 To 15,11
+Iget Icon 2,0,16 To 31,11
+
+and so on.
+
+Following the icon number are the coordinates to grab the image from.
+Normally, these are taken from the current screen or window.  If you
+want to use a different source for the icon, you can specify the
+screen number and, if necessary, the window number to take the image
+from.  If you specify a screen number but omit the window number, the
+base window (window number 0) is used.
+
+Note that the only way to grab icons from a Workbench window is to
+first set the current window to that window with Set Iwindow Wb, then
+call Iget Icon.
+
+@endnode
+
+@node C_IgetIconPal "Intuition Extension 1.3b Command: Iget Icon Palette"
+@next C_IgetSprPal
+@prev C_IgetIcon
+
+IGET ICON PALETTE
+-----------------
+
+Iget Icon Palette
+Iget Icon Palette mask
+
+Reads the colour palette from the icon bank of the program, and uses it
+as the palette for the current screen.
+
+Mask is an optional parameter that indicates which colours should be
+copied from the icon bank.  Each bit represents one colour, and the
+lowest bit represents colour 0.  So, if you just wanted to get colours
+1, 2, 6, and 8, and leave the other colours alone, you could use:
+
+Iget Icon Palette %101000110
+
+Note that only the first 32 colours can be affected in any case, since
+object and icon banks only contain 32-colour palettes.  (The exception
+is Extra-Half-Brite mode, in which colours 32-63 are half the intensity
+of colours 0-31, and are therefore also changed.)
+
+If mask is omitted, all of the colours (0-31) are copied.
+
+See also: @{" Iget Sprite Palette " link C_IgetSprPal}
+	  @{" Ipalette            " link C_Ipalette}
+
+@endnode
+
+@node C_IgetSprPal "Intuition Extension 1.3b Command: Iget Sprite Palette"
+@next C_Iget
+@prev C_IgetIconPal
+
+IGET SPRITE PALETTE
+-------------------
+
+Iget Sprite Palette
+Iget Sprite Palette mask
+
+Reads the colour palette from the object (sprite) bank of the
+program, and uses it as the palette for the current screen.
+
+Mask is an optional parameter that indicates which colours should be
+copied from the icon bank.  Each bit represents one colour, and the
+lowest bit represents colour 0.  So, if you just wanted to get colours
+1, 2, 6, and 8, and leave the other colours alone, you could use:
+
+Iget Sprite Palette %101000110
+
+Note that only the first 32 colours can be affected in any case, since
+object and icon banks only contain 32-colour palettes.  (The exception
+is Extra-Half-Brite mode, in which colours 32-63 are half the intensity
+of colours 0-31, and are therefore also changed.)
+
+If mask is omitted, all of the colours (0-31) are copied.
+
+See also: @{" Iget Icon Palette " link C_IgetIconPal}
+	  @{" Ipalette          " link C_Ipalette}
+
+@endnode
+
+@node C_Iget "Intuition Extension 1.3b Command: =Iget$"
+@next C_IgrWriting
+@prev C_IgetSprPal
+
+=IGET$
+------
+
+ch$=Iget$
+
+Returns the next character in the input buffer, or an empty string if
+there are no characters waiting.
+
+See also: @{"=Iread Char$ " link C_IreadChar} to wait for a key before returning
+	  @{" Iwait Key   " link C_IwaitKey} to just wait for a key to be pressed
+
+@endnode
+
+@node C_IgrWriting "Intuition Extension 1.3b Command: Igr Writing"
+@next C_Iink
+@prev C_Iget
+
+IGR WRITING
+-----------
+
+Igr Writing n
+
+Changes the mode for writing text and graphics to the screen.  The
+lower three bits of n are used as follows:
+
+Bit 2: 1 = Swap foreground and background colours (inverse text).
+       0 = Use foreground and background colours normally.
+Bit 1: 1 = Write the text using an XOR operation.
+       0 = Write the text using a standard MOVE operation.
+Bit 0: 1 = Write both foreground and background colours to the screen.
+       0 = Write only the foreground colour to the screen.
+
+Igr Writing affects *all* graphics commands, including Itext, Iwrite,
+Idraw, Ibar, etc.  However, it does not affect commands like Iscreen
+Copy that work at the screen level.
+
+Here are some examples:
+
+Iscreen Open 0,320,200,4,0 : Ipalette 0,$F00,$F0,$F
+Iink 2,1
+Igr Writing 1
+Iwrite "Green on red"
+Igr Writing 5
+Iwrite "Red on green"
+Igr Writing 0
+Iwrite "Green on black"
+X=Ixgr : Y=Iygr
+Igr Writing 4
+Itext X,Y,"Red on black"
+Iwait 50
+Igr Writing 6
+Itext X,Y,"Red on black" : Rem This makes the text disappear
+
+@endnode
+
+@node C_Iink "Intuition Extension 1.3b Command: Iink"
+@next C_Ilocate
+@prev C_IgrWriting
+
+IINK
+----
+
+Iink foreground
+Iink foreground,background
+
+Sets the colours to be used for drawing.  Foreground is the colour
+used for almost all drawing operations.  Background is the colour used
+for the background of text written to the screen.
+
+[Outline is a bit different: when the Iflood instruction is called with
+a mode parameter of 0, the flood fill stops at pixels of colour
+"outline".]
+
+@endnode
+
+@node C_Ilocate "Intuition Extension 1.3b Command: Ilocate"
+@next C_ImouseKey
+@prev C_Iink
+
+ILOCATE
+-------
+
+Ilocate x,y
+
+Positions the graphics cursor at (x,y) in text coordinates.  Either
+parameter can be omitted.  The standard height and width for the
+current font are used, so strange results can be obtained when a
+proportinal font is being used.
+
+This command is useful in conjunction with @{" Itext " link C_Itext} to position the
+cursor on a certain line without getting into complex expressions.
+
+See also: @{" Iwrite     " link C_Iwrite}
+          @{" Ilocate Gr " link C_IlocateGr}
+
+@endnode
+
+@node C_IlocateGr "Intuition Extension 1.3b Command: Ilocate Gr"
+@next C_ImenuOnOff
+@prev C_Ilocate
+
+ILOCATE GR
+----------
+
+Ilocate Gr x,y
+
+Positions the graphics cursor at graphics coordinates (x,y).  This is
+not very useful, as all output instructions accept coordinates, but
+it is included for copmleteness, and in case somebody discovers that
+they need it. :-)
+
+See also: @{" Ilocate " link C_Ilocate}
+          @{"=Ixgr    " link C_Ixgr}
+          @{"=Iygr    " link C_Iygr}
+
+@endnode
+
+@node C_ImenuOnOff "Intuition Extension 1.3b Command: Imenu On/Off"
+@next C_ImouseKey
+@prev C_IlocateGr
+
+IMENU ON
+IMENU OFF
+---------
+
+Imenu On
+Imenu Off
+
+Imenu On activates the menu bar for the currently active window, if
+that window has any menus defined.  Imenu Off turns the menu bar off.
+
+See also: @{" Set Imenu " link C_SetImenu}
+
+@endnode
+
+@node C_ImouseKey "Intuition Extension 1.3b Command: =Imouse Key"
+@next C_ImouseX
+@prev C_IlocateGr
+
+=IMOUSE KEY
+-----------
+
+k=Imouse Key
+
+Returns the status of the mouse buttons.  Bit 0 is the left button,
+bit 1 is the right button, and bit 2 is the middle button.  So a value
+of %011 indicates that both the left and right mouse buttons are
+pressed.
+
+See also: @{"=Imouse X " link C_ImouseX}
+	  @{"=Imouse Y " link C_ImouseY}
+
+@endnode
+
+@node C_ImouseX "Intuition Extension 1.3b Command: =Imouse X"
+@next C_ImouseY
+@prev C_ImouseKey
+
+=IMOUSE X
+---------
+
+mx=Imouse X
+
+Returns the current X coordinate of the mouse pointer relative to the
+current screen (in screen coordinates).
+
+See also: @{"=Imouse Y   " link C_ImouseY}
+	  @{"=Imouse Key " link C_ImouseKey}
+
+@endnode
+
+@node C_ImouseY "Intuition Extension 1.3b Command: =Imouse Y"
+@next C_Ipalette
+@prev C_ImouseX
+
+=IMOUSE Y
+---------
+
+mx=Imouse Y
+
+Returns the current Y coordinate of the mouse pointer relative to the
+current screen (in screen coordinates).
+
+See also: @{"=Imouse X   " link C_ImouseX}
+	  @{"=Imouse Key " link C_ImouseKey}
+
+@endnode
+
+@node C_Ipalette "Intuition Extension 1.3b Command: Ipalette"
+@next C_IpasteIcon
+@prev C_ImouseY
+
+IPALETTE
+--------
+
+Ipalette colour-list
+
+Sets one or more colour values on the current screen.  Colour-list is
+a list of the colours to be set; any values omitted in the list are
+not changed on the screen.  For example, the statement
+
+	Ipalette ,,,$F00,,,$F0,$F
+
+would set colour 3 to red, colour 6 to green, and colour 7 to blue.
+The list of colours can be as long or as short as necessary, providing
+that it does not exceed the 251-character line length limit of the
+AMOS editor.
+
+See also: @{" Set Icolour " link C_SetIcolour}
+	  @{"=Icolour     " link C_GetIcolour}
+
+@endnode
+
+@node C_IpasteIcon "Intuition Extension 1.3b Command: Ipaste Icon"
+@next C_Iplot
+@prev C_Ipalette
+
+IPASTE ICON
+-----------
+
+Ipaste Icon x,y,n
+
+Copies icon number n to the current screen/window at coordinates x,y.
+The graphics pointer is left at the top left corner of the icon image.
+Normally, the image will completely replace whatever is underneath it;
+however, if the Make Icon Mask instruction is executed first, colour 0
+will be transparent, so that whatever is underneath blank areas of the
+icon will show through.
+
+@endnode
+
+@node C_Iplot "Intuition Extension 1.3b Command: Iplot"
+@next C_IreadChar
+@prev C_IpasteIcon
+
+IPLOT
+-----
+
+Iplot x,y
+Iplot x,y,colour
+
+Plots a point on the screen at coordinates (x,y).  If colour is given,
+that colour is used to plot the point; otherwise, the current
+foreground colour is used.
+
+@endnode
+
+@node C_IreadChar "Intuition Extension 1.3b Command: =Iread Char$"
+@next C_IreadInt
+@prev C_Iplot
+
+=IREAD CHAR$
+------------
+
+ch$=Iread Char$
+
+Waits for a key to be pressed and returns it.  If there are characters
+in the buffer, it takes the first of those instead.  The character is
+not echoed to the screen.
+
+See also: @{"=Iget$     " link C_Iget} to return a value without waiting
+	  @{" Iwait Key " link C_IwaitKey} to just wait for a key without returning anything
+
+@endnode
+
+@node C_IreadInt "Intuition Extension 1.3b Command: =Iread Int"
+@next C_IreadStr
+@prev C_IreadChar
+
+=IREAD INT
+----------
+
+n=Iread Int
+
+Reads an integer and returns it.  The integer may be in decimal,
+hexadecimal, or binary, and can cover the full range of integers
+(-2147483648..2147483647).  Illegal characters are ignored; if no
+characters are typed before Return, 0 is returned.
+
+See also: @{"=Iread Str$ " link C_IreadStr} to read a string
+
+@endnode
+
+@node C_IreadStr "Intuition Extension 1.3b Command: =Iread Str$"
+@next C_IreqScrCols
+@prev C_IreadInt
+
+=IREAD STR$
+-----------
+
+s$=Iread Str$
+
+Reads a string, terminated with a Return; each character is echoed on
+the screen as it is typed.  Similar to "Line Input S$".
+
+See also: @{"=Iread Int " link C_IreadInt} to read a number with input checking
+
+@endnode
+
+@node C_IreqScrCols "Intuition Extension 1.3b Command: =Ireq Scr Colour"
+@next C_IreqScrHeight
+@prev C_IrequestScreen
+
+=IREQ SCR COLOUR (Kickstart 2.0 only)
+----------------
+
+nc=Ireq Scr Colour
+
+Returns the number of colours from the most recent Irequest Screen.
+
+See also: @{"=Irequest Screen " link C_IrequestScreen}
+          @{"=Ireq Scr Width  " link C_IreqScrWidth}
+          @{"=Ireq Scr Height " link C_IreqScrHeight}
+          @{"=Ireq Scr Mode   " link C_IreqScrMode}
+
+@endnode
+
+@node C_IreqScrHeight "Intuition Extension 1.3b Command: =Ireq Scr Height"
+@next C_IreqScrMode
+@prev C_IreqScrCols
+
+=IREQ SCR HEIGHT (Kickstart 2.0 only)
+----------------
+
+h=Ireq Scr Height
+
+Returns the height from the most recent Irequest Screen.
+
+See also: @{"=Irequest Screen " link C_IrequestScreen}
+          @{"=Ireq Scr Width  " link C_IreqScrWidth}
+          @{"=Ireq Scr Colour " link C_IreqScrCols}
+          @{"=Ireq Scr Mode   " link C_IreqScrMode}
+
+@endnode
+
+@node C_IreqScrMode "Intuition Extension 1.3b Command: =Ireq Scr Mode"
+@next C_IreqScrWidth
+@prev C_IreqScrHeight
+
+=IREQ SCR MODE (Kickstart 2.0 only)
+--------------
+
+mode=Ireq Scr Mode(n)
+
+Returns the screen mode or display mode from the most recent Irequest
+Screen.  If n is 0, the screen mode (e.g. Ham, Hires) is returned.  If
+n is 1, the display mode (see @{" Iscreen Open " link C_IscreenOpen})
+is returned.
+
+See also: @{"=Irequest Screen " link C_IrequestScreen}
+          @{"=Ireq Scr Width  " link C_IreqScrWidth}
+          @{"=Ireq Scr Height " link C_IreqScrHeight}
+          @{"=Ireq Scr Colour " link C_IreqScrCols}
+
+@endnode
+
+@node C_IreqScrWidth "Intuition Extension 1.3b Command: =Ireq Scr Width"
+@next C_IrequestError
+@prev C_IreqScrMode
+
+=IREQ SCR WIDTH (Kickstart 2.0 only)
+---------------
+
+w=Ireq Scr Width
+
+Returns the width from the most recent Irequest Screen.
+
+See also: @{"=Irequest Screen " link C_IrequestScreen}
+          @{"=Ireq Scr Height " link C_IreqScrHeight}
+          @{"=Ireq Scr Colour " link C_IreqScrCols}
+          @{"=Ireq Scr Mode   " link C_IreqScrMode}
+
+@endnode
+
+@node C_IreqDefTitle "Intuition Extension 1.3b Command: Irequest Def Title"
+@next C_IrequestError
+@prev C_IreqScrWidth
+
+IREQUEST DEF TITLE
+------------------
+
+Irequest Def Title title$
+
+Sets the default title for all message requesters (those displayed by
+@{" Irequest Message " link C_IrequestMessage}, @{" Irequest Warning " link C_IrequestWarning}, or @{" Irequest Error " link C_IrequestError}) to
+title$.  Initially, the default title is "AMOS Request".  If title$ is
+empty, the title is set back to this.  If you really want a blank
+title, use a single space (" ") for title$.
+
+@endnode
+
+@node C_IrequestError "Intuition Extension 1.3b Command: Irequest Error"
+@next C_IrequestFile
+@prev C_IreqDefTitle
+
+IREQUEST ERROR
+--------------
+
+Irequest Error s$
+Irequest Error s$,cancel$
+Irequest Error title$,s$,cancel$
+
+Displays a requester containing an error message; one gadget, a
+"Cancel" gadget, is provided.  This command should be used when an
+error has occurred that prevents your program from proceeding normally
+(such as a bad file format).  Irequest Error does not actually stop
+your program, but just displays the requester.
+
+Title$ is the title to display in the title bar.  If omitted, the
+default title is used.
+
+The variable s$ contains the text to display in the requester window.
+Each line of text should be separated by a vertical bar.
+
+The cancel$ parameter allows you to change the text on the Cancel
+gadget from its default of "Cancel".  What you specify here is printed
+in the gadget.
+
+See also: @{" Irequest Def Title " link C_IreqDefTitle}
+	  @{"=Irequest Message   " link C_IrequestMessage}
+	  @{"=Irequest Warning   " link C_IrequestWarning}
+
+@endnode
+
+@node C_IrequestFile "Intuition Extension 1.3b Command: =Irequest File$"
+@next C_IreqFileMulti
+@prev C_IrequestError
+
+=IREQUEST FILE$
+---------------
+
+filename$=Irequest File$
+filename$=Irequest File$(title$ [,pattern$ [,default$] ] )
+
+Displays a file requester on the current screen, or on the Workbench
+screen if there are no screens open.  Title$ is the text to display
+in the title bar of the requester.  It must be small enough to fit in
+the title bar - no two-line titles, as with the AMOS file reqester.
+
+Pattern$ is a standard AmigaDOS wildcard to determine which files are
+displayed in the requester.  Note that this differs from the AMOS
+wildcard format; for example, AMOS's "**" (all files) pattern is "#?"
+in AmigaDOS.  See your system manuals for more on AmigaDOS wildcards.
+
+Default$ is the filename displayed in the requester's file gadget when
+it comes up.  If the user just presses Return, this is the filename
+that is returned.  If this parameter is omitted and the user just
+presses Return, an empty string is returned.
+
+Note that the "Cancel" gadget in the file requester always causes
+Irequest File$ to return an empty string.
+
+See also: @{"=Irequest File Multi$ " link C_IreqFileMulti}
+
+@endnode
+
+@node C_IreqFileMulti "Intuition Extension 1.3b Command: =Irequest File Multi$"
+@next C_IreqFileNext
+@prev C_IrequestFile
+
+=IREQUEST FILE MULTI$
+---------------------
+
+f$=Irequest File Multi$
+f$=Irequest File Multi$(title$ [,pattern$] )
+
+Asks the user to select multiple files.  Returns the first file in the
+list; the rest can be obtained with @{" Irequest File Next$ " link C_IreqFileNext}.  The
+parameters to Irequest File Multi$ are the same as those to
+@{" Irequest File$ " link C_IrequestFile}, except that you cannot specify a default filename.
+See also: @{"=Irequest File$      " link C_IrequestFile}
+
+@endnode
+
+@node C_IreqFileNext "Intuition Extension 1.3b Command: =Irequest File Next$"
+@next C_IrequestFont
+@prev C_IreqFileMulti
+
+=IREQUEST FILE NEXT$
+--------------------
+
+f$=Irequest File Next$
+
+Returns the next file in a list of files following an
+@{" Irequest File Multi$ " link C_IreqFileMulti}.  When all the files have been read, this
+returns an empty string.
+
+@endnode
+
+@node C_IrequestFont "Intuition Extension 1.3b Command: =Irequest Font$"
+@next C_IrequestMessage
+@prev C_IrequestFileNext
+
+=IREQUEST FONT$
+---------------
+
+font$=Irequest Font$
+font$=Irequest Font$(title$)
+
+Displays a font requester, and returns the font selected in the format
+"fontname/size", or the null string if the requester was canceled.
+This string can be passed to @{" Set Ifont " link C_SetIfont} to set the font to the user's
+preference.
+
+@endnode
+
+@node C_IrequestMessage "Intuition Extension 1.3b Command: =Irequest Message"
+@next C_IrequestScreen
+@prev C_IrequestFont
+
+=IREQUEST MESSAGE
+-----------------
+
+response=Irequest Message(text$,gadget$)
+response=Irequest Message(title$,text$,gadget$)
+
+Displays a requester containing a message, with any number of possible
+responses.
+
+Title$, if given, is the title to put in the title bar of the
+requester.  If not given, the default title is used.
+
+Text$ is the text to display in the requester.  Each line of text
+should be separated with a vertical bar.  For example, the string
+
+"Please select the|number of players."
+
+would display as:
+
+Please select the
+number of players.
+
+Gadget$ is the list of all the gadgets to include in the requester.
+There must be at least one gadget, and each gadget name should be
+separated with a vertical bar.  So, for example, the gadget$ parameter
+from the last example might be "1|2|3|4", resulting in the following
+requester:
+ ____________________
+|.| Requester Title  |
+|_|__________________|
+|                    |
+| Please select the  |
+| number of players. |
+|____________________|
+| ___  ___  ___  ___ |
+||   ||   ||   ||   ||
+|| 1 || 2 || 3 || 4 ||
+||___||___||___||___||
+|____________________|
+
+
+The return value is set to the number of the gadget, starting at one
+(for the leftmost gadget) and increasing toward the right.
+
+See also: @{"=Irequest Def Title " link C_IreqDefTitle}
+	  @{"=Irequest Warning   " link C_IrequestWarning}
+	  @{" Irequest Error     " link C_IrequestError}
+
+@endnode
+
+@node C_IrequestScreen "Intuition Extension 1.3b Command: =Irequest Screen"
+@next C_IrequestWarning
+@prev C_IrequestMessage
+
+=IREQUEST SCREEN (Kickstart 2.0 only)
+----------------
+
+ok=Irequest Screen
+ok=Irequest Screen(title$)
+
+Requests a screen mode, size, and depth from the user.  The returned
+values can be examined using the Ireq Scr XXX functions.  If
+the user cancelled, the return value is False; otherwise, it is True.
+
+See also: @{"=Ireq Scr Width  " link C_IreqScrWidth}
+          @{"=Ireq Scr Height " link C_IreqScrHeight}
+          @{"=Ireq Scr Colour " link C_IreqScrCols}
+          @{"=Ireq Scr Mode   " link C_IreqScrMode}
+
+@endnode
+
+@node C_IrequestWarning "Intuition Extension 1.3b Command: =Irequest Warning"
+@next C_Iscan
+@prev C_IrequestScreen
+
+=IREQUEST WARNING
+-----------------
+
+response=Irequest Warning(s$)
+response=Irequest Warning(s$,ok$,cancel$)
+response=Irequest Warning(title$,s$,ok$,cancel$)
+
+Displays a requester with a warning message.  If the user selects the
+"OK" gadget, True is returned; otherwise, False is returned.
+
+Title$ is the title to display in the title bar.  If omitted, the
+default title is used.
+
+S$ is the text string to display in the requester.  Text that should
+appear on different lines in the requester should be separated by a
+vertical bar.
+
+Ok$ and Cancel$ allow you to replace the default gadget text of "OK"
+and "Cancel" with text of your choice.  For example, you could replace
+them with "Continue" and "Abort".
+
+See also: @{" Irequest Def Title " link C_IreqDefTitle}
+	  @{"=Irequest Message   " link C_IrequestMessage}
+	  @{" Irequest Error     " link C_IrequestError}
+
+@endnode
+
+@node C_Iscan "Intuition Extension 1.3b Command: =Iscan"
+@next C_GetIscreen
+@prev C_IrequestWarning
+
+=ISCAN
+------
+
+scancode=Iscan
+
+Returns the scan code of the last key pressed.
+
+See also: @{"=Ishift " link C_Ishift}
+
+@endnode
+
+@node C_GetIscreen "Intuition Extension 1.3b Command: =Iscreen"
+@next C_IscreenBase
+@prev C_Iscan
+
+=ISCREEN
+--------
+
+n=Iscreen
+
+Returns the number of the current screen.
+
+See also: @{" Set Iscreen " link C_SetIscreen}
+
+@endnode
+
+@node C_IscreenBase "Intuition Extension 1.3b Command: =Iscreen Base"
+@next C_IscreenClose
+@prev C_GetIscreen
+
+=ISCREEN BASE
+-------------
+
+address=Iscreen Base
+
+Returns the address of the Intuition Screen structure for the current
+screen.
+
+@endnode
+
+@node C_IscreenClose "Intuition Extension 1.3b Command: Iscreen Close"
+@next C_IscreenColour
+@prev C_IscreenBase
+
+ISCREEN CLOSE
+-------------
+
+Iscreen Close n
+
+Closes screen number n.
+
+See also: @{" Iscreen Open " link C_IscreenOpen}
+
+@endnode
+
+@node C_IscreenColour "Intuition Extension 1.3b Command: =Iscreen Colour"
+@next C_IscreenCopy
+@prev C_IscreenClose
+
+=ISCREEN COLOUR
+---------------
+
+colours=Iscreen Colour
+colours=Iscreen Colour(n)
+
+Returns the number of colours available for use on screen n or the
+current screen.
+
+See also: @{"=Iscreen Width  " link C_IscreenWidth}
+	  @{"=Iscreen Height " link C_IscreenHeight}
+	  @{"=Iscreen Mode   " link C_IscreenMode}
+
+@endnode
+
+@node C_IscreenCopy "Intuition Extension 1.3b Command: Iscreen Copy"
+@next C_IscreenDisplay
+@prev C_IscreenColour
+
+ISCREEN COPY
+------------
+
+Iscreen Copy source To destination
+Iscreen Copy source,x1,y1,x2,y2 To destination,x,y
+
+Copies part or all of one screen to another.  With the first form, the
+entire source screen is copied to the destination screen.  (If the
+destination screen is smaller than the source, you will probably crash
+your Amiga!)
+
+With the second form, the rectangular block (x1,y1)-(x2.y2) is copied
+from the source screen to coordinates (x,y) on the destination screen.
+Again, you have to make sure that the entire block will fit on the
+destination screen at the coordinates you specify to avoid corrupting
+memory.
+
+@endnode
+
+@node C_IscreenDisplay "Intuition Extension 1.3b Command: Iscreen Display"
+@next C_IscreenHeight
+@prev C_IscreenCopy
+
+ISCREEN DISPLAY
+---------------
+
+Iscreen Display n,x,y,w,h
+
+Positions a screen, and sets its visible size.  Any of the position
+and size parameters can be omitted; the corresponding value will
+remain the same.  The screen is moved to coordinates (x,y) relative to
+the top left corner of the Intuition display (in screen pixels), and
+the visible size is set to w by h pixels.  The screen position is
+limited to the borders of the Intuition display.
+
+NOTE: Under Kickstart 1.3b, screens cannot be moved horizontally.
+
+See also: @{" Iscreen Offset " link C_IscreenOffset}
+
+@endnode
+
+@node C_IscreenHeight "Intuition Extension 1.3b Command: =Iscreen Height"
+@next C_IscreenMode
+@prev C_IscreenDisplay
+
+=ISCREEN HEIGHT
+---------------
+
+h=Iscreen Height
+h=Iscreen Height(n)
+
+Returns the height of screen n or the current screen.
+
+See also: @{"=Iscreen Width  " link C_IscreenWidth}
+	  @{"=Iscreen Colour " link C_IscreenColour}
+	  @{"=IScreen Mode   " link C_IscreenMode}
+
+@endnode
+
+@node C_IscreenMode "Intuition Extension 1.3b Command: =Iscreen Mode"
+@next C_IscreenOffset
+@prev C_IscreenHeight
+
+=ISCREEN MODE
+-------------
+
+mode=Iscreen Mode
+mode=Iscreen Mode(n)
+
+Returns the mode value of screen n or the current screen.
+
+See also: @{"=Iscreen Width  " link C_IscreenWidth}
+	  @{"=Iscreen Height " link C_IscreenHeight}
+	  @{"=Iscreen Colour " link C_IscreenColour}
+
+@endnode
+
+@node C_IscreenOffset "Intuition Extension 1.3b Command: Iscreen Offset"
+@next C_IscreenOpen
+@prev C_IscreenMode
+
+ISCREEN OFFSET
+--------------
+
+Iscreen Offset n,xoffset,yoffset
+
+Offsets the viewable portion of screen n to (xoffset,yoffset).  This
+is used for screens which are larger than their visible area.
+
+See also: @{" Iscreen Display " link C_IscreenDisplay}
+
+@endnode
+
+@node C_IscreenOpen "Intuition Extension 1.3b Command: Iscreen Open"
+@next C_IscrOpenBack
+@prev C_IscreenOffset
+
+ISCREEN OPEN
+------------
+
+Iscreen Open n,width,height,colours,mode
+Iscreen Open n,width,height,colours,mode,title$
+Iscreen Open n,width,height,colours,mode,title$,displayID
+
+Opens an Intuition screen and brings it to the front. The screen
+number n can be any integer, so you are not limited to 8 screens as
+with standard AMOS screens.  If screen n already exists, the
+"Screen not closed" error is generated.
+
+Width and height determine the size of the screen, as with the AMOS
+Screen Open command.
+
+Colours specifies the number of colours you want your screen to have.
+Unlike Screen Open, if you want your screen to use a special mode like
+ExtraHalfBrite or HAM, it is not enough to just use 64 or 4096 here;
+you must also give the appropriate mode value (@{" Ehb " link C_Ehb}
+or @{" Ham " link C_Ham}) in the Mode parameter.
+
+Mode determines the screen mode (i.e. Lowres, Hires, Productivity,
+EHB, HAM).
+
+DisplayID, if given, is a system display identification number.
+Common values are NTSC=$11000 and PAL=$21000.  Other values can be
+found in the system reference manuals.  If this parameter is omitted,
+the screen opens in the default display mode.  WARNING: only use this
+parameter if you know what you are doing!
+
+Title$, if given, is the title of the screen.  It will appear on the
+screen title bar.  If title$ is empty or not given, the title bar will
+not appear.
+
+Following is a list of common screen types, normal width and height
+(for PAL/NTSC), maximum number of colours (for normal/AGA chipsets),
+and mode parameters.  Modes only available on AGA are marked with '*';
+modes only available on ECS or AGA are marked with '+'.  Interlaced
+modes are not listed; to construct them, simply add Laced to the Mode
+parameter.  For HAM modes, be sure to specify the correct number of
+colours (the one listed).
+
+Type (*=AGA, +=ECS)	Width	Height	  MaxCols	     Mode
+-------------------	-----	-------	-----------	--------------
+ Lowres			 320	256/200	  32/   256	Lowres (or 0)
+ Lowres EHB		 320	256/200	  64/   256	Ehb
+ Lowres HAM		 320	256/200	4096/  4096	Ham
+*Lowres HAM8		 320	256/200	----/262144	Ham
+ Hires			 640	256/200	  16/   256	Hires
+*Hires EHB		 640	256/200	----/   256	Hires+Ehb
+*Hires HAM		 640	256/200	----/  4096	Hires+Ham
+*Hires HAM8		 640	256/200	----/262144	Hires+Ham
++SuperHires		1280	256/200	   4/   256	Superhires
+*SuperHires EHB		1280	256/200	----/   256	Superhires+Ehb
+*SuperHires HAM		1280	256/200	----/  4096	Superhires+Ham
+*SuperHires HAM8	1280	256/200	----/262144	Superhires+Ham
+
+Note that the Intuition screen will not be actually displayed until an
+Amos To Back instruction is executed (or the user presses
+LeftAmiga+A).
+
+See also: @{" Iscreen Open Front  " link C_IscrOpenFront}
+          @{" Iscreen Open Back   " link C_IscrOpenBack}
+          @{" Iscreen Open Public " link C_IscrOpenPublic}
+          @{" Iscreen Close       " link C_IscreenClose}
+	  @{" Set Iscreen         " link C_SetIscreen}
+	  @{"=Iscreen             " link C_GetIscreen}
+
+@endnode
+
+@node C_IscrOpenBack "Intuition Extension 1.3b Command: Iscreen Open Back"
+@next C_IscrOpenFront
+@prev C_IscreenOpen
+
+ISCREEN OPEN BACK
+-----------------
+
+Iscreen Open Back
+
+Causes any screens opened in the future to be opened in back of all
+other screens.
+
+See also: @{" Iscreen Open       " link C_IscreenOpen}
+          @{" Iscreen Open Front " link C_IscrOpenFront}
+
+@endnode
+
+@node C_IscrOpenFront "Intuition Extension 1.3b Command: Iscreen Open Front"
+@next C_IscrOpenPublic
+@prev C_IscrOpenBack
+
+ISCREEN OPEN FRONT
+------------------
+
+Iscreen Open Front
+
+Causes any screens opened in the future to be opened in front of all
+pther screens.
+
+See also: @{" Iscreen Open      " link C_IscreenOpen}
+          @{" Iscreen Open Back " link C_IscrOpenBack}
+
+@endnode
+
+@node C_IscrOpenPublic "Intuition Extension 1.3b Command: Iscreen Open Public"
+@next C_IscrTitleHeight
+@prev C_IscrOpenFront
+
+ISCREEN OPEN PUBLIC (Kickstart 2.0 only)
+-------------------
+
+Iscreen Open Public n,width,height,colours,mode
+Iscreen Open Public n,width,height,colours,mode,title$
+Iscreen Open Public n,width,height,colours,mode,title$,displayID
+
+Opens an Intuition screen.  The parameters are the same as those given
+to Iscreen Open.  However, this instruction opens the screen in the
+special "public" mode of Kickstart/Workbench 2.0 and above.  The
+difference between a public screen and a normal screen is that other
+programs may open their own windows on public screens.  Be careful
+using this instruction; if your program tries to close a public screen
+with other programs' windows still open on it, your program will
+crash!
+
+See also: @{" Iscreen Open " link C_IscreenOpen}
+
+@endnode
+
+@node C_IscrTitleHeight "Intuition Extension 1.3b Command: =Iscreen Title Height"
+@next C_IscreenToBack
+@prev C_IscrOpenPublic
+
+=ISCREEN TITLE HEIGHT
+---------------------
+
+=Iscreen Title Height
+=Iscreen Title Height(n)
+
+Returns the height of the title bar of the current screen, or of screen
+number n.  Useful to ensure that your output does not overwrite the
+screen's title bar.  For example:
+
+Text 0,Iscreen Title Height+Itext Base,"Text right below the title bar"
+
+See also: @{" Set Iscreen Title " link C_SetIscreenTitle}
+
+@endnode
+
+@node C_IscreenToBack "Intuition Extension 1.3b Command: Iscreen To Back"
+@next C_IscreenToFront
+@prev C_IscrTitleHeight
+
+ISCREEN TO BACK
+---------------
+
+Iscreen To Back
+Iscreen To Back n
+
+Sends screen number n or the current screen to the back of all
+Intuition screens.
+
+See also: @{" Iscreen To Front " link C_IscreenToFront}
+
+@endnode
+
+@node C_IscreenToFront "Intuition Extension 1.3b Command: Iscreen To Front"
+@next C_IscreenWidth
+@prev C_IscreenToBack
+
+ISCREEN TO FRONT
+----------------
+
+Iscreen To Front
+Iscreen To Front n
+
+Brings screen number n or the current screen to the front of all
+Intuition screens.
+
+See also: @{" Iscreen To Back " link C_IscreenToBack}
+
+@endnode
+
+@node C_IscreenWidth "Intuition Extension 1.3b Command: =Iscreen Width"
+@next C_Ishift
+@prev C_IscreenToBack
+
+=ISCREEN WIDTH
+--------------
+
+w=Iscreen Width
+w=Iscreen Width(n)
+
+Returns the width of screen n or the current screen.
+
+See also: @{"=Iscreen Height " link C_IscreenHeight}
+	  @{"=Iscreen Colour " link C_IscreenColour}
+	  @{"=Iscreen Mode   " link C_IscreenMode}
+
+@endnode
+
+@node C_Ishift "Intuition Extension 1.3b Command: =Ishift"
+@next C_Itext
+@prev C_IscreenWidth
+
+=ISHIFT
+-------
+
+shiftstate=Ishift
+
+Returns the keyboard shift state at the time of the last keypress.
+
+See also: @{"=Iscan " link C_Iscan}
+
+@endnode
+
+@node C_Itext "Intuition Extension 1.3b Command: Itext"
+@next C_ItextBase
+@prev C_Ishift
+
+ITEXT
+-----
+
+Itext x,y,s$
+
+Writes text to the current screen/window at coordinates X,Y.  If
+either coordinate is omitted, the current value of that coordinate is
+used.
+
+Note that the Y coordinate corresponds to the baseline of the font.
+To determine this value, use the @{" Itext Base " link C_ItextBase} function.
+
+The Itext instruction leaves the current graphics position at the
+right edge of the text, on the baseline.
+
+See also: @{" Set Ifont    " link C_SetIfont}
+          @{" Ilocate Gr   " link C_Ilocate}
+          @{"=Itext Length " link C_ItextLength}
+          @{" Iwrite       " link C_Iwrite}
+
+@endnode
+
+@node C_ItextBase "Intuition Extension 1.3b Command: =Itext Base"
+@next C_ItextLength
+@prev C_Itext
+
+=ITEXT BASE
+-----------
+
+y=Itext Base
+
+Returns the baseline coordinate of the font for the current
+screen/window.  Useful in conjunction with @{" Itext " link C_Itext}, for example:
+
+	Itext 0,Itext Base,"Text at the top of the screen"
+
+See also: @{" Set Ifont    " link C_SetIfont}
+          @{"=Itext Length " link C_ItextLength}
+
+@endnode
+
+@node C_ItextLength "Intuition Extension 1.3b Command: =Itext Length
+@next C_Itrap
+@prev C_ItextBase
+
+=ITEXT LENGTH
+-------------
+
+w=Itext Length(s$)
+
+Returns the width in pixels of s$ using the current font.
+
+See also: @{" Itext      " link C_Itext}
+          @{"=Itext Base " link C_ItextBase}
+
+@endnode
+
+@node C_Itrap "Intuition Extension 1.3b Command: Itrap On/Off"
+@next C_Iwait
+@prev C_ItextLength
+
+ITRAP ON
+ITRAP OFF
+---------
+
+Itrap On
+Itrap Off
+
+Activates or deactivates error trapping for Intuition Extension
+commands.  When the Itrap On instruction is executed, any commands
+that cause errors will set an error flag rather than crashing the
+program.  You can check this flag with the @{" Ierrtrap " link C_Ierrtrap} function.
+
+The Itrap Off instruction returns the system to normal (i.e. errors
+will cause the program to abort).
+
+@endnode
+
+@node C_Iwait "Intuition Extension 1.3b Command: Iwait"
+@next C_IwaitEvent
+@prev C_Itrap
+
+IWAIT
+-----
+
+Iwait n
+
+Waits for n vertical blanks before returning control to the program.
+The length of time between vertical blanks depends on the type of
+screen being used.  A standard PAL screen is 50 hertz, meaning that
+vertical blank cycle is 1/50th of a second.  A standard NTSC screen is
+60 hertz.
+
+See also: @{" Iwait Key   " link C_IwaitKey}
+          @{" Iwait Mouse " link C_IwaitMouse}
+          @{" Iwait Vbl   " link C_IwaitVbl}
+@endnode
+
+@node C_IwaitEvent "Intuition Extension 1.3b Command: =Iwait Event"
+@next C_IwaitKey
+@prev C_Iwait
+
+=IWAIT EVENT
+------------
+
+event=Iwait Event
+event=Iwait Event Vbl
+
+The Iwait Event function is used to wait for an event to occur.  With
+the first form of the command, AMOS will wait for any kind of input to
+occur (mouse click, keypress, menu selection, etc.) before returning;
+the value returned is an "event value", and can be compared against
+the values returned by the @{" Ievent " link C_IeventType} function to determine what event
+occurred.
+
+This method of "event waiting" is superior to repeatedly checking for
+input in a loop, known as "busy waiting", because event waiting uses
+no processor time at all - other programs can run at full speed while
+your program is waiting for input.  Busy waiting, on the other hand,
+takes up processor time because the program must keep checking whether
+there is anything to do.
+
+Nearly all programs that use input (which is most programs written)
+can and should use event waiting.  Suppose you have a program that
+accepts keyboard input and mouse clicks, and has menus.  Your main
+loop might look something like:
+
+	EVENT=Iwait Event
+	If EVENT=Ievent Key
+	   'A key was pressed
+	Else If EVENT=Ievent Mouse
+	   'The mouse button was clicked
+	Else If EVENT=Ievent Menu
+	   'A menu item was selected
+	End If
+
+The second form of the command is used in programs that need to
+continuously update a display of some sort.  It waits for either an
+input event or the vertical blank.  While there are commands that
+allow you to wait until the next vertical blank, Iwait Event Vbl has
+the advantage that it tells you whether any input happened before the
+vertical blank occurred, which (again) saves processor time.
+
+See also: @{"=Ievent Data " link C_IeventData}
+
+@endnode
+
+@node C_IwaitKey "Intuition Extension 1.3b Command: Iwait Key"
+@next C_IwaitMouse
+@prev C_Iwait
+
+IWAIT KEY
+---------
+
+Iwait Key
+
+Waits for a key to be pressed.
+
+See also: @{"=Iget$       " link C_Iget} to read a key without waiting
+	  @{"=Iread Char$ " link C_IreadChar} to wait for and read a key
+
+@endnode
+
+@node C_IwaitMouse "Intuition Extension 1.3b Command: Iwait Mouse"
+@next C_IwaitVbl
+@prev C_IwaitKey
+
+IWAIT MOUSE
+-----------
+
+Iwait Mouse
+
+Waits for a mouse click.
+
+See also: @{"=Imouse Key " link C_ImouseKey}
+
+@endnode
+
+@node C_IwaitVbl "Intuition Extension 1.3b Command: Iwait Vbl"
+@next C_GetIwindow
+@prev C_IwaitMouse
+
+IWAIT VBL
+---------
+
+Waits for the next vertical blank interrupt returning control to the
+program.
+
+See also: @{" Iwait " link C_Iwait}
+
+@endnode
+
+@node C_GetIwindow "Intuition Extension 1.3b Command: =Iwindow"
+@next C_IwindowActivate
+@prev C_IwaitVbl
+
+=IWINDOW
+--------
+
+n=Iwindow
+
+Returns the number of the current window.
+
+See also: @{" Set Iwindow  " link C_SetIwindow}
+	  @{" Iwindow Open " link C_IwindowOpen}
+@endnode
+
+@node C_IwindowActivate "Intuition Extension 1.3b Command: Iwindow Activate"
+@next C_IwindowActive
+@prev C_GetIwindow
+
+IWINDOW ACTIVATE
+----------------
+
+Iwindow Activate n
+
+Activates window number n for input and makes it the current output
+window.  Use this function with discretion, as the user may not like
+having his input suddenly going to your program when he wasn't
+expecting it!  If you do use this command, it is also recommended to
+do an @{" Iscreen To Front " link C_IscreenToFront} to inform the user of the new active window.
+
+See also: @{" Set Iwindow " link C_SetIwindow}
+
+@endnode
+
+@node C_IwindowActive "Intuition Extension 1.3b Command: =Iwindow Active"
+@next C_IwindowActiveBase
+@prev C_IwindowActivate
+
+=IWINDOW ACTIVE
+---------------
+
+result=Iwindow Active
+
+If the currently active window (in the Intuition sense) is on the
+current screen, this function returns True; otherwise, it returns
+False.
+
+@endnode
+
+@node C_IwindowActiveBase "Intuition Extension 1.3b Command: =Iwindow Active Base"
+@next C_IwindowActiveNum
+@prev C_IwindowActive
+
+=IWINDOW ACTIVE BASE
+--------------------
+
+adr=Iwindow Active Base
+
+Returns the base address of the currently active Intuition window.
+
+Note for system programmers: this simply gets and returns the value of
+the ActiveWindow field of the IntuitionBase structure.
+
+See also: @{"=Iwindow Base   " link C_IwindowBase}
+	  @{"=Iwindow Active " link C_IWindowActive}
+@endnode
+
+@node C_IwindowActiveNum "Intuition Extension 1.3b Command: =Iwindow Active Num"
+@next C_IwindowActual
+@prev C_IwindowActiveBase
+
+=IWINDOW ACTIVE NUM
+-------------------
+
+n=Iwindow Active Num
+
+Returns the number of the currently active window.  WARNING: if the
+currently active window is not on the current screen, the resultant
+value is undefined!  So check beforehand whether it is using the
+Iwindow Active function.
+
+See also: @{"=Iwindow Active " link C_IwindowActive}
+
+@endnode
+
+@node C_IwindowActual "Intuition Extension 1.3b Command: =Iwindow Actual Width/Height"
+@next C_IwindowBase
+@prev C_IwindowActiveNum
+
+=IWINDOW ACTUAL WIDTH
+=IWINDOW ACTUAL HEIGHT
+----------------------
+
+w=Iwindow Actual Width
+h=Iwindow Actual Height
+
+Return the dimensions of the usable area of the current window.
+
+Normally, all windows opened have a border which takes up part of the
+window area.  (The base window of a screen is an exception to this
+rule.)  All of the drawing operations start at the top-left corner of
+the empty area of the window inside the border.  Because of this
+border, you cannot use the width you gave in Iwindow Open as a measure
+of the window's size, because that would cause your drawing operations
+to flood over onto the window's right and bottom borders!  Instead,
+use Iwindow Actual Width/Height to find out how much you can use.
+
+@endnode
+
+@node C_IwindowBase "Intuition Extension 1.3b Command: =Iwindow Base"
+@next C_IwindowClose
+@prev C_IwindowActual
+
+=IWINDOW BASE
+-------------
+
+address=Iwindow Base
+
+Returns the base address of the Intuition Window structure for the
+current window.
+
+@endnode
+
+@node C_IwindowClose "Intuition Extension 1.3b Command: Iwindow Close"
+@next C_IwindowCloseWB
+@prev C_IwindowBase
+
+IWINDOW CLOSE
+-------------
+
+Iwindow Close n
+
+Closes window number n.  Note that window number 0 cannot be closed.
+
+See also: @{" Iwindow Open     " link C_IwindowOpen}
+	  @{" Iwindow Close Wb " link C_IwindowCloseWB}
+
+@endnode
+
+@node C_IwindowCloseWB "Intuition Extension 1.3b Command: Iwindow Close Wb"
+@next C_IwindowHeight
+@prev C_IWindowClose
+
+IWINDOW CLOSE WB
+----------------
+
+Iwindow Close Wb n
+
+Closes Workbench window number n.
+
+See also: @{" Iwindow Open Wb " link C_IwindowOpenWB}
+
+@endnode
+
+@node C_IwindowHeight "Intuition Extension 1.3b Command: =Iwindow Height"
+@next C_IwindowMove
+@prev C_IwindowCloseWB
+
+=IWINDOW HEIGHT
+---------------
+
+h=Iwindow Height
+h=Iwindow Height(n)
+h=Iwindow Height Wb(n)
+
+Returns the height of the current window, or of window number n.  If
+n is 0, or n is omitted and the current window is window 0 (the
+screen's main window), the screen's height is returned, as if
+@{" Iscreen Height " link C_IscreenHeight} had been called.
+
+See also: @{" Iwindow Size  " link C_IwindowSize}
+	  @{"=Iwindow Width " link C_IwindowWidth}
+
+@endnode
+
+@node C_IwindowMove "Intuition Extension 1.3b Command: Iwindow Move"
+@next C_IwindowOnWB
+@prev C_IwindowHeight
+
+IWINDOW MOVE
+------------
+
+Iwindow Move n,x,y
+Iwindow Move Wb n,x,y
+
+Moves window number n to coordinates (x,y).  If either coordinate
+would result in the window being partly or fully off the screen, an
+"Illegal function call" error is generated.
+
+See also: @{"=Iwindow X " link C_IwindowX}
+	  @{"=Iwindow Y " link C_IwindowY}
+
+@endnode
+
+@node C_IwindowOnWB "Intuition Extension 1.3b Command: =Iwindow On Wb"
+@next C_IwindowOpen
+@prev C_IwindowMove
+
+IWINDOW ON WB
+-------------
+
+wb=Iwindow On Wb
+
+Returns True if the current window is a Workbench window, False
+otherwise.
+
+@endnode
+
+@node C_IwindowOpen "Intuition Extension 1.3b Command: Iwindow Open"
+@next C_IwindowOpenWB
+@prev C_IwindowOnWB
+
+IWINDOW OPEN
+------------
+
+Iwindow Open n,x,y,w,h [,title$ [,flags]]
+
+Opens an Intuition window.  The window is designated with the number n
+given in the command.  Only one window with a particular number may
+be open on a screen at a time, but different screens may have same-
+numbered windows.  In other words, the code
+
+Iscreen Open 0,320,200,2,0
+Iwindow Open 1,0,0,320,200
+Iscreen Open 1,320,200,2,0
+Iwindow Open 1,20,20,200,80
+
+will open two different windows on two different screens, both
+numbered 1.
+
+If window n already exists, the "Window not closed" error is
+generated.
+
+The x and y parameters tell AMOS where the top left corner of the
+window should be, while w and h indicate the size of the new window.
+Both corners must be on the screen.  In addition, the width and height
+of the window must be at least 80 x 48 pixels, and cannot be larger
+than the currently visible size of the screen.
+
+If title$ is given, it is used as the title of the new window, and is
+displayed in the window's title bar.  If title$ is omitted, the title
+bar remains blank.
+
+If the flags parameter is specified, it determines how the window is
+set up.  To determine what value to use, add the appropriate values
+from this list together:
+
+	Item			 Value:	 Dec.	 Hex
+	----				-----   -----
+	Sizing gadget			    1	$0001
+	Draggable window		    2	$0002
+	Depth gadget(s)			    4	$0004
+	Close gadget			    8	$0008
+	*Sizing gadget in right border	   16	$0010
+	*Sizing gadget in bottom border	   32	$0020
+	+Backdrop window		  256	$0100
+	Borderless window		 2048	$0800
+	Activate on open		 4096	$1000
+
+Notes:	* These flags determine whether the right or bottom borders are
+	  expanded to accommodate the sizing gadget.
+
+	+ A backdrop window always stays in back of all other windows.
+	  The "backdrop window" flag cannot be used with any other
+	  flags.
+
+So, for example, to open a draggable window with only a close gadget,
+the value of flags would be 10.
+
+After the window has been opened, it can be moved, sized, and depth-
+arranged using the standard Intuition gadgets, as well as with the
+Intuition Extension commands designed for that purpose.  (The close
+gadget does not immediately close the window, but rather sets a status
+flag that the program can check and take whatever action is
+appropriate, e.g. quitting the program.)
+
+Note that window number 0 is reserved for the default window that is
+opened at the same time a screen is opened; any attempt to reopen,
+move, size, depth-arrange, or close this window will result in an
+error.
+
+See also: @{" Iwindow Close    " link C_IwindowClose}
+	  @{"=Iwindow          " link C_GetIwindow}
+	  @{" Set Iwindow      " link C_SetIwindow}
+	  @{" Iwindow Move     " link C_IwindowMove}
+	  @{" Iwindow Size     " link C_IwindowSize}
+	  @{" Iwindow To Front " link C_IwindowToFront}
+	  @{" Iwindow To Back  " link C_IwindowToBack}
+	  @{"=Iwindow Status   " link C_IwindowStatus}
+
+@endnode
+
+@node C_IwindowOpenWB "Intuition Extension 1.3b Command: Iwindow Open Wb"
+@next C_IwindowSize
+@prev C_IwindowOpen
+
+IWINDOW OPEN WB
+---------------
+
+Iwindow Open Wb n,x,y,w,h [,title$ [,flags]]
+
+Opens an Intuition window.  Similar to Iwindow Open, but opens the
+window on the Workbench screen.  If the Workbench screen is closed and
+cannot be opened (e.g. low memory), an error is generated.  Note that
+window number 0 *is* a valid number for a Workbench window.
+
+See also: @{" Iwindow Open     " link C_IwindowOpen}
+	  @{" Iwindow Close Wb " link C_IwindowCloseWB}
+
+@endnode
+
+@node C_IwindowSize "Intuition Extension 1.3b Command: Iwindow Size"
+@next C_IwindowStatus
+@prev C_IwindowOpenWB
+
+IWINDOW SIZE
+------------
+
+Iwindow Size n,w,h
+Iwindow Size Wb n,w,h
+
+Resizes window n to dimensions w by h.  If this is less than 80 x 48
+or would extend beynd the bottom right corner of the currently visible
+part of the screen, an error is generated.
+
+See also: @{"=Iwindow Width  " link C_IwindowWidth}
+	  @{"=Iwindow Height " link C_IwindowHeight}
+
+@endnode
+
+@node C_IwindowStatus "Intuition Extension 1.3b Command: =Iwindow Status"
+@next C_IwindowToBack
+@prev C_IwindowSize
+
+=IWINDOW STATUS
+---------------
+
+status=Iwindow Status
+status=Iwindow Status(n)
+status=Iwindow Status Wb(n)
+
+Returns an integer representing the current status of the current
+window (or window number n, either on the current screen or on the
+Workbench screen).  At present, only one bit is defined:
+
+	Bit 1: Indicates whether the window's close gadget was
+		 pressed.
+
+However, due to a bug in AMOS (at least in AMOS Pro), the following
+code to check whether a window's close gadget was pressed will not
+work:
+
+If Btst(1,Iwindow Status(N))
+  Iwindow Close N
+End If
+
+Instead, you must use
+
+ST=Iwindow Status(N)
+If Btst(1,ST)
+  Iwindow Close N
+End If
+
+@endnode
+
+@node C_IwindowToBack "Intuition Extension 1.3b Command: Iwindow To Back"
+@next C_IwindowToFront
+@prev C_IwindowStatus
+
+IWINDOW TO BACK
+---------------
+
+Iwindow To Back
+Iwindow To Back n
+Iwindow To Back Wb n
+
+Sends window number n (or the current window) to the back.
+
+See also: @{" Iwindow To Front " link C_IwindowToFront}
+
+@endnode
+
+@node C_IwindowToFront "Intuition Extension 1.3b Command: Iwindow To Front"
+@next C_IwindowWidth
+@prev C_IwindowToBack
+
+IWINDOW TO FRONT
+----------------
+
+Iwindow To Front
+Iwindow To Front n
+Iwindow To Front Wb n
+
+Brings window number n (or the current window) to the front.
+
+See also: @{" Iwindow To Back " link C_IwindowToBack}
+
+@endnode
+
+@node C_IwindowWidth "Intuition Extension 1.3b Command: =Iwindow Width"
+@next C_IwindowX
+@prev C_IwindowToFront
+
+=IWINDOW WIDTH
+--------------
+
+w=Iwindow Width
+w=Iwindow Width(n)
+w=Iwindow Width Wb(n)
+
+Returns the width of the current window, or of window number n.  If n
+is 0, or n is omitted and the current window is window 0 (the screen's
+main window), the screen's width is returned, as if @{" Iscreen Width " link C_IscreenWidth} had
+been called.
+
+See also: @{" Iwindow Size   " link C_IwindowMove}
+	  @{"=Iwindow Height " link C_IwindowHeight}
+@endnode
+
+@node C_IwindowX "Intuition Extension 1.3b Command: =Iwindow X"
+@next C_IwindowY
+@prev C_IwindowWidth
+
+=IWINDOW X
+----------
+
+x=Iwindow X
+x=Iwindow X(n)
+x=Iwindow X Wb(n)
+
+Returns the X coordinate of the upper left corner of the current
+window, or of window number n.  If n is 0, or if n is omitted and the
+current window is window 0 (the screen's main window), 0 is returned.
+
+See also: @{" Iwindow Move " link C_IwindowMove}
+	  @{"=Iwindow Y    " link C_IwindowY}
+
+@endnode
+
+@node C_IwindowY "Intuition Extension 1.3b Command: =Iwindow Y"
+@next C_Iwrite
+@prev C_IwindowX
+
+=IWINDOW Y
+----------
+
+y=Iwindow Y
+y=Iwindow Y(n)
+y=Iwindow Y Wb(n)
+
+Returns the Y coordinate of the upper left corner of the current
+window, or of window number n.  If n is 0, or if n is omitted and the
+current window is window 0 (the screen's main window), 0 is returned.
+
+See also: @{" Iwindow Move " link C_IwindowMove}
+	  @{"=Iwindow X    " link C_IwindowX}
+
+@endnode
+
+@node C_Iwrite "Intuition Extension 1.3b Command: Iwrite"
+@next C_Ixgr
+@prev C_IwindowY
+
+IWRITE
+------
+
+Iwrite
+Iwrite s$
+
+Prints a string to the screen, then moves the graphics cursor to the
+start of the next line.  Similar to Print, but only accepts a single
+string argument, due to the limitations of extensions.  Without the
+argument, it just goes to the next line, like Print without any
+parameters.
+
+See also: @{" Ilocate " link C_Ilocate}
+          @{" Itext   " link C_Itext}
+
+@endnode
+
+@node C_Ixgr "Intuition Extension 1.3b Command: =Ixgr"
+@next C_Iygr
+@prev C_Iwrite
+
+=IXGR
+-----
+
+x=Ixgr
+
+Returns the current X coordinate of the graphics cursor.
+
+See also: @{" Ilocate Gr " link C_IlocateGr}
+          @{"=Iygr       " link C_Iygr}
+
+@endnode
+
+@node C_Iygr "Intuition Extension 1.3b Command: =Iygr"
+@next C_ReqtoolsHere
+@prev C_Ixgr
+
+=IYGR
+-----
+
+y=Iygr
+
+Returns the current Y coordinate of the graphics cursor.
+
+See also: @{" Ilocate Gr " link C_IlocateGr}
+          @{"=Ixgr       " link C_Ixgr}
+
+@endnode
+
+@node C_ReqtoolsHere "Intuition Extension 1.3b Command: =Reqtools Here"
+@next C_ReserveIgadget
+@prev C_Iygr
+
+=REQTOOLS HERE
+--------------
+
+res=Reqtools Here
+
+Returns whether ReqTools.library is installed in the system.  This
+function can be used to determine whether to use requesters or an
+alternate method of input.
+
+@endnode
+
+@node C_ReserveIgadget "Intuition Extension 1.3b Command: Reserve Igadget"
+@next C_SetIcolour
+@prev C_ReqtoolsHere
+
+RESERVE IGADGET
+---------------
+
+Reserve Igadget
+Reserve Igadget n
+
+Allocates space for gadgets in the current window.  If the parameter
+n is given, space is reserved for that many gadgets; if it is omitted,
+the memory is freed and returned to the system.  There is no limit to
+the number of gadgets you can reserve, apart from the amount of memory
+in your system.
+
+Note that issuing the Reserve Igadget command, with or without a
+parameter, clears any previous gadget definitions for the current
+window.
+
+@endnode
+
+@node C_SetIcolour "Intuition Extension 1.3b Command: Set Icolour"
+@next C_SetIfont
+@prev C_ReserveIgadget
+
+SET ICOLOUR
+-----------
+
+Set Icolour n,c
+
+Sets colour n on the current screen to c, a value in the format
+$RGB.  So to set
+
+See also: @{" Ipalette " link C_Ipalette}
+	  @{"=Icolour  " link C_GetIcolour}
+
+@endnode
+
+@node C_SetIfont "Intuition Extension 1.3b Command: Set Ifont"
+@next C_SetIgadHit
+@prev C_SetIcolour
+
+SET IFONT
+---------
+
+Set Ifont name$,size
+Set Ifont namesize$
+
+Sets the font for the current screen/window.  In the first format,
+name$ is the name of the font you want to use; this may or may not
+include the ".font" extension, but if it does, it (the ".font") MUST
+be in lower case.  Size is the vertical size of the font.
+
+In the second format, namesize$ is a string of the form
+"fontname/NNN", where "fontname" is the name of the font and NNN is
+the size.  This is useful in conjunction with @{" Irequest Font " link C_IrequestFont}.
+
+See also: @{"=Ifont$     " link C_IfontName}
+
+@endnode
+
+@node C_SetIgadHit "Intuition Extension 1.3b Command: Set Igadget Hit"
+@next C_SetIgadInt
+@prev C_SetIfont
+
+SET IGADGET HIT
+---------------
+
+Set Igadget Hit n,x,y,w,h
+
+Defines a "hit-select" gadget - in other words, a gadget that stays
+down only as long as the mouse button is held down.  If the mouse
+button is released over the gadget, a "hit" is reported.  This kind of
+gadget is probably the most common; it can be seen in any Intuition
+window or screen - the close gadget, zoom gadget (in Workbench 2.0),
+and depth gadget(s) are all hit-select gadgets.  (The sizing gadget in
+the lower right corner of a window is also a hit-select gadget, as is
+the entire title-bar, although Intuition gives them special handling.)
+
+N is the number of the gadget to define; x, y, w, and h define the
+gadget's position and size.
+
+A hit-select gadget must be at least 4 pixels wide and 4 pixels tall.
+
+See also: @{" Reserve Igadget     " link C_ReserveIgadget}
+	  @{" Set Igadget Hslider " link C_SetIgadSlider}
+	  @{" Set Igadget Int     " link C_SetIgadInt}
+	  @{" Set Igadget String  " link C_SetIgadString}
+	  @{" Set Igadget Toggle  " link C_SetIgadToggle}
+	  @{" Set Igadget Vslider " link C_SetIgadSlider}
+
+@endnode
+
+@node C_SetIgadInt "Intuition Extension 1.3b Command: Set Igadget Int"
+@next C_SetIgadSlider
+@prev C_SetIgadHit
+
+SET IGADGET INT
+---------------
+
+Set Igadget Int n,x,y,w,h
+Set Igadget Int n,x,y,w,h,init
+Set Igadget Int n,x,y,w,h,init,strpos
+
+Defines an integer gadget.  N is the number of the gadget to define;
+x, y, w, and h define the gadget's position and size.  Init sets the
+initial value for the gadget; if omitted, the inital value is 0.
+Strpos determines how the integer is displayed in the gadget: 0 means
+left-justified (the default), 1 means centred, and 2 means right-
+justified.  Any other value will result in an "Illegal function call"
+error.
+
+An integer gadget must be at least 32 pixels wide and two more than the
+current font height tall.  If you omit the height parameter, the
+gadget will automatically be set to this height.
+
+See also: @{" Reserve Igadget     " link C_ReserveIgadget}
+	  @{" Set Igadget Hit     " link C_SetIgadToggle}
+	  @{" Set Igadget Hslider " link C_SetIgadSlider}
+	  @{" Set Igadget String  " link C_SetIgadString}
+	  @{" Set Igadget Toggle  " link C_SetIgadToggle}
+	  @{" Set Igadget Vslider " link C_SetIgadSlider}
+
+@endnode
+
+@node C_SetIgadSlider "Intuition Extension 1.3b Command: Set Igadget Hslider/Vslider"
+@next C_SetIgadString
+@prev C_SetIgadInt
+
+SET IGADGET HSLIDER
+SET IGADGET VSLIDER
+-------------------
+
+Set Igadget Hslider n,x,y,w,h,units,pos,size,overlap
+Set Igadget Vslider n,x,y,w,h,units,pos,size,overlap
+
+Defines a slider gadget.  N is the number of the gadget to define;
+x, y, w, and h define the gadget's position and size.  Units is the
+total number of units the slider represents (e.g. the number of lines
+in a text file).  Pos is the initial position of the slider and size
+is its size, both measured in units.
+
+Overlap is best defined using an example:  If a vertical slider bar
+represents a text file, then the slider represents the portion of the
+file that is visible.  When the user clicks in the slider bar but not
+on the slider, the text will scroll to display the next screen up or
+down - but may also leave one of the old lines on the screen to remind
+the user of where he is.  In this case, the value of "overlap" would
+be 1, since there is a one-line overlap between screens.
+
+For "level" type controls, such as volume or colour intensity, always
+set size to 1 and overlap to 0.
+
+A horizontal gadget must be at least 16 pixels wide and 8 pixels tall;
+a vertical gadget must be at least 10 pixels wide and 16 pixels tall.
+
+Note that the slider bar is also called the "container", since it
+contains the slider.
+
+See also: @{" Reserve Igadget    " link C_ReserveIgadget}
+	  @{" Set Igadget Hit    " link C_SetIgadToggle}
+	  @{" Set Igadget Int    " link C_SetIgadInt}
+	  @{" Set Igadget String " link C_SetIgadString}
+	  @{" Set Igadget Toggle " link C_SetIgadToggle}
+
+@endnode
+
+@node C_SetIgadString "Intuition Extension 1.3b Command: Set Igadget String"
+@next C_SetIgadToggle
+@prev C_SetIgadSlider
+
+SET IGADGET STRING
+------------------
+
+Set Igadget String n,x,y,w,h,maxlen
+Set Igadget String n,x,y,w,h,maxlen,init$
+Set Igadget String n,x,y,w,h,maxlen,init$,strpos
+
+Defines a string gadget.  N is the number of the gadget to define;
+x, y, w, and h define the gadget's position and size.  Maxlen is the
+maximum length of the string; if the user tries to enter a string
+longer than this length, it will not be accepted.  Init$ allows you
+to change the initial value from the default of the empty string.
+Strpos determines how the integer is displayed in the gadget: 0 means
+left-justified (the default), 1 means centred, and 2 means right-
+justified.  Any other value will result in an "Illegal function call"
+error.
+
+A string gadget must be at least 32 pixels wide and two more than the
+current font height tall.  If you omit the height parameter, the
+gadget will automatically be set to this height.
+
+See also: @{" Reserve Igadget     " link C_ReserveIgadget}
+	  @{" Set Igadget Hit     " link C_SetIgadToggle}
+	  @{" Set Igadget Hslider " link C_SetIgadSlider}
+	  @{" Set Igadget Int     " link C_SetIgadInt}
+	  @{" Set Igadget Toggle  " link C_SetIgadToggle}
+	  @{" Set Igadget Vslider " link C_SetIgadSlider}
+
+@endnode
+
+@node C_SetIgadToggle "Intuition Extension 1.3b Command: Set Igadget Toggle"
+@next C_SetIgadValue
+@prev C_SetIgadString
+
+SET IGADGET TOGGLE
+------------------
+
+Set Igadget Toggle n,x,y,w,h
+Set Igadget Toggle n,x,y,w,h,init
+
+Defines a toggle gadget.  N is the number of the gadget to define;
+x, y, w, and h define the gadget's position and size.  Init defines
+the initial state of the gadget: False puts the gadget in an "off"
+(unselected) state, while True puts it in an "on" (selected) state.
+The default is off.
+
+A toggle gadget must be at least 4 pixels wide and 4 pixels tall.
+
+See also: @{" Reserve Igadget     " link C_ReserveIgadget}
+	  @{" Set Igadget Hit     " link C_SetIgadToggle}
+	  @{" Set Igadget Hslider " link C_SetIgadSlider}
+	  @{" Set Igadget Int     " link C_SetIgadInt}
+	  @{" Set Igadget String  " link C_SetIgadString}
+	  @{" Set Igadget Vslider " link C_SetIgadSlider}
+
+@endnode
+
+@node C_SetIgadValue
+@next C_SetImenu
+@prev C_SetIgadToggle
+
+SET IGADGET VALUE
+SET IGADGET VALUE$
+------------------
+
+Set Igadget Value n,value
+Set Igadget Value$ n,value$
+
+Changes the value of an existing gadget.  N is the number of the
+gadget whose value you want to change; the value parameter is
+interpreted according to the type of the gadget, as follows:
+
+    Toggle gadget - On (non-zero value) or off (zero)
+    Slider	  - Position of the slider, in the units specified
+			when the gadget was created
+    Integer       - The new value of the gadget
+    String        - The new string to put into the gadget
+
+If you try to modify a hit-select gadget, an Illegal Function Call
+error will be generated.
+
+@endnode
+
+@node C_SetImenu "Intuition Extension 1.3b Command: Set Imenu"
+@next C_SetIpens
+@prev C_SetIgadValue
+
+SET IMENU
+---------
+
+Set Imenu s$,menu [,item [,sub]]
+
+Defines a menu, item, or subitem.  Menu is the menu number; it can
+range from 1 to 31.  Item, the item number, can be 1-63, and sub, the
+subitem number, can be 1-31.
+
+A menu is a set of options that the user can select to control the
+actions of a program.  A menu can contain zero or more items -
+although a menu with zero items is not very useful! - which are drawn
+underneath the menu when it is selected; that is, when the user
+presses the right mouse button and moves the pointer over the menu
+name.  Each of those items can have zero or more subitems.  If a menu
+item has subitems, then when the user places the pointer over the menu
+item, the list of subitems appears to the right of the menu item.
+
+By checking which menu item the user has selected (see the @{"=Ichoice " link C_Ichoice}
+function), you can act appropriately; for example, when the user
+chooses the "Quit" function, your program would close down and exit.
+
+Set Imenu creates or removes a menu, item, or subitem, depending on
+how many of menu, item, and sub you pass to Set Imenu.  When a menu is
+initially created, it contains no items; a newly-created item contains
+no subitems.  The menu's or item's string is set to s$.  If s$ is
+empty, the appropriate menu/item (along with all subitems) is deleted.
+An out-of-range value will cause an Illegal Function Call error; a
+value of 0 is equivalent to omitting the parameter.  If any parameter
+is included (and non-zero), all the parameters before it must also be
+included and non-zero.  So calling Set Imenu s$,1,0,2 will result in
+an error.
+
+In order for the user to be able to use the menus you have created,
+you will need to use the @{" Imenu On " link C_ImenuOnOff} instruction.  Once menus are
+activated, you cannot make any changes without first deactivating them
+(with @{" Imenu Off " link C_ImenuOnOff}).
+
+@endnode
+
+@node C_SetIpens "Intuition Extension 1.3b Command: Set Ipens"
+@next C_SetIscreen
+@prev C_SetImenu
+
+SET IPENS
+---------
+
+Set Ipens highlight,shadow
+
+Sets the pen numbers used in drawing gadget borders.  The highlight
+pen is used to draw the light part of the border of a toggle or hit-
+select gadget (the left and top borders when the gadget is not
+selected); the shadow pen is used to draw the dark part of the border
+(the right and bottom borders).  The shadow pen is also used to draw
+the borders for string and integer gadgets and sliders.
+
+@endnode
+
+@node C_SetIscreen "Intuition Extension 1.3b Command: Set Iscreen"
+@next C_SetIscreenTitle
+@prev C_SetIpens
+
+SET ISCREEN
+-----------
+
+Set Iscreen n
+
+Sets the current screen to screen number N.
+
+See also: @{"=Iscreen " link C_GetIscreen}
+
+@endnode
+
+@node C_SetIscreenTitle "Intuition Extension 1.3b Command: Set Iscreen Title"
+@next C_SetIscreen
+@prev C_SetIwindow
+
+SET ISCREEN TITLE
+-----------------
+
+Set Iscreen Title s$ [,n]
+
+Sets the title of the current screen (or screen number n) to s$.  This
+title is used if the active window has not defined its own title for
+the screen.
+
+See also: @{" Set Iwindow Title    " link C_SetIwindowTitle }
+          @{"=Iscreen Title Height " link C_IscrTitleHeight }
+
+@endnode
+
+@node C_SetIwindow "Intuition Extension 1.3b Command: Set Iwindow"
+@next C_SetIwindowTitle
+@prev C_SetIscreenTitle
+
+SET IWINDOW
+-----------
+
+Set Iwindow n
+
+Sets the current window to window number n on the current screen.
+
+See also: @{"=Iwindow        " link C_GetIwindow}
+	  @{" Set Iwindow Wb " link C_SetIwindowWB}
+
+@endnode
+
+@node C_SetIwindowTitle "Intuition Extension 1.3b Command: Set Iwindow Title"
+@next C_SetIwindowWB
+@prev C_SetIwindow
+
+SET IWINDOW TITLE
+-----------------
+
+Set Iwindow Title [n],[window$],[screen$]
+
+Sets the window and screen titles of window number n (or, if n is
+omitted, the current window) to window$ and screen$, respectively.  If
+either is omitted, the corresponding title string is unchanged.  The
+window title is displayed in the title bar; the screen title is
+shown in the screen title bar whenever the window is active.
+
+@endnode
+
+@node C_SetIwindowWB "Intuition Extension 1.3b Command: Set Iwindow Wb"
+@next C_Superhires
+@prev C_SetIwindowTitle
+
+SET IWINDOW WB
+--------------
+
+Set Iwindow Wb n
+
+Sets the current window to window number n on the Workbench screen.
+
+See also: @{"=Iwindow       " link C_GetIwindow}
+	  @{"=Iwindow On Wb " link C_IwindowOnWB}
+	  @{" Set Iwindow   " link C_SetIwindowWB}
+
+@endnode
+
+@node C_Superhires "Intuition Extension 1.3b Command: =Superhires"
+@next C_XHardMin
+@prev C_SetIwindowWB
+
+=SUPERHIRES
+-----------
+
+x=Superhires
+
+Returns the screen mode value for the SuperHires mode.
+
+See also: @{" Ehb " link C_Ehb}
+	  @{" Ham " link C_Ham}
+
+@endnode
+
+@node C_XHardMin "Intuition Extension 1.3b Command: =X Hard Min"
+@next C_XIhard
+@prev C_Superhires
+
+=X HARD MIN
+-----------
+
+x=X Hard Min
+
+Returns the minimum X hardware coordinate on the Intuition display.
+
+See also: @{"=Y Hard Min " link C_YHardMin}
+
+@endnode
+
+@node C_XIhard "Intuition Extension 1.3b Command: =X Ihard"
+@next C_XIscreen
+@prev C_XHardMin
+
+=X IHARD
+--------
+
+x2=X Ihard(x1)
+
+Converts screen X coordinate x1 to hardware X coordinate x2.
+
+See also: @{"=Y Ihard   " link C_YIhard}
+	  @{"=X Iscreen " link C_XIscreen}
+	  @{"=Y Iscreen " link C_YIscreen}
+
+@endnode
+
+@node C_XIscreen "Intuition Extension 1.3b Command: =X Iscreen"
+@next C_YHardMin
+@prev C_XIhard
+
+=X ISCREEN
+----------
+
+x2=X Iscreen(x1)
+
+Converts hardware X coordinate x1 to screen X coordinate x2.
+
+See also: @{"=X Ihard   " link C_XIhard}
+	  @{"=Y Ihard   " link C_YIhard}
+	  @{"=Y Iscreen " link C_YIscreen}
+
+@endnode
+
+@node C_YHardMin "Intuition Extension 1.3b Command: =Y Hard Min"
+@next C_YIhard
+@prev C_XIscreen
+
+=Y HARD MIN
+-----------
+
+y=Y Hard Min
+
+Returns the minimum Y hardware coordinate on the Intuition display.
+
+See also: @{"=X Hard Min " link C_XHardMin}
+
+@endnode
+
+@node C_YIhard "Intuition Extension 1.3b Command: =Y Ihard"
+@next C_YIscreen
+@prev C_YHardMin
+
+=Y IHARD
+--------
+
+y2=Y Ihard(y1)
+
+Converts screen Y coordinate y1 to hardware Y coordinate y2.
+
+See also: @{"=X Ihard   " link C_YIhard}
+	  @{"=X Iscreen " link C_XIscreen}
+	  @{"=Y Iscreen " link C_YIscreen}
+
+@endnode
+
+@node C_YIscreen "Intuition Extension 1.3b Command: =Y Iscreen"
+@prev C_YIhard
+
+=Y ISCREEN
+----------
+
+y2=Y Iscreen(y1)
+
+Converts hardware Y coordinate y1 to screen Y coordinate y2.
+
+See also: @{"=X Ihard   " link C_XIhard}
+	  @{"=Y Ihard   " link C_YIhard}
+	  @{"=X Iscreen " link C_XIscreen}
+
+@endnode

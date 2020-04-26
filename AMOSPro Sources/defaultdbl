@@ -1,0 +1,3 @@
+Genim2 |Default_DBL.s -o(Default_DBL.o)
+GetChunk (Default_DBL.o) Default_DBL.Bin
+AMOSPro -w Insert_DBL.AMOS APSystem/AMOSPro_Default_Resource.Abk Default_DBL.Bin 2

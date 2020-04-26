@@ -1,0 +1,18 @@
+echo "***Assembling RELEASE build"
+execute alib
+execute aw
+execute apro
+execute adata
+execute aedit
+execute amon
+execute aext
+execute acomp
+
+delete >NIL: +LEqu.s
+delete >NIL: +Toktab_Verif.Bin
+
+echo "***Success RELEASE build"
+
+echo "***Running Tests"
+execute atools
+echo "***All Tests Successful"

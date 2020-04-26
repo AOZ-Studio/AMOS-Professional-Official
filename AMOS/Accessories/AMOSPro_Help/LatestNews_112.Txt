@@ -1,0 +1,738 @@
+About AMOS Professional Version 1.12
+
+This section of help describes the modifications done to AMOSPro since the
+previous version V 1.00. Please select one of these options:
+
+                 {[IFeatures     ,4,3]            Features added to V1.00            }
+                 {[IProblems     ,4,3]         Problems  removed  from V1.00         }
+                 {[IUserGuide    ,4,3]         Corrections  to  the User Guide       }
+                 {[IExtensions   ,4,3] How  to  install  Compiler  and 3D extensions }
+                 {[IFrenchGreet  ,4,3]            A  French  greeting list           }
+                 {[IFuture       ,4,3]             The   future  updates             }
+
+                 {[IHelpInfo     ,4,3]           Latest  News of Version 1.00        }
+
+
+A French Greetings list by François Lionet!
+
+First of all, a small  apology.  1992  has  been  so  stressful that I was
+unable to answer lots of my  mail.  AMOSPro  came  first. So if you didn't
+receive any answer from a letter, please  forgive  me. It must be in my 30
+inch high letter stack!
+
+Being so busy during the final rush for finishing AMOSPro, I simply forgot
+to write and add my greeting list to the main Help Menu.
+
+I want to thank many people, in French! (Please get a dictionary.)
+
+- Nicolas Costes et Pascal Varennes  de Commodore France. Très grand merci
+pour votre support completement technique.
+- Eric Andréani et Syntex,  pour  toutes  les magnifiques démos et surtout
+pour être si sympas.
+- Jean Michel Forgeas, l'être le  plus  patient  que je connaisse, qui m'a
+tiré d'affaire bien des fois.
+- Denis Bernard et Philippe Bouzitat pour tant de dynamisme. Je croise les
+doigts pour le club.
+- Yves Lamoureux pour sa patience (lui aussi). J'ai bientot fini, promis.
+- Pascal Kasmerszac et ATACOM. Vivement ATACOM 93!
+- Richard Vanner, of course, le project manager le plus sympa et
+stressant que je connaisse.
+- Christopher Payne qui m'a fait confiance au tout début d'AMOS.
+- Et plein  d'autres  (dans  l'ordre  de  mon  agenda!): Pierre Berloquin,
+Stephane Schreiber, Philippe  Ducalet,  Olivier  Coquet,  Philippe Ulrich,
+Frédéric Botton, Thierry Drago,  Orion  Diffusion, Pierre Philippe Launay,
+Francis Poulain, Nicolas Mathieu, Olivier Rogé,  Len and Ann Tucker, David
+Gaussinel, Stephane Dujourdy, Neil  Miller,  Wayne  Johnson, Gilles Bihan,
+Jerome Pages, Bruce Leppers, Johan Francois, Francois Scheurer...
+
+..et encore pleins d'autres  de  qui  j'ai  usé  et  abusé  et qui ne m'en
+voudront pas (j'espère) de ne pas figurer dans cette liste...
+
+{[IHelpInf ,4,3] Back to main menu }
+
+
+Features added to AMOS Professional
+
+Many things  have  been  improved  compared  to  the  previous  version of
+AMOSPro.
+
+
+- AMOSPro now works on a AA machine (1200/4000).
+
+You can now launch AMOSPro from  the  workbench  on a AA machine, and flip
+between AMOSPro and the workbench.  AMOSPro  does  not yet exploit the new
+resolution modes: we are currently working on it.
+You should just switch off any virus checker or any resident utility  that
+might  bring the workbench  screen to  the front while  AMOSPro is  on the 
+screen (you can however, leave the screen blanker utility ON while AMOSPro
+is running).
+This small problem will be corrected in the true AA version of AMOSPro, to 
+be released later this year.
+
+
+- AMOSPro now works with a screen blanker.
+
+A screen blanker can  work  under  the  workbench without causing problems
+with AMOSPro. When AMOSPro  is  displayed  it  sends  fake mouse movements
+every 5 seconds simulating a user  input. This prevents the screen blanker
+from popping up in the background.
+
+
+- The file selector has been vastly improved.
+
+* Full Multitasking: the input/ouput of  the  file selector is now handled
+by a separate task. You can safely type in a file name while the directory
+is being read.
+
+* STORE slider: instead of this  button's  old affect of displaying random
+directories, you are now presented with a list of all the stored directory
+pathnames. Just click on the pathname you  wish  to view and the list will
+be presented.
+
+* The Right mouse button now  has  an  affect. This was originally in AMOS
+and Easy AMOS: click the  right  mouse  button  and you'll get the current
+device list displayed in the file selector. Click again and you'll receive
+the assign list, click another  time  and  you'll  get  the stored list of
+directories, and another time brings you back to the directory you started
+from.
+
+* You can now enter full pathnames into the filename zone. For example, if
+you type "Work:AMOS_Pro/Interpretor_Config.AMOS"  into  the  name zone and
+press return, the filename will  be  computed into: "Work:AMOS_Pro" in the
+path zone and  "Interpretor_Config.AMOS"  into  the  filename  zone. Press
+RETURN another time to accept the name.
+
+* Fast file finding: enter one letter  into the name zone, and press HELP,
+the file list will be positioned  at  the begining of the specified letter
+(or as close as possible. This feature  is best used on large directories,
+there is no benefit if used in a directory of say nine files.
+
+
+- The text reader now accepts hypertext.
+
+By  using the enhanced  text reader, it is now possible to add interactive
+help files to your programs and even have a professional looking window in
+which to display the text.  This is a  simple process of just adding a few
+codes into your text.
+
+The hypertext system is of course based  on the AMOS  Interface  hypertext
+system. It's best that you take  a  look  at  page 09.03.15 of the AMOSPro
+User Guide and read up on the HyperText command before using this system.
+
+You  can   also   edit   the   file   called   "Equate.Doc"   (located  in
+AMOSPro_Productivity1:Equates.) This file is a  perfect  example of such a
+text.
+
+How to proceed.
+
+* Your text must begin with a special code, of 8 letters:
+
+  #HYPx000
+
+#HYP tells the text reader that the text includes hypertext codes.
+
+"x" is a number, from 1 to 9 informing the text reader how many hyper text
+codes there will be on one line.
+
+"000" is not used yet and is reserved for future expansions. You must keep
+it to 000!
+
+* Within the text define the  hypertext  zone using the normal method. The
+action taken when the user clicks on your zone depends on the TYPE (string
+or digit) of your zone.
+
+  + Digit: the number reported by the zone is a LINE NUMBER. When the user
+clicks on this zone, the text reader will simply go to the specified line.
+Example:
+
+      { [32 ,6,3]   How does it work?   }
+
+      will branch to line #32 in case of click...
+
+  + String: a click on this  zone  will  close  the text reader and report
+the keyword to the main program  in  =Param$.  If  the user clicked on the
+CLOSE icon of  the  text  reader,  =Param$  will  return  an empty string.
+Example (from Equate.Doc):
+
+      { [ADD,4,7] RUN and add equates current file }
+      { [CRE,4,7] RUN and create a new equate file }
+      { [QUT,4,7]     QUIT     }
+
+     In the program:
+
+      Read Text "Equates.Doc"
+      If Param$="ADD"
+      ...
+      Else If Param$="CRE"
+      ...
+      Else
+      ... Quit the program
+      End If
+
+Hyper-text is a  simple  and  user-friendly  way  of  creating menu driven
+program documentation.
+
+
+- Testing speed has been improved.
+
+The testing process has  been  rewritten,  and  is  now  up  to 50% faster
+(usually 30 to 40% on a 68000  based Amiga). The difference is obvious for
+bigger programs such as the Disc Manager and the Object Editor.
+
+
+- You can now configurate your  own  default  screen. Getting bored of the
+orange lowres  screen?  You'd  prefer  it  to  be  workbench  grey,  hires
+interlaced and overscanned? No problem,  just  set  it  up to your heart's
+desire using the new options in the Interpreter_Config.AMOS program.
+
+How to proceed?
+
+ + Call the  "Set  Interpreter"  option  from  the  Config  menu under the
+editor.
+ + Load the Default Configuration
+ + Select "System Configuration Page 1"
+ + Select "Set Default Screen"
+ + With the buttons, just define the characteristics of your screen.
+
+ Number of bitplanes: 1 for 2 colours, 2 for 4 colours, 3 is 8 colours
+                      4 is 16 colours. Hires mode on or off,
+                      Interlaced mode on or off.
+
+ + Use the sliders to set the colour palette.
+ + Once the characteristics of your screen  are defined you can modify its
+size and position on the screen by clicking on "Set Screen's Position"
+ + When everything is done, just click  3  times on EXIT (you have to keep
+moving  back  out  through   the   various   menus),   and  save  out  the
+configuration. Your default screen will appear next time you boot AMOSPro.
+
+Important Warning:
+Some program may rely on the default "default screen". That is 320x200 16
+colours, lowres with the old colour palette. They might stop with an error
+or the display may be corrupted.  So  to  fix  these programs just add the
+command:
+
+  Screen Open 0,320,200,16,Lowres
+
+to the start of the program's code.
+
+- You can now configure the Amiga-A key combination. Up till now there has
+been no choice, Amiga-A was  the  only  way  to  flip between AMOS and the
+Workbench. Now you can define your very own key combination.
+
+How to proceed?
+
++ Call the "Set Interpreter" option from the Config menu under the editor.
++ Load the Default Configuration
++ Select "System Configuration Page 2"
++ Enter the desired letter into the AMOS / Workbench edit zone
++ Click on the correct shift combination
++ Quit and save you  configuration.  The  new  key shortcut will be active
+after your next boot.
+
+
+- The ugly little workbench screen has been removed.
+AMOSPro used to open a small screen at the bottom of the workbench display
+to do its graphical  work.  Some  users  have  complained  about this (and
+rightly so). It has now been removed.  In fact the entire screen system in
+amos.library has been totally re-written so that it is much more
+system-friendly.
+
+- It is now possible to relocate the mouse pointer when in direct mode.
+If you have lost your mouse pointer  (it's off the screen or you've hidden
+it), just press the <HELP> key  and  the  mouse pointer will appear in the
+top-left corner of the direct mode window.
+
+- Direct mode history buffer now works exactly as the CLI history system.
+
+- Closing the last window also  gives  you  the option to quit the AMOSPro
+editor.
+When you close the last available  window  of  the  editor, you now have a
+requester asking whether  you  want  to  QUIT  AMOSPro  or  not.  It's not
+necessary to select the QUIT option from the AMOS menu any more. NOTE: you
+can even quit faster by quiting AMOSpro without any warning when you close
+the last window. This is activated if  you de-select 'Confirm Quit' in the
+"Quit Options" from the "Config" menu.
+
+- Disc Manager format and copy.
+The disc manager now  copies  discs.  It  can  also  copy  and format high
+density discs on an Amiga 4000.
+
+- The monitor does not single step through closed procedures anymore.
+This allows much faster debugging:  just  open  the procedures you want to
+step through and call the monitor. Any closed procedure will be treated as
+a single instruction.
+
+
+- The Resource Bank editor now has  a  "PRINT" option to print the strings
+contained in the bank.
+
+
+- The Editor remote control commands are now listed in the equate file.
+You can have full details about all the commands by running the program:
+
+  AMOSPro_Productivity1:Equates/Editor_Commands.AMOS
+
+{[IHelpInf ,4,3] Back to main menu }
+
+
+Problems removed from Version 1.0
+
+With your help, we  have  been  able  to  locate  and remove the following
+problems from V1.0:
+
+
+* Main instruction set
+
+- =Dev Check function used to return 0 just after opening the device.
+
+- Device instructions now check for the completion of the previous command
+before sending a new one.
+
+- Printer device now send its requester to AMOSPro and not the workbench
+screen as it used to do.
+
+- The equate system  now  works  fine.  For  more  information on equates,
+please run AMOSPro_Productivity1:Equates/Make_Equates.AMOS
+
+- Machine language procedures used to  have difficulty accepting more than
+one parameter.
+
+- ERRN now returns the proper error number.
+
+- ERR$ returns the good error message.
+
+- Track Loop On / Off now works
+
+- On Break Proc works.
+
+- LPrint does not leave the printer device open: you can now do an LPrint
+  and then a Printer Open.
+
+- The testing process does not report an error with the following line:
+
+  If A$="" And B$="" Then ...
+
+- Mid$, Left$, Right$ as instructions are now corrected. In the previous
+version, this program:
+A$=String$("a",5)
+B$=A$
+Left$(A$,1)="b"
+Print A$
+Print B$
+... used to print:
+baaaa
+baaaa
+Now it will print:
+baaaa
+aaaaa
+
+- =Input$(1,65536) used to crash.
+
+- =Input$() used to mess strings with input longer than 32767 bytes.
+
+- Set Buffer 0 used to crash.
+
+
+* Monitor
+
+- Now works in interlaced mode.
+
+- Pressing HELP while a program was run used to mess up the system.
+
+- You cannot evaluate any more the command =FSEL$() and any special
+functions. They used to cause funny effects!
+
+- Marking an array without marking the indexes used to crash.
+
+- Used to crash when accessing the program slider of a very small listing.
+
+- Expression evaluation problems removed.
+
+
+* File Selector
+
+- Default name now works.
+
+- The slider used to be badly positioned with a small number of files.
+
+
+* Editor
+
+- A random line number used to  be  displayed  in the Edit / Direct window
+after an error. Stupid bug this one. Sorry.
+
+- Blocks do not include random characters any more.
+ 
+- A program which included extension  commands that weren't available used
+to crash.
+
+- The User menu's add and delete options now work fine.
+
+- Autosave sometimes appeared for no reason.
+
+- You can now record a macro over an existing one without crashing.
+
+- You can now remove a keyboard shortcut.
+
+- Shift+Space does not produce a line of garbage any more.
+
+- The Insert / Overwrite button now indicates the current state.
+
+
+* Direct Mode
+
+- BStart and BLength used to crash
+
+- History buffer system corrected.
+
+- EDIT now works.
+
+- RUN now works.
+
+- CONTROL-C does not crash any more.
+
+- Dialog boxes do not grab all the keyboard inputs anymore.
+
+
+* Misc.
+
+- Make_Equates.AMOS program is present on the disc.
+
+- Disc Manager disc-copy option now works fine.
+
+- HELP Program now uses the  printer  device instruction to print the help
+files and checks for the presence of a printer.
+
+- Object Editor: when grabbing a  bank  from  the current program, the hot
+spots are not lost any more.
+
+- Default_Resource.IFF now has the correct colour palette.
+
+- AMOSPro.IFF now has the correct dialog box definition.
+
+- The default font  for  any  AMOS  screen  is  now  Topaz 8, whatever the
+default workbench font is.
+
+- EDialog reports the correct number.
+
+- Resource Bank editor: edited messages do not wrap any more.
+
+- Resource Bank editor: you cannot  lose  a bank grabbed from the previous
+program, without really wanting to.
+
+- German users, please  note that  it  has always been possible to get the
+' (apostrophe) character with your keyboard, by pressing ALT + ä
+
+{[IHelpInf ,4,3] Back to main menu }
+
+
+Corrections to the User Guide
+
+Page 08.01.01
+
+The second line of the program listing should read:
+
+Flash 1,"(FFF,1)(000,147)(A5F,2)"
+
+
+Page 09.01.09
+
+Line five of the second listing should read:
+
+A$=A$+"RU 0,%1100, wait for either a mouse click or a key press"
+
+
+Page 09.02.06
+
+The JmP command is in fact JumP.
+
+
+Page 09.04.04
+
+The message table should read:
+
+Positive number		String from the Resource Bank
+0			Full pathname of APSystem folder
+Negative number		Configuration system strings, as follows:
+-1 to -15		Default file names
+-16 to -42		All 26 extensions
+-43 -44 		Communication ports
+-46			Default cursor flashing
+-1001 to -2000 		Miscellaneous strings used by the editor		
+-2001 to -3000		Editor menu options
+-3001 to -4000		Editor messages
+-4001 to -5000		Test time messages
+-5001 to -6000		Run time errors messages
+
+{[IHelpInf ,4,3] Back to main menu }
+
+
+How to install Compiler and 3D Extensions
+
+* Please note: The Compiler extension only works with the old Compiler. Not
+  the new AMOS Pro Compiler which is due for release June 1993. You can only
+  compile programs that use the old AMOS command set. New commands in AMOS
+  Pro must be compiled with the new Compiler.
+
+This disc  includes  special  versions  of  the  AMOS1.3  Compiler  and 3D
+extensions that work under AMOSPro.
+
+Warning:   in  order  to  run the Compiler under AMOSPro, you must possess
+AMOS  V1.34 and Compiler V1.34 (or over).  If you don't have versions this
+high,  order  the  1.34 updates (2 discs) from your usual PD library.  You
+can also order the discs from any of the AMOS Clubs.
+
+Any version of 3D can be updated to work under AMOSPro.
+
+The following information is supplied for both Compiler and 3D.  Of course,
+if you just own Compiler, skip past information on 3D, and vice-versa.
+
+You just have to follow the  installation procedure, which depends greatly
+on your system's configuration.
+
+			{[IExFloppy  ,4,3]  You do not have a hard drive  }
+			{[IExHard    ,4,3]      You have a hard drive     }
+
+{[IHelpInf ,4,3] Back to main menu }
+
+Installing Compiler or 3D without a hard drive.
+
+Create a working disc containing:
+
+	AMOS1.34, the Compiler and/or 3D extensions installed.
+
+This disc will be used by AMOSPro's new extensions.  3D can then access the
+file  "c3D.lib"  from  it,  and Compiler will grab the Compiler and all the
+necessary  libraries  from  it.   This  method  leaves  your AMOSPro_System
+untouched  and  avoids  having  to  delete files to make room for 3D and/or
+Compiler.   In  fact  there  isn't  room  on a floppy disc for AMOSPro, the
+Compiler libraries and 3D.
+
+Follow these instructions carefully:
+
+- Boot AMOSPro in the usual manner
+
+-  Load  the  disc  manager  from  the  User  menu  (which now copies discs
+properly).
+
+- Now make a backup of your AMOSPro_System disc before beginning.  You must
+work  with a backup!
+
+Note:   Once you've installed AMOSPro with new extensions you may find that
+AMOSPro  fails to load.  This will be due to AMOSPro being asked to load an
+extension  that  just can't be found or isn't compatible with the extension
+location  it's  being  loaded  into.  If this were to happen you can easily
+revert back to your backup copy and start again.  Otherwise you'll never be
+able to get back into AMOSPro. So please take the time to back-up your
+original.
+
+-  From  the  Disc Manager open the "Extensions" folder on the root of your
+   AMOS Professional Productivity disc 2.
+
+- For the Compiler, copy the file:
+
+  AMOSPro_Productivity2:Extensions/AMOSPro_Compiler.Lib
+
+directly into your APSystem folder of your back-up AMOSPro System disc.
+
+- For 3D, copy the file:
+
+  AMOSPro_Productivity2:Extensions/AMOSPro_3D.Lib
+
+directly into your APSystem folder of your AMOSPro System disc.
+
+It should fit on the disc, but very tightly.  You will need to remove a few
+files.   AmigaDos  will  damage  a  disc beyond recognition if it gets over
+full, so we suggest that you remove the following file:
+
+  AMOSPro_System:Install_Data/Explosion.Abs
+
+This file contains the installer graphics data for the title.  Removing it
+will  not  prevent  the  installer  from working, but will simply skip the
+title.
+
+- For the Compiler, copy the file:
+
+  AMOSPro_Productivity2:Extensions/APCmp
+
+directly into your AMOS_System folder  on  your  AMOS 1.34 disc. It should
+sit next to "ACmp" the original Compiler for AMOS1.34.
+
+- Quit the Disc Manager and call the Interpreter Configuration accessory.
+
+- Load the default configuration
+
+- Select "Set Loaded Extensions"
+
+-  For  the  Compiler:   click  on  line  number  5,  and enter the
+following line EXACTLY as it appears here:
+
+  AMOSPro_Compiler.Lib -fAMOS:AMOS_System/
+
+-  For 3D:  click on line number 4, and enter the following line EXACTLY as
+it appears here:
+
+  AMOSPro_3D.Lib -fAMOS:AMOS_System/
+
+- Save the default configuration and quit the program.
+
+-  If  you're installing the Compiler, load "Compiler.AMOS", and change the
+line at the beginning of the program.
+
+Original line:
+
+  DPATH$=":AMOS_System"
+
+Change it to:
+
+  DPATH$="AMOS:AMOS_System"
+
+Note:   Ensure  the  disc  with  AMOS1.34,  Compiler1.34 and/or 3D is still
+called  "AMOS:".   If  it  has  changed, rename it using the Workbench menu
+option.
+
+Save Compiler.AMOS to disc.
+
+- Reboot your computer. AMOSPro should  boot  and load the new extensions.
+Check it with the "About New Extensions" menu option.
+
+- Compiler: when you call the Compiler, make sure your AMOS1.34 disc is
+ present in a drive. All Compiler data will be loaded from there.
+
+- 3D:  you will be asked to insert your AMOS1.34 disc to load the "c3D.lib"
+library.   If you're not short of memory, use the "TD KEEP" command to keep
+the 3D library in memory after it has been loaded for the first time.
+
+ 		{[IExInfo  ,4,3] Read this important Compiler information }
+
+Installing Compiler or 3D with a hard drive
+
+-  If  you own AMOS1.34 with the Compiler and 3D, your original AMOS_System
+folder should be located at the root of your current partition.  This means
+that  both  3D and Compiler extensions when run from AMOSPro can access the
+files  by  using  the following pathname:
+
+	":AMOS_System/".
+
+If  your  AMOS_System  folder  is elsewhere on your hard disc then read the
+text below located at the (*) marker now.
+
+- Load the Disc Manager utility.
+
+- Open the "Extensions" folder on the root of your AMOS Professional
+  Productivity disc 2.
+
+- Copy the files:
+
+  AMOSPro_Productivity2:Extensions/AMOSPro_Compiler.Lib
+  AMOSPro_Productivity2:Extensions/AMOSPro_3D.Lib"
+
+directly into your APSystem folder on your hard drive.
+
+- Load the Default Configuration
+
+- Select "Set Loaded Extensions"
+
+- For Compiler click on line number 5, and enter the following line EXACTLY
+as it appears here:
+
+  AMOSPro_Compiler.Lib
+
+- For 3D: click on line number 4, and enter the following line EXACTLY as
+it appears here:
+
+  AMOSPro_3D.Lib
+
+- Save the default configuration, quit the program and quit AMOSPro.
+
+- Reboot AMOSPro, your new extension  should  be loaded into memory. Check
+it with the option "About Loaded Extensions" from the editor menu.
+
+- You can now use 3D and Compiler as normal.
+
+(*) Your AMOS_System folder is not  located  at the root directory
+
+- Write down the FULL, EXACT pathname of your AMOS_System folder.  The name
+must  include  the  Device:  and all sub directories.  It should end with a
+":" or a "/".
+
+- Proceed as explained  above,  except  when  you  enter  the names of the
+extensions in the Interpreter Configuration.
+
+- Enter the name of the extension, followed by "-fpath", where path is the
+pathname of your extension. There should not  be any space between "f" and
+the pathname.
+
+- Load "Compiler.AMOS", and change the  following line at the beginning of
+the program:
+
+ Old line:
+
+  DPATH$=":AMOS_System"
+
+ New line:
+
+  DPATH$="...path of your extensions..."
+
+ Warning, There must not be a "/" character at the end of the path!
+
+ Example:
+
+ * Path to extension: Work:AMOS/AMOS_System/
+
+ * Compiler definition: AMOSPro_Compiler.Lib -fWork:AMOS/AMOS_System/
+
+ * 3D definition: AMOSPro_3D.Lib -fWork:AMOS/AMOS_System/
+
+ * In Compiler.AMOS: DPATH$="Work:AMOS/AMOS_System"
+
+		{[IExInfo  ,4,3] Read this important Compiler information }
+
+Important information about the Compiler
+
+This new Compiler extension will  allow  you  to  call AMOS Compiler V1.34
+from AMOSPro. This is NOT  the  new  AMOSPro  Compiler which is currently
+still under development at this stage (18/01/93). As a consequence:
+
+- The Compiler will only Compile 1.34 compatible programs.  Use the "Check
+1.34"  option  from  the  "Project" menu under the editor.  Obviously, the
+Compiler  will  not  compile  any  new  instructions, and will refuse bank
+numbers over 16.
+
+- If you compile a program as .AMOS type it will only run under AMOS1.34.
+This is because AMOS1.34 has different call equates to AMOSPro.
+
+- The configuration files used by  the  Compiler  are not the ones used by
+AMOSPro. The Compiler uses:
+
+  AMOS1_3_PAL.ENV (or NTSC) with error messages, or
+  RAMOS1_3.ENV without error messages.
+
+You should use your  "Config1_3.AMOS"  program  to  change anything in the
+configuration for the Compiler.
+
+          CALLING "INTERPRETER_CONFIG" FROM THE AMOSPRO EDITOR
+                     WILL NOT AFFECT THE COMPILER!!!
+
+{[IHelpInf ,4,3] Back to main menu }
+
+The future updates
+
+AMOS Professional is kept up-to-date and modern all the time. This is
+version 1.12 which is the result of four months extra work on the project
+after the initial release of V1.0.
+
+So keep up-to-date with the latest version by calling the AMOS Clubs or the
+AMOS PD library.
+
+We will continue with our update  policy.  Here  is some of the things you
+can wait for in the future:
+
+- Intuition On  /  Off  to  display  an  AMOS  Screen  under intuition and
+  therefore create real workbench applications.
+- New instruction to handle intuition screens.
+- More integration to the Amiga's system.
+- and all your good ideas!
+
+{[IHelpInf ,4,3] Back to main menu }
+

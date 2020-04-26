@@ -1,0 +1,124 @@
+
+Installation
+~~~~~~~~~~~~
+
+
+1. Petit demo d'introduction
+
+
+
+2. Welcome.
+Laisse la procedure de langage clavier.
+Laisse _CHECK_INSTALLATION et _ADAPT_CONFIG (mais pour tester, tu les vide!)
+
+AMOS Professional Compiler Registration
+Welcome to the AMOS Pro Compiler. Please enter your names below
+...Idem install AMOSPro...
+
+
+
+3. Your unique registration is:
+...etc...
+
+
+
+4. AMOS Professional Compiler Installation
+>>> Tu appelle la procedure _INSTALL_DISC (a la place de la boucle
+"install startup", que je ferais. Puis:
+
+Do you own AMOS Professional?
+
+YES >>> 5.
+NO  >>> 10.
+
+
+
+5. 
+Welcome happy AMOS Professional Users. The Compiler installer will
+copy all the necessary files onto your AMOSPro_System disc or
+onto your hard-disc, so that you can use the Compiler with all
+the facilities of AMOS Professional.
+
+The Compiler can only work with AMOS Professional V2.0 and over.
+Have you changed the version of your AMOSPro system?
+
+YES
+NO
+
+5.1. NO
+Please insert the AMOSPro_Updater disc into any drive, 
+and click on "UPDATE" (faire un seul bouton, UPDATE)
+... et puis la tu fais STOP!
+
+
+
+6. Si YES, on continue.
+
+Please choose one option:
+
+Install AMOSPro Compiler on a floppy disc   >>> 7
+
+Install AMOSPro Compiler on a hard disc     >>> 9
+
+
+
+
+7. AMOSPro Compiler Floppy disc installation.
+
+In order to make some room on your AMOSPro_System disc, the installer
+will have to remove some files from it, and copy them onto a newly
+formated disc called "AMOSPro_Extras:"
+
+So before proceeding, you should with the Workbench:
+
+- Format a blank disc,
+
+- Make a copy of you current AMOSPro_System disc as a matter of security.
+
+2 boutons:
+
+(1) My discs are ready, proceed with installation
+
+(2) Back to Workbench to format and copy
+
+En bas de l'ecran:
+
+Having trouble? Just read the manual at page XXX where the entiere procedure
+is fully described.
+
+Si (2): 
+Tu appelle la procedure _BACK_TO_WB. Elle fermera tout les ecrans, liberera
+le maximum de memoire, et fera revenir le workbench. Sur le workbench
+il y aura une joli icone "BACK TO INSTALLER" sur lequel clicker pour
+revenir.
+La procedure rouvrira tout avant de revenir.
+
+
+
+8. Tu appelle la procedure _FLOPPY_INSTALL et je prend le relai.
+
+
+
+9. Install AMOSPro Compiler on a hard-disc
+... Tu appelle la procedure _HD_INSTALL et je prend le relai.
+
+
+
+10. Suite pour ceux qui ne possedent pas AMOSpro
+
+The installer will create a disc called AMOSPro_Compiler which
+will enable you to compile all your programs created with 
+Easy AMOS and AMOS.
+
+In order to do so, you must have one blank disc ready to use.
+
+Please choose one option:
+
+Back to workbench to format a blank disc
+
+My disc is ready, let install it.
+
+En bas de l'ecran:
+Having trouble? All the procedure is explained in details
+in chapter XXX of the users manual.
+

@@ -1,0 +1,5 @@
+echo "***Assembling AMOSPro_Compiler.Lib"
+c/Library_Digest compiler/+Compext.s
+c/Genam FROM compiler/+Compext.s TO AMOS/APSystem/AMOSPro_Compiler.Lib
+delete >NIL: compiler/+Compext_Labels.s
+delete >NIL: compiler/+Compext_Size.s

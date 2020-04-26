@@ -1,0 +1,433 @@
+
+
+                      AMOS Professional Editor Commands
+
+                         Documentation by F.Lionet
+
+                  Copyright (c) 1993 Europress Software 1993
+
+
+
+                                Introduction
+
+
+The AMOSPro editor contains many advanced features. One of them is the
+ability to launch AMOS programs as accessories.
+
+To be an accessory a program has to respect a few rules:
+
+- The SET ACCESSORY command must be used within the sourcecode
+- The  program  must  be  launched from the AMOS menu, or assigned to a key
+  shortcut.
+- It must not be the currently edited program.
+
+If  the  above conditions are respected the program will have full access to
+the  source  code  of the current program.  This means it can edit the file,
+save  it  or  do whatever necessary with it.  It even has full access to the
+editor screen, and can even display into it!
+
+This system is incredibly powerful. Almost anything is possible.
+
+A few example ideas:
+
+- A  palette  generator:   instead of typing in the colours by hand, call a
+  palette accessory then select the colours with the mouse.  Upon quitting the
+  accessory,  the  'Palette'  instruction  with the correct colours is created
+  into the source!
+
+- Source analyser, list out all procedure names, cross reference variable
+  list etc.
+
+- An interface between the AMOSPro editor and AREXX:  The accessory gets
+  AREXX messages and transforms them into editor commands.
+
+- An adventure generator
+
+- The retokeniser is a good example: have a look at it.
+
+- etc, etc.
+
+
+
+                             How does it work?
+
+Once  your  program  is  called  as  an  accessory,  it  can use two AMOSPro
+instructions:  Ask Editor and Call Editor.
+
+Optional  parameters  returned  by  the  editor  will be found in =Param and
+=Param$.
+
+All the editor calls are defined in AMOSPro_System_Equate file.  You'll need
+to use the =Equ("") instruction to get the correct value.
+
+* Call Editor FUNCTION [,PAR][,PAR$]
+
+This  instruction is used to send commands to the editor.  It acts just like
+a  TV  remote  controler:   making the editor cursor move, opening a window
+etc.
+
+FUNCTION:  the number of the function to be called, must begin with "AEd_"
+PAR:   an  optional integer parameter, usually for requester simulated input
+(stated for each function).
+PAR$:  an optional string parameter, for example a file name.
+
+
+* Ask Editor FUNCTION [,PAR][,PAR$]
+
+As  the  name  implies, this instruction is used to get information from the
+editor.
+
+FUNCTION: the number of the function to be called. Must begin with "AEdAsk_"
+PAR: the optional integer parameter
+PAR$: the optional string parameter.
+
+
+
+                         The "Ask Editor" Commands.
+
+Any integer parameter is returned in =Param
+Any string is returned in =Param$
+
+AEdAsk_CurrentLine (1)
+* Returns the current line (under the cursor)
+* No parameter
+
+AEdAsk_ProgramName (2)
+* Returns the name of the current program
+* No parameter
+
+AEdAsk_X (3)
+* Returns the current cursor's X position
+* No parameter
+
+AEdAsk_Y (4)
+* Returns the current cursor's Y position
+* No parameter
+
+AEdAsk_NumberOfLines (5)
+* Returns the number of lines of the current program
+* No parameter
+
+AEdAsk_BlocX1 (6)
+* Returns the X position of the start of the highlighted block (if defined)
+* No parameter
+
+AEdAsk_BlocY1 (7)
+* Returns the Y position of the start of the highlighted block (if defined)
+* No parameter
+
+AEdAsk_BlocY2 (8)
+* Returns the X position of the end of the highlighted block (if defined) 
+* No parameter
+
+AEdAsk_BlocY2 (9)
+* Returns the Y position of the end of the highlighted block (if defined) 
+* No parameter
+
+AEdAsk_Free (10)
+* Returns the amount of free buffer space.
+* No parameter
+
+AEdAsk_Struc (11)
+* Internal use only
+
+AEdAsk_Token (12)
+* Tokenise the given ASCII String into AMOS source code, and returns a
+  pointer to a buffer containing the tokenised code.
+* PAR$= string to tokenise.
+
+
+                            The editor commands
+
+After the command has been called:
+
+=Param contains the error state:  0 if no error, <>0 if an error occured.
+
+=Param$  is empty if no errors occured, and contains the error message if an
+error occured.
+
+AEd_Up (1)
+* Moves the cursor up one line
+
+AEd_Down (2)
+* Moves the cursor down one line.
+
+AEd_Left (3)
+* Moves the cursor left one character.
+
+AEd_Right (4)
+* Moves the cursor right one character.
+
+AEd_TopPage (5)
+* Moves the cursor to the top of the current window.
+
+AEd_BottomPage (6)
+* Move the cursor to the bottom of the current window.
+
+AEd_WordLeft (7)
+* Move the cursor to the beginning of the previous word.
+
+AEd_WordRight (8)
+* Move the cursor to the beginning of the next word.
+
+AEd_PageUp (9)
+* Move the cursor up one page in the text.
+
+AEd_PageDown (10)
+* Move the cursor down one page in the text.
+
+AEd_StartLine (11)
+* Move the cursor to the start of the current line.
+
+AEd_EndLine (12)
+* Move the cursor to the end of the current line.
+
+AEd_WindowUp (13)
+* Moves the current window up.
+
+AEd_WindowDown (14)
+* Moves the current window down.
+
+AEd_WindowSmaller (15)
+* Reduce the size of the current window.
+
+AEd_WindowBigger (16)
+* Increase the size of the current window.
+
+AEd_TopOfText (17)
+* Move the cursor to the top of the text. 
+
+AEd_BottomOfText (18)
+* Move the cursor to the end of the text.
+
+AEd_Return (19)
+* Performs a <RETURN> 
+
+AEd_BackSpace (20)
+* Performs a <BACKSPACE>: delete one character to the left of the cursor.
+
+AEd_Delete (21)
+* Performs a <DELETE>: delete one character to the right of the cursor.
+
+AEd_ClrLine (22)
+* Clears the entire current line.
+
+AEd_DelLine (23)
+* Delete the current line, and scroll up the rest of the text <CONTROL-Y>
+
+AEd_Tab (24)
+* Insert one tab <TAB>
+
+AEd_SetTab (25)
+* Set the current tab value.
+* PAR= new tab value.
+
+AEd_InsertLine (29)
+* Insert one empty line at the current cursor position <F10>
+
+AEd_DelToEndOfLine (30)
+* Delete to the end of the current line <CONTROL-DEL>
+
+AEd_PreviousLabel (31)
+* Go to previous label.
+
+AEd_NextLabel (32)
+* Go to next label.
+
+AEd_Load (33)
+* Load a new program in the current window.
+* PAR$= filename of the program to load.
+* PAR= answer to the requester "Program not saved, save it?"
+0= CANCEL / 1=YES / 2=NO
+
+AEd_SaveAs (34)
+* Save the current program with a new name.
+* PAR$= new filename.
+
+AEd_Save (35)
+* Save the current program.
+* PAR$= optional name if program is not named.
+
+AEd_DelWordRight (36)
+* Delete the word to the right of the cursor.
+
+AEd_DelWordLeft (37)
+* Delete the word to the left of the cursor.
+
+AEd_Hide (38)
+* Hide the current program.
+
+AEd_SetSystemMark1 (39)
+* Set system mark number 1
+
+AEd_SetSystemMark2 (40)
+* Set system mark number 2.
+
+AEd_SetSystemMark3 (41)
+* Set system mark number 3.
+
+AEd_SetMark1 (42)
+* Set mark number 1.
+
+AEd_SetMark2 (43)
+* Set mark number 2.
+
+AEd_SetMark3 (44)
+* Set mark number 3.
+
+AEd_SetMark4 (45)
+* Set mark number 4.
+
+AEd_SetMark5 (46)
+* Set mark number 5.
+
+AEd_SetMark6 (47)
+* Set mark number 6.
+
+AEd_GotoSystemMark1 (49)
+* Move the cursor to the system mark number 1.
+
+AEd_GotoSystemMark2 (50)
+* Move the cursor to the system mark number 2.
+
+AEd_GotoSystemMark3 (51)
+* Move the cursor to the system mark number 3.
+
+AEd_GotoMark1 (52)
+* Move the cursor to the mark number 1.
+
+AEd_GotoMark2 (53)
+* Move the cursor to the mark number 2.
+
+AEd_GotoMark3 (54)
+* Move the cursor to the mark number 3.
+
+AEd_GotoMark4 (55)
+* Move the cursor to the mark number 4.
+
+AEd_GotoMark5 (56)
+* Move the cursor to the mark number 5.
+
+AEd_GotoMark6 (57)
+* Move the cursor to the mark number 6.
+
+AEd_BlocOnOff (59)
+* Toggle the block mode on/off.
+
+AEd_Forget (60)
+* Forget the currently stored block.
+
+AEd_OpenLoad (61)
+* Opens a new window, and loads the specified program into it. 
+* PAR$= file name to load
+* PAR= answer to "Buffer to small" requester. 0=NO / 1=YES
+
+AEd_BlocCut (62)
+* Cut the currently highlighted block.
+
+AEd_BlocPaste (63)
+* Paste the currently stored block.
+
+AEd_DelToStartOfLine (64)
+* Delete to the start of the current line.
+
+AEd_Undo (65)
+* Performs one step of UNDO.
+
+AEd_Search (66)
+* Initialise the search process. Search does NOT begin after this 
+  instruction, you should call AEd_SearchNext ou AEd_SearchPrevious.
+* PAR$= string to look for (31 char maximum).
+* PAR=0: lower<>upper, PAR=1 lower=upper.
+
+AEd_SearchNext (67)
+* Search for the next occurence of the string.
+
+AEd_SearchPrevious (68)
+* Search for the previous occurence of the string.
+
+AEd_ChangeLine (69)
+* Replace the current line with the specified one. Does NOT tokenise 
+the line or store it into the text buffer. This line will be 
+tonkenised automatically if the cursor is moved.
+* PAR$= new string to force into the screen.
+
+AEd_NewLine (71)
+* Replace the current line on the screen and tokenise it. Then redisplays
+the tokenised line (which may differ).
+* PAR$= new string to force into the text.
+
+AEd_BlocStore (72)
+* Stores the highlighted block into memory.
+
+AEd_Clear (80)
+* New the current program.
+* PAR= answer to "Program not saved, save?" requester. 0=CANCEL / 1=YES / 2=NO
+
+AEd_Close (81)
+* Close the current window.
+* PAR= answer to "Program not saved, save?" requester. 0=CANCEL / 1=YES / 2=NO
+
+AEd_Merge (84)
+* Merge a program from disc with the current one, at the cursor's position.
+* PAR$= name of the program to merge.
+
+AEd_MergeAscii (85)
+* Merge an ascii text at the cursor's position.
+* PAR$= name of the file to merge.
+
+AEd_BlocPrint (86)
+* Print the currently stored block.
+
+AEd_UnfoldAll (89)
+* Open all closed procedures.
+
+AEd_WindowPrev (91)
+* Activate previous window.
+
+AEd_WindowNext (92)
+* Activate next window.
+
+AEd_WindowToggle (93)
+* Toggle the size of the window (large or small).
+
+AEd_Redo (94)
+* Performs one REDO step.
+
+AEd_BlocSaveAscii (97)
+* Save the currently stored block as an ascii file
+* PAR$= name of the file to create
+
+AEd_BlocSave (98)
+* Saves the currently stored block.
+* PAR$= name of the file to create.
+
+AEd_Replace (99)
+* Initialise the replace string and replace modes. You should first
+  call AEd_Search to set the searched string, and the search mode.
+  Replace process only begins if TURBO mode is selected, otherwise you
+  must call AEd_ReplaceNext or AEd_ReplacePrevious.
+* PAR$= string to replace with, 31 characters maximum.
+* PAR=0: normal replace, PAR=%0100: turbo within the block, 
+  PAR=%1000: turbo for whole text.
+
+AEd_ReplaceNext (100)
+* Replace next occurence of searched string.
+
+AEd_ReplacePrevious (101)
+* Replace previous occurence of searched string.
+
+AEd_Open (103)
+* Opens a new AMOS window.
+
+AEd_PrintProgram (146)
+* Send the current program to the printer.
+
+AEd_HighlightAll (181)
+* Highlight all the current text.
+
+AEd_ChangeConfig (182)
+* Changes one of the editor's internal configuration strings.  Used in
+  AMOSPro_Editor_Config.AMOS
+* PAR$= new string
+* PAR= number of the string to change

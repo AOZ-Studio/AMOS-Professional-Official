@@ -1,0 +1,42 @@
+@node C_Iflood "Intuition Extension 1.0 Command: Iflood"
+@next C_IfontBase
+@prev C_Ierr
+
+IFLOOD
+------
+
+Iflood x,y,mode
+
+Performs a flood fill starting at coordinates (x,y).  The mode parameter
+determines how far the fill goes: if mode is non-zero, all pixels with the
+same colour as the pixel at (x,y) are filled with the foreground colour.
+However, if mode is zero, the fill only goes as far as pixels with the current
+outline colour.
+
+Here is an example of the two different filling modes: (Assume the foreground
+colour is 1, and the outline colour is 2.  The Iflood command was given from
+the "*", which has a colour of 3.)
+
+		Mode=0					Mode<>0
+
+	0000000011111100000000			0000000011111100000000
+	0000111144334411110000			0000111144334411110000
+	0011444433333344441100			0011444433333344441100
+Before	11443333*3333333334411			11443333*3333333334411
+	0011444433333344441100			0011444433333344441100
+	0000111144334411110000			0000111144334411110000
+	0000000011111100000000			0000000011111100000000
+	
+	0000000011111100000000			0000000011111100000000
+	0000111144224411110000			0000111122222211110000
+	0011444422222244441100			0011222222222222221100
+After	1144222222222222224411			1122222222222222222211
+	0011444422222244441100			0011222222222222221100
+	0000111144224411110000			0000111122222211110000
+	0000000011111100000000			0000000011111100000000
+	
+
+See also: @{" Iink " link C_Iink}
+
+@endnode
+

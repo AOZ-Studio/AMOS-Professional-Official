@@ -1,0 +1,30 @@
+From: xcszjmp@scs.leeds.ac.uk
+Date: Thu, 25 Apr 1996 16:13:25 +0100
+To: achurch%dragonfire.net@gps0.leeds.ac.uk
+Subject: RE: Intuition
+
+
+Thanks Andy, that Iwait Event should speed up my program quite a bit hopefully
+as I can go direct to the code triggered from a gadget rather than checking
+all the gadgets to see which one is used.
+
+If you remember, I mailed you about a couple of bugs in the input systeM,
+where clicking on a gadget and then moving away from it while the mouse button
+was still down, would leave the gadget 'down' (Igadget down) even when
+the mouse was released. This meant that if you input some text into a 
+string gadget and then clicked somewhere else on the screen with the mouse
+then the string gadget was registered as 'down'...until the user went back
+to it and pressed return in the string gadget. I don't know if you have
+\sorted this out but I'll do some tests when I get home.
+
+One effect of the above problem was that (on my instrument slider which se
+lected an instrument as in Octamed), if I moved the mouse off the hit button
+that registered a UP or DOWN , if I moved the mouse off it, it would keep
+selecting the next instrument as the code interpreted the gadget as 'down'
+when it shouldn't have been.
+
+Anyway I suppose I should go and test it before telling you about the bugs
+becaUSE you've probably fixed them by now!\
+
+ThANks again,
+JOE

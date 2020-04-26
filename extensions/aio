@@ -1,0 +1,5 @@
+echo "***Assembling AMOSPro_IOPorts.Lib"
+c/Library_Digest extensions/+IO_Ports.s
+c/Genam FROM extensions/+IO_Ports.s TO AMOS/APSystem/AMOSPro_IOPorts.Lib
+delete >NIL: extensions/+IO_Ports_Labels.s
+delete >NIL: extensions/+IO_Ports_Size.s

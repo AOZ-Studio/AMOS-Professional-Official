@@ -1,0 +1,15 @@
+echo "***Assembling the Editor Configuration"
+c/genim2 +Editor_Config.s -oRAM:Editor_Config.o
+c/Get_Chunk RAM:Editor_Config.o AMOS/Tutorial/Extra_Configs/Editor_Config.Backup
+
+echo "***Assembling the default Interpreter Configuration"
+c/genim2 +Interpreter_Config.s -oRAM:Interpreter_Config.o
+c/Get_Chunk RAM:Interpreter_Config.o AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup
+
+echo "***Installing default configuration"
+Copy AMOS/Tutorial/Extra_Configs/Editor_Config.Backup AMOS/APSystem/AMOSPro_Editor_Config
+Copy AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup AMOS/AMOSPro_Interpreter_Config
+
+echo "***Installing default configuration to s:"
+Copy AMOS/Tutorial/Extra_Configs/Interpreter_Config.Backup s:AMOSPro_Interpreter_Config
+

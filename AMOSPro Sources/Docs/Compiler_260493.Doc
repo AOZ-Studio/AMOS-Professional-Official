@@ -1,0 +1,320 @@
+
+
+Hi Richard... Here are a lot of infos on the compiler. You must
+read the compiler help as well. Both files and the compiler shell
+itself should keep Stephen Hill busy for a few days, time for me
+to finish the APCmp.
+
+In the help file, some titles may need to be re-centered, the
+display needs to be checked: Jean-Baptiste did not spend too
+much time on this as all the text need re-writing.
+If you dont like the structure of the help file (the way the different
+chapters are linked together) fell free to change it, but 
+please do not change the keywords.
+
+In the help file, I have put remarks, preceeded by "***".
+
+
+Cheers, Francois.
+
+
+
+AMOSPro Compiler Documentation 26/04/93
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1- The installer.
+-----------------
+
+It will have the same look than the AMOSpro installer. I will ask
+Jean Baptiste to start it as soon as possible.
+
+Floppy users: we will have to ask the user to format an empty
+disc, and call it AMOSPro_Extras:. The installer will copy
+on this disc some programs from the AMOSPro_System disc:
+Install.AMOS + Memory banks
+Interpreter_Config.AMOS
+Editor_Config.AMOS
+
+This will leave enough space to install the compiler on the system
+disc. It will automatically modify the menu options (Interpreter Config, 
+Editor Config) from the editor, so that the system remains fully
+unchanged.
+
+This installer will automatically add 2 new options to the user menu:
+
+- "Compiler" call the compiler main screen
+- "Compile!" compile the current program in a new window. This option
+will not call the main shell, but a reduced version that will eat less
+memory.
+- "Set Compiler" call the main shell with a command line that will
+make it directly boot into MAIN SETUP page.
+When you quit this page, it will return to the editor.
+
+
+
+2- The Compiler Shell
+---------------------
+
+Nothing to say here, as it is very obvious to use. You will get informations
+on all the buttons by clicking on HELP and then clicking on the
+buttons.
+I have added information on the configuration files in the setup panels.
+Still to do are the error messages.
+
+In order to have the help, you must have at least 150 K of free memory.
+You will be asked to insert the AMOSPro_Accessories: disc into any
+drive to load AMOSPro_Help.AMOS
+TIP: just load the AMOSPro_Help.AMOS program in the AMOS menu from the
+editor if you want to speed up the help feature from the compiler:
+the program will not need to be loaded any more, just the help
+files.
+If you select "Enable warm start" from the editor's QUIT OPTION, next
+time you boot AMOSPro, you'll find the help accessorie pre-loaded
+for you.
+
+TIP: if HELP refuses to load when you call the compiler from the
+USER menu, it will certainly work if you load the compiler in the 
+main window.
+
+
+The buttons in the shell do not have the same meaning as for the original
+AMOS Compiler Shell.
+* Before: DISC / RAM selecting the way to compile the program, ie how
+fast it would go.
+* Now: APCmp is automatic, it decides alone of the best way to compile the
+program depending on your system (see later).
+The buttons now select where to take to program, and where to put it.
+	- Where it comes from: 
+		+ Current window (only if the shell is an accessory) 
+		+ Disc: opens a file selector
+		+ List: opens a	list selector
+	- Where to put the object code:
+		+ Current window (only if the shell is an accessory)
+		+ Disc: opens a file selector
+Make sure that old AMOS users understand this.
+
+
+Compiling from current window to another editor window.
+
+This option takes advantage of the AMOSPro accessories system, and 
+will make you gain a lot of time.
+It asks for quite a lot of memory or space disc to hold the
+temporary files, so you should have more than one meg to use it on a big
+program.
+How does it work?
+
+- The source option "current" will only be available if the compiler
+shell is called from the USER menu (you can select it now even if you
+run the shell from the editor window, but this will be corrected later)
+If selected, the source program is taken in the active editor window.
+- The object option "current" here too be only available if the 
+compiler shell is an accessory.
+If selected, the object program type can only be "AMOS".
+How does it work:
+- Select the options,
+- Click on "Compile"
+- The compiler grabs the current program, test it, report any errors.
+If an error is found, you will have a requester:
+Syntax error at line XXX
+and have two choices:
+(1) Back to AMOSPro Editor : you will be brought back to the faulty line
+(2) Go on : back to the main Compiler_Shell panel.
+... More on this when APCmp is over.
+- The compiler then compiles the program onto the temporary files disc
+(see later in this file), by default, the ramdisc.
+- Then a new window is opened in the editor, and the temporary program
+loaded into it.
+- The temporary program is then erased from the temporary folder
+- The newly created compiled program in the editor is then renamed to match
+the source program pathname, and not any more the temporary pathname.
+- The Compiler_Shell ends and brings you back to the editor, in the
+newly compiled program, ready to be runned.
+
+NOTE: if a window with the compiled program already exist, then the 
+compiler shell close this window before opening a the new one, preventing
+you from having many windows with the same compiled program on the screen.
+
+
+3- Compiling from direct mode.
+------------------------------
+The "COMPILE" instruction will still be available, of course, as in
+the original AMOS Compiler:
+
+Compile "command_line"
+
+Improvment: if you specify an empty string (Compile ""), AMOSPro will
+compile the CURRENT program, using the default command line in the
+compiler configuration, and automatically save the program to disc using
+its name, just near it.
+
+Example, you are editing "Work:AMOS_Pro/My_Program.AMOS", go in direct
+mode, type Compile "", the compiler will create the program:
+Work:AMOS_Pro/My_Program
+
+You should recommend this way of compiling for people who dont have a lot
+of RAM: this way they save the space used by the compiler shell.
+
+
+
+4- The compiler itself.
+-----------------------
+
+All the topics I dont talk about are un-changed since AMOS compiler.
+
+
+1. The configuration
+~~~~~~~~~~~~~~~~~~~~
+The compiler configuration is now stored in the "S:" folder of the Amiga,
+just near the AMOSPro_Interpreter_Config, and is called (surprisingly)
+AMOSPro_Compiler_Config
+This file is no more an ascii file, and cannot be edited with a 
+normal editor. The only way to modify it is to boot the Compiler_Shell.AMOS,
+and select the configuration panels.
+
+
+2. Memory management (command line option -d00)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The -d option does not exist any more, as the compiler is now much smarter.
+before compiling a program, it looks to the free memory, and decides
+alone what are the best options to use.
+Of course, it will prefer to do everything in ram if it is possible.
+
+
+3. The buffers size
+~~~~~~~~~~~~~~~~~~~
+The compiler now evaluates the size of the internal buffers from the size
+of the source to compile. So it will happily work well on small programs
+and on biiiiig programs, over 80k : you do not have to choose another
+configuration file as before.
+
+
+4. Tokenising
+~~~~~~~~~~~~~
+The compiler is also smart on this: it finds out by itself about the
+type of the source code.
+When you call the compiler from the CLI (ex: APCmp MyProg.Asc)
+the compiler look at the first 16 bytes of the source code. If if finds
+the proper AMOSPro or AMOS headers, then it realise that the source
+code is an AMOS program.
+If not, then it loads the first 256 bytes of the source, and finds out
+if the source code is an ascii file: it counts the number of good
+ascii characters (>32, and cariage returns and tabs) out of the 256 bytes.
+If the percentage of bad bytes exeed the one you expect for a normal
+ascii file, then the compiler sees that it cannot compile the file, and you
+will get the error message:
+"Not an AMOS program"
+
+If the file is a proper ASCII file, then the compiler loads the tokenisation
+routines from the "Compiler.Lib" library, and starts the tokenisation
+process.
+
+Tokenising is ALWAYS done to the disc. The name of the file is computed
+from the name of the source code by turning the ".asc" (or anything after
+the latest dot) into ".AMOS". If no dot is found, the ".AMOS" is simply
+added to the name.
+This file is to be deleted after compilation, unless you specify the
+"-f" option (see later)
+This file is normally saved just beside the source files (ie using the
+same pathname) unless you specify a temporary file pathname using the
+"-?" option or change the string number 9 in the compiler system strings
+setup (see help file)
+For example, temporary file name is "Ram:", the tokenised program 
+pathname will be: "Ram:MyProg.AMOS"
+
+Tokenising can bring some errors:
+
+Line too long at line XXX
+
+After the program is tokenised, then APCmp goes to TESTING.
+
+* Option "-f", FORCE tokenisation.
+This option can be very usefull: it turns the compiler into a 
+tokeniser only. Example:
+
+APCmp MyProg.Asc -f
+
+APCmp will tokenise MyProg.Asc into MyProg.AMOS, and quit. MyProg.AMOS
+will be directly loadable into the AMOSPro Editor.
+Such a tokenisation goes much faster than loading an ascii source 
+directly into the editor.
+
+
+5. Testing
+~~~~~~~~~~
+If the program is not tested (saved before begin tested from the 
+AMOSpro editor, or just freshly tokenised by APCmp), then APCmp
+will test it.
+To do so, it will load the test routines from "Compiler.Lib", and
+then load the .AMOS program into RAM. As a consequence, you must
+have enough space to hold the entiere program all at once in ram
+to compile a non-tested program.
+Then the testing process takes place, and asks for the usual testing
+time (same as under AMOSpro Editor)
+If any error is detected, then APCmp loads the testing error messages
+from the AMOSPro_Editor_Config (he can find the proper pathname to this
+file by just lookin into AMOSPro_Interpreter_Config), and then extract
+the correct message.
+As a consequence, if a user customise his error messages under the 
+editor, they will ALSO be customised under the compiler.
+
+Then the message is printed like this:
+
+Syntax error at line XXX
+
+and the compilation is aborted.
+
+
+6. Compiling.
+~~~~~~~~~~~~~
+Nothing more to say on the compiling process. Some changes inside, but
+externally, it just compiles!
+
+
+7. The amos.library
+~~~~~~~~~~~~~~~~~~~
+If you have AMOSPro installed on your machine, then you must have
+"amos.library" installed in your libs: folder.
+The library contains al the core of the AMOS display: all the
+screen routines, bob/sprite/amal/inputs are here.
+
+The original AMOS compiler used to copy all these routines each
+time into the object code, resulting in a object code minimum size
+of 45K.
+APCmp does not copy the amos.library into the compiled program (unless
+you specify it with a command line option). The result is a much smaller
+objet code.
+Example, Print "Hello" is compiled in 4K (to be confirmed later)
+The only obligation is to have the amos.library available when you start
+compiled program. Make sure you copy the library when you create a bootable
+disc.
+
+You can force the copy of the library with the new compiler option : "-a"
+
+"-a" will force APCmp to copy the amos.library in the program. The program
+will then run even if the library is not present in the libs: folder.
+This also ensures that you program will run whatever the version of the 
+amos.library is present in the libs: folder.
+
+
+8. Creating a boot disc
+~~~~~~~~~~~~~~~~~~~~~~~
+A big problem for many users. I'll have Jean Baptiste to program a small
+utility that will:
+- Ask for the name of the program to be put on a bootable disc
+- Format a blank disc,
+- Copy all the necessary files from the AMOSPro_System disc on this
+  disc,
+- Save out a proper startup-sequence to have a bootable disc ready.
+
+Just document this in the manual. No need to have any screen shot, as
+the interface will be simple: just a dialog box, and then a file 
+selector.
+
+
+Informations still to come:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- New powerpacker.library access with the Compiler Extension new commands
+- Exact list of the new command line options (I may add a few this week)
+- The compiled code, technical infos
+- List of the compiler error messages (many more than for the original
+  compiler)

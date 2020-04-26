@@ -1,0 +1,2 @@
+echo "***Assembling AMOSPro_Monitor"
+c/genam FROM +Monitor.s TO AMOS/APSystem/AMOSPro_Monitor

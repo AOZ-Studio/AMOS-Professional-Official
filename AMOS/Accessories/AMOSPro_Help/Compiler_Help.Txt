@@ -1,0 +1,1076 @@
+Main Menu
+
+Welcome to the  AMOSPro Compiler Help  system.  Please choose one option:
+
+                     {[IHelphelp   ,4,3]   Using the Compiler Help system      } 
+
+                     {[IUseShell   ,4,3] The AMOSPro Compiler Shell main panel }
+
+                     {[IAbout      ,4,3]         About AMOSPro Compiler        }           
+
+                     {[ILatestNews ,4,3]              Latest News!             }           
+
+Using Help
+Welcome to the AMOS Professional Compiler Help System.  Everything you need
+to  know  about  the Compiler is available from here.  So if you get stuck,
+help will only be a key press away!
+
+You call up the Help by clicking on the 'Help' icon, this is always present
+in  the  top right hand corner of screens that have accompanying help text.
+When  the  Help  button  has been clicked on and is 'down' you then need to
+click  on  an area of the screen that you need help with.  You'll know that
+help is available when the mouse pointer starts to animate - this indicates
+you  are  over a zone which has help available.  Once you've clicked on the
+zone  for  help  the  Help  display  program will be loaded from disc and a
+screen will appear detailing the Help you requested.
+
+If  the Help text is longer than the Help window you can move through it by
+pressing  the Up and Down arrow keys on your keyboard or by clicking on the
+arrow  icons  locate  at the top right of the Help window.  To move through
+the  text  quicker,  just  drag  the  slider bar on the right border of the
+window.
+
+Across the top of the Help window there are four icons:
+
+1 The X icon closes the help window and returns you to the Compiler Shell.
+
+2 Prev.Page reverts you back to the help screen you had just been viewing.
+
+3 Main Menu takes you to the main help menu which offers a full list of the
+  available help topics.
+ 
+4 Print creates a hardcopy of the current help screen onto a printer for
+  future reference.
+
+
+About AMOSPro Compiler
+
+The AMOSPro Compiler has been made possible by:
+
+	Project Manager: 		Richard Vanner
+	Main design & programming:	François Lionet
+	Shell design & programming:	Jean-Baptiste Bolcato
+	Examples by:			Jean-Baptiste / Syntex / François
+	Help file & Documentation:	Stephen Hill
+	Graphics:			Jean-Baptiste
+					Nick Harper
+
+	Production:			Richard Peacock
+	Marketing:			Alexa Czechowski
+					Anna Donaldson
+					Johnathon Leas
+
+
+		(c) Europress Software Ltd 1993
+		Europa House
+		Adlington Park
+		Macclesfield
+		Cheshire
+		SK10 4NP
+		England
+
+Latest News about AMOSPro Compiler!
+
+		 {[INewCommand   ,4,3]            New command-line commands         }
+                 {[IFuture       ,4,3]              The   future  updates           }
+                 {[IFrenchGreets1,4,3]            A French greeting list - 1        }
+                 {[IFrenchGreets2,4,3]            A French greeting list - 2        }
+
+
+A short while after the manual was gone to the printer, we have added a few
+commands to the compiler command line.
+
+These  new  instructions were designed mainly for debugging purpose, but we
+thought they could be really usefull to you, so we left them in!
+
+
+Option:	NUMBERS
+
+Very usefull option to locate an error in a compiled program.
+
+This  option forces the compiler to include the source program line numbers
+in  the  object  code.   It  will  automatically  include as well the error
+messages  in the code.  So, if an error occurs in your compiled program, it
+will return the error like this:
+
+Illegal function call at line XXX
+
+XXX being the line n the source program, with ALL PROCEDURES OPENED.
+
+Warning, this options has some severe drawbacks:
+
+-  The source program _must_ be loaded all at once in memory to be compiled
+(to  count  the  lines):   you must therefore have enough memory to compile
+like this,
+
+- Each line number will increase the length of the object code by 4 bytes,
+
+- The program will be a tiny tiny bit slower.
+
+
+Option: BIG
+
+This  compiler estimate the size of its internal buffers from the number of
+lines of the source program.
+
+We  have  tested  the process with over 1000 programs, and for all of them,
+each buffer had a reasonable security edge (half of the buffer).
+
+But  one never knows.  There might be a very very special program with only
+strings, or only labels or...  whoever knows.
+
+The  BIG  option  multiplie  by  FOUR the size of the estimated buffers.  A
+difficult program should compile without any problem.
+
+So,  if  the  compiler  crashes  when  compiling  your program, try the BIG
+option.  We never needed this option.
+
+Drawback:
+
+- Eat a lot of ram
+
+
+Option: DEBUG=1
+
+Another good debugging option.
+
+With this option, the compiler outputs to the current CLI the number of the
+line being executed by the compiled program.
+
+Of  course,  it only works if the program has been launched from a CLI, and
+it slows down the program a maximum!
+
+The output has the form:
+
+(1000)(1001)(1005) etc...
+
+The compiler does not include lines with REMs.
+
+Drawbacks:
+
+- Source in ram,
+- Code increase by 8 bytes by line,
+- Very slow on execution (as CLI scrolling speed is disatrous)
+
+Note: DEBUG=2 or over will not work. One option ONE is implemented!
+
+
+
+Future updates of AMOSPro Compiler
+
+As for AMOSPro Interpreter, the AMOSPro compiler will constantly be
+updated in the future. Please report to us any remarks, or compiling 
+problems. We will read and take note of all your remarks, and if possible
+modify our product from your suggestions.
+
+In case of compiling problems, before reporting it to us, please check
+carefully that your compiled program run in exactly the same configuration
+than you interpreted program. A badly setup boot disc often cause a compiled
+program to break, if it cannot find a library for example.
+The use the Boot Disc Maker to create bootable disc will ensure that all
+the necessary files are present on the disc.
+
+If you are sure that a problem comes from the compiler, then make a full
+report on the problem:
+
+- Configuration,
+- What to do to have the problem,
+- When does it happen,
+
+And most important, send the source program, with all the necessary data,
+so that we can test it.
+
+
+
+A French Greetings list by François LIONET!
+
+Haha!   Best part of the development:  the greeting list.  Here we go for a
+little bit of Français maintenant!
+
+Or donc, merci merci à:
+
+-  Jean  Baptiste  Bocalto:  deux mois de travail avec moi pour le dégouter
+totalement du métier de programmeur!
+
+- Carine, ma tendre épouse, qui de toutes façons ne lira jamais ce greeting
+(vu qu'elle est ne comprend ab-so-lu-ment rien aux ordinateurs)
+
+- Christophe, qui ne sait pas encore lire,
+
+-  Yves,  ca  y  est, maintenant pour de vrai, c'est fini (ça fait un an et
+trois mois que je lui dis que c'est fini dans deux mois!)
+
+- Philippe, Denis zé Bernard, vive le KAF, vive ART vive le CTV!
+
+- Hélène, Fabrice et Julien (tout neuf!)
+
+- Daisy pour sa présence fidèle et humide,
+
+-  Et pis bon, tout les gens que je connais, en m'excusant pour a) répondre
+aux lettres avec trois mois de retard, b) mettre mon répondeur les jours de
+stress, c) vous ennuyer avec des greetings qui n'en finissent pas.
+
+Justement, c'est fini. Atchaooo!
+
+
+PS: Daisy, c'est mon chien, slurp, slurp (pas de malentendus hein?!)
+
+
+A French Greetings list by Jean-Baptiste BOLCATO!
+
+
+I  want  to  thank a lot of people, in French!  (so, please jump again onto
+your dictionary...)
+
+- Francois LIONET (Beuh, Qui c'est çuilà?!)
+
+- Franck 'FNACguy/ImagineBoy', Alexandre 'Mr KEEL', Denis 'BASIC INSTINCT',
+Fred 'A4000' Picos, Piegouse 'A1200'...
+
+-   Doctor   'G5'   BERARD,  tous  les  crapauds  de  Mulhouse:   (Achille,
+Wermelinger, Henocq, Ducque, le Bpers et tous les autres!)
+
+-    Jean-Yves    'SLAPPY',   Antoine   'Challenger   Grosbidou',   Pierrot
+'PowerBourse!',   Laurent   'BLAISE',  Marianne  'KUNGFU'  (love!)  ,  Greg
+'VaudouMan' et tous les ex et futurs IMAC avengers...
+
+- Maman, Papa, Zoé, Mammie, Pépé, Tonton, Tata, Stop!!! 
+
+- et tous ceux que j'ai (in)volontorairement oublié... 
+
+
+The AMOSPro Compiler-Shell
+
+The  main  screen  of  the AMOSPro Compiler Shell contains the main options
+which enable you to compile your programs quickly and easily.
+
+It's  very easy to select the source, destination and type of your compiled
+program and then start the compilation process.
+
+			{[IMain_Source    ,4,3]            Source            }
+			{[IMain_Dest      ,4,3]          Destination         }
+			{[IMain_Type      ,4,3]             Type             }
+
+			{[IMain_Compile   ,4,3]           COMPILE!           }
+
+			{[IMain_Setup     ,4,3]            Set-Up            }		
+
+
+Setup Options button
+
+This button takes you to the main setup panel.
+
+                        {[IMain_Setup,4,3] View Main Setup panel help }
+
+
+
+AMOSPro Compiler main setup panel
+
+From  this  panel you can tailor the Compiler exactly to your requirements.
+You are able to fine tune the available settings and save these changes out
+as  defaults.   So  every time you load the Compiler it will be set up just
+how you like it.
+
+
+                       {[ISetUp1           ,4,3]      Compiled program Setup     }
+                       {[ISetUp2           ,4,3]       Compiler Shell Setup      }
+                       {[ISetUp3           ,4,3]      Compiler System Setup      }
+
+                       {[ISetUp_LoadConfig ,4,3]           Load Config           }
+                       {[ISetUp_Saveconfig ,4,3]           Save Config           }
+                       {[ISetUp_Savedefault,4,3]         Save As Default         }
+
+
+
+Quit
+
+Click  on this icon to end using the Compiler.  A requester will ask you to
+confirm your actions.
+
+
+Source
+
+By  continuously clicking on this icon you will reveal the available source
+options that you can use for compiling:
+
+Current Program:  This will only be available to AMOS Pro users calling the
+Shell  from  the  Editor.   The  source  program to be compiled will be the
+program  in  the  current  window  that was active when the user called the
+Shell.
+
+Disk:   The source program to be compiled can be any AMOS program (or Ascii
+file)  located  on  a disk.  When you select COMPILE!  a file selector will
+allow you to choose the source file you wish to compile.
+
+List of progs:  When you click on COMPILE!  with this option set as source,
+the  {[IEditList,4,3]'List  of  programs' Editor} will appear.  This allows
+you  to create a list of files which are to be Compiled in one whole batch.
+We call this the Auto-Compile option.
+
+
+Destination
+
+Clicking  on  this  toggle  button  will  reveal  the available destination
+options that you can use.
+
+Editor  Window:  This is only availble to AMOS Pro users who call the Shell
+from  their  Editor.   The  compiled file will be saved into a new AMOS Pro
+program window.
+
+Disk:  This allows you to save the final compiled program to disk and state
+exactly  what  it's to be called and where it will be saved.  Upon clicking
+on  COMPILE!   and selecting a source file, a file selector will ask you to
+enter  the  name  of  the  destination file.  If you don't enter a name the
+Shell  will  create  a  default  name,  it  does this by removing the .AMOS
+extension  off  the  source  file  and  using  the  ramining  name  as  the
+destination filename.
+
+If you are compiling a list of programs then all destination filenames will
+be given default names.
+
+
+The Type of Destination Compiled file
+
+The type of file you want the Compiled file to be is set here.
+
+AMOS  Compiled:   If  this  option is set your compiled program can ONLY be
+loaded  into  AMOS  Pro.   The  program code is all stored in one procedure
+which  is  called  when  the program is run.  This type of Compiled program
+allows  you to develop all your work in AMOS Pro until your happy to create
+a completed CLI or Workbench program.
+
+CLI exec:  The resulting destination file will be a CLI executable program.
+Optional  parameters (Send to back and CLI detachable) which effect the way
+a CLI program behaves, can be set from the Set up panel.
+
+WB exec:  A compiled program created in this format will have an additional
+.info  icon  file saved along side it, allowing you to run it directly from
+the Workbench screen.
+
+Other    parameters    can   affect   the   destination   file,   See   the
+{[IMain_SetUp,4,3]Setup} panels for more information.
+
+
+COMPILE!
+
+This button starts the compilation process.  Once you press it a variety of
+things can happen:
+
+* If you  are compiling  to  and  from  disk, file  selectors  will  appear
+  requesting  the filenames  and  locations  of the  source and destination
+  files.
+
+* Compiling from   a list of files  will result in  the  appearance of  the
+  {[IEditList,4,3]'List of programs' Editor}.
+
+* AMOS Pro users who are compiling too and from Editor windows will see the
+  compilation at once.
+
+When  the Compiler knows where to find the file to be Compiled and where to
+place  the final destination file it starts its real work.  If music and/or
+an  IFF  animation  have  been  selected, they will be called up during the
+Compiling process.
+
+If  no  errors occur the compiled program will be saved as the type of file
+you  selected and given the parameters set up in the {[ISetUp1,4,3]Compiled program SetUp}
+panel.
+
+
+Cancel
+
+Changes made to a panel will be cancelled if this  button is clicked on. In
+other words it Undoes any selections you have made and quits the panel.
+
+
+Use
+
+Selecting  this  confirms you are happy with all your Setup Options and you
+want to use them during this current compiling session.
+
+
+Ok
+
+The  Ok  Buttons  confirm  changes made to individual panels.  After you've
+clicked  on  OK  you're  taken back to the panel that originally called the
+panel containing the OK button.
+
+
+List of programs Editor
+
+If  you  have  selected  'List  of  progs' as the source option in the main
+Compiler  Shell window, this screen will appear after you click on COMPILE!
+It  allows  you  to  set up a list of files that you want to Compile in one
+whole batch.
+
+You can click on several buttons: {[IEdList_AddPrg,4,3]Add prog}, {[IEdList_AddDir,4,3]Add Directory},  {[IEdlist_DelPrg,4,3]Delete prog} or
+{[IEdList_DelAll,4,3]Delete All}. You can also directly click on the {[IEdList_Window,4,3]list} of files.
+
+
+After  clicking  OK,  the  compilation  of the list of programs will begin.
+Once by one they will be compiled until the last in the list is done.
+
+The   Compilation   can  be  aborted  by  pressing  the  'Esc'  key  during
+compilation.   A  requester  will  then  ask  you  if  you want to Abort or
+Continue the rest of the files.
+
+This  mode  also  uses the animation and music options which are located in
+the Compiler Shell Setup panel.
+
+
+Add a program to the List
+
+Click  on this and a  file selector will appear.  From  the  selector choose
+a  .AMOS file  you wish to add to the compilation list. The file will now be
+shown in the list.
+
+                        {[IEditList,4,3] Back to Edit List main menu }
+
+
+
+Add a Directory to the List
+
+This  button gives you the power to select a whole directory of .AMOS files
+for  compilation.   After  you  click  on  the  button a file selector will
+appear, from this select a single .AMOS program from the directory you wish
+to add all the files from and the Shell will add them to the list.
+
+If a program already exists in the list it will not be double entered.
+
+
+                        {[IEditList,4,3] Back to Edit List main menu }
+
+
+Delete a Program from the List
+
+You can remove a file from the list by clicking on the filename in the list
+and then selecting this button.
+
+
+                        {[IEditList,4,3] Back to Edit List main menu }
+
+
+Delete All the List
+
+All  files  in the list are removed if you click on this button and confirm
+your actions in the additional requester.
+
+                        {[IEditList,4,3] Back to Edit List main menu }
+
+The List of programs window
+
+The  files  listed  in  this  screen  area can be highlighted individually.
+Click on  a filename and  it will become  highlighted.  You can then select
+Del Prog to remove it form the list.
+
+The  slider  bar  to the left of this window is to view more files than the
+window can display.
+
+                        {[IEditList,4,3] Back to Edit List main menu }
+
+
+Next Panel Button
+
+You can move to the next panel by clicking on this button.
+
+                          {[IMain_SetUp,4,3] Back to Setup main menu }
+
+
+Compiled Program - Setup 1
+
+The way  a  program  is compiled  can be  set by entering  this part of the
+shell.   So  click  on this button and you'll have the options displayed to
+you.
+
+
+                          {[ISetup1    ,4,3] Compiled program setup 1 }
+
+                          {[IMain_SetUp,4,3] Back to Setup main menu  }
+
+
+Compiled program Setup panel 1
+
+Here  you  can  set  the  available  options that affect the way a compiled
+program works.
+
+
+                     {[ISUp1_errmess   ,4,3]       Include error messages?         }
+                     {[ISUp1_defscr    ,4,3]        Create default screen?         }
+                     {[ISUp1_backboot  ,4,3]    Send AMOS to back upon booting?    }
+                     {[ISUp1_CLIrun    ,4,3] CLI program to run in the background? }
+                     {[ISetup12        ,4,3]              Next Panel               }
+
+                     {[IMain_SetUp     ,4,3]       Back to Setup main menu         }
+
+
+Compiled program Setup panel 2
+
+The  second  panel  holds  the remaining options for affecting the compiled
+program's outcome.
+
+                     {[ISup1_LongJump  ,4,3]          Long forward jumps?          }
+                     {[ISup1_AMOSlib   ,4,3]         Include AMOS.library?         }
+                     {[ISetup1         ,4,3]               Next Panel              }
+
+                     {[IMain_SetUp     ,4,3]        Back to Setup main menu        }
+
+
+Include Error messages?
+
+Setting  this option to 'YES' allows you to combine the AMOS error messages
+into the compiled program.  This increases the size of the compiled program
+by 4K.
+
+It's  best  to  keep  your  error  messages  in during the development of a
+creation,  otherwise  you  wouldn't  have  a clue as to why a program might
+error out.
+
+                     {[ISetUp1  ,4,3] Back to Compiled program Setup menu }
+
+
+Create default screen?
+
+Set  to  'YES', your compiled program will boot and open the normal default
+screen.   If  you set it to 'NO' ensure that your program opens up a screen
+before using any screen commands - if you don't your program will error out
+with a 'SCREEN NOT OPENED' error.
+
+                     {[ISetUp1  ,4,3] Back to Compiled program Setup menu }
+
+
+Send AMOS to back upon booting?
+
+You  can  choose to have your AMOS program load up and not display anything
+to  the  screen.   So  the Workbench will still be on view even though your
+program  is  running in the background.  If the program executes an AMOS TO
+FRONT command or the user types Aniga+'A' (or custom) then the AMOS program
+will take over the display.
+
+Use  this  option  when  you  want  your application to create it's startup
+screen and flip cleaning to it.
+
+
+                     {[ISetUp1  ,4,3] Back to Compiled program Setup menu }
+
+
+CLI programs to run in the background?
+
+Setting  this  option  to 'YES' allows programs compiled as CLI type can be
+executed  from  the  CLI and detach themseleves from it.  So the CLI prompt
+will  become  free  once  the  compiled  program  is up and running.  It is
+similar to the AmigaDos 'Run' command.
+
+                     {[ISetUp1  ,4,3] Back to Compiled program Setup menu }
+
+
+Long Forward Jumps
+
+Some  programs  can  cause  the  comiler  a  little  trouble.  This type of
+scenario  would  occur for example when the differnce between an IF command
+and it's corresponding ELSE is greater than 32K.
+
+As  standard the compiler uses special faster instructions to jump around a
+program  but these commands are limited to a range of 32K.  If your program
+has structures which exceed this limit they will fail to compile.  It's not
+possible  for  the compiler to just select the right type of jump it has to
+be recompiled using long jumps from the start.
+
+The golden rule is to use this feature if you receive the error message:
+
+	 "Structure too long, compile with the LONG option."
+
+                     {[ISetUp1  ,4,3] Back to Compiled program Setup menu }
+
+
+Include the AMOS.library in the compiled program?
+ 
+This option has an affect on a program when compiling the program as either
+CLI or Workbench types.
+
+When  compiled  set to 'NO' the compiled program will load the AMOS.library
+from  disc (usually resident in the Libs:  drawer).  Having this option set
+is  very beneficial, it allows you to have a number of compiled programs on
+a disc and only one copy of the 40K library.
+
+If  it's  set  to  'NO'  the Compiler will merge the AMOS.library with your
+compiled program.  Although this adds 40K to every compiled program it does
+mean  that  if  you release your creation, you'll be sure your program will
+have  the  most up-to-date library and not be accessing an old library when
+running  on  someone  elses  machine.  In effect it makes the program fully
+stand-alone.
+
+                          {[ISetUp1  ,4,3] Back to Compiled program Setup menu }
+
+
+Compiler Shell Setup button
+
+This button takes you to the Compiler Shell Setup panel.  From here you can
+alter all shell settings.
+
+                          {[ISetup2    ,4,3] The Compiler Shell Setup }
+
+                          {[IMain_SetUp,4,3] Back to Setup main menu  }
+
+
+Compiler Shell Setup 1
+
+The  Shell can be tailored exactly to your needs.  Speed the compiler up to
+amazing  performance timings by copying files to the ramdisc and squash the
+final output with the latest powerpacker library.
+
+Beware that these commands will require lots of memory.
+
+
+                    {[ISUp2_copylib ,4,3]     Copy all libraries into Ramdisk?     }
+                    {[ISUp2_leavelib,4,3] Leave libraries on Ramdisk upon Exiting? }
+                    {[ISUp2_APcmpram,4,3] Keep compiler APcmp in Ram upon Exiting? }
+                    {[ISUp2_squash  ,4,3]          Squash compiled program?        }
+
+                    {[ISetup22      ,4,3]                 Next Panel               }
+
+                    {[IMain_SetUp   ,4,3]          Back to Setup main menu         }
+
+Compiler Shell Setup 2
+
+This  panel  of  options  are fun items!  To make compiling a more exciting
+sport  we've  included  animation  and  music  entertainment.  You can also
+remove  those  annoying animated buttons on the main screen of the shell if
+you  like - or do you like them?  Whatever your desires the options in this
+menu are here to make your compiling life a little easier to bare.
+
+Remember  that  memory  will  be  eaten  up  by anims and music so don't be
+surprised if you receive an out of memory error.
+
+
+                    {[ISup2_iffanim ,4,3]    Play IFF animation while Compiling?   }
+                    {[ISup2_tracker ,4,3]   Play Tracker Module while Compiling?   }
+                    {[ISup2_warnbell,4,3]            Warn with Bell sound?         }
+                    {[ISup2_animbutt,4,3]   Animated Buttons when under pointer?   }
+
+                    {[ISetup2       ,4,3]                  Next Panel              }
+
+                    {[IMain_SetUp   ,4,3]           Back to Setup main menu        }
+
+
+Copy all libraries into Ramdisk?
+ 
+With  this  option,  you  can  choose to load all libraries into Ram before
+compiling.  This is great for speeding up the compilation.  But you'll need
+a lot of Ram!
+
+                      {[ISetUp2  ,4,3] Back to Compiler Shell Setup menu }
+
+
+Leave libraries on Ramdisk upon exiting?
+ 
+Set  this  to 'YES' and the compiler will keep all its libraries on the Ram
+disc once it has finished compiling its first file of the session.  This is
+highly  useful  to  AMOSPro  users  who can come in and out of the Compiler
+Shell from their Editor.
+
+It  means  that  next  time  the  Compiler  is used, the initialisation and
+loading of necessary data will be much faster with subsequent compilations.
+
+The only draw back is that it eats memory!
+
+Also  ensure  that  the option 'Copy All Libraries into Ramdisk?' is set to
+Yes.
+
+
+                      {[ISetUp2  ,4,3] Back to Compiler Shell Setup menu }
+
+
+Keep Compiler APcmp into Ramdisk upon exiting?
+
+The actual compiler code (APcmp) will be left on the Ramdisc if this option
+is  set  to 'YES'.  The next time the compiler is used it will access APcmp
+from the Ramdisc saving time.
+
+This option eats up memory so be careful.
+
+Also  ensure  that  the option 'Copy All Libraries into Ramdisk?' is set to
+Yes.
+
+
+                      {[ISetUp2  ,4,3] Back to Compiler Shell Setup menu }
+
+
+Squash compiled program?
+ 
+Once  a  program has been compiled it can be squashed down in size.  If you
+set  this  option  to  'YES'  it  will  be processed automatically once the
+compilation has been completed.
+
+You'll find that the resulting program will be significantly shorter.
+
+Only Workbench and CLI files can be squashed.
+
+
+                      {[ISetUp2  ,4,3] Back to Compiler Shell Setup menu }
+
+
+Play IFF animation while compiling?
+ 
+Set  up  this  option  to  'YES'  and  you can play an IFF animation during
+compilation.
+
+You  can  assign  any  IFF 'anim5' file type by clicking on the little disk
+icon  located  just  below  the  YES/NO button.  It is only active when the
+option is set to 'YES'.  The option requires ram:
+
+ * The size of your animation file (FAST RAM).
+
+ * The size of the screen opened to play the animation file (CHIP RAM).
+
+                      {[ISetUp2  ,4,3] Back to Compiler Shell Setup menu }
+
+
+Play tracker module while compiling?
+ 
+Fancy  some  hard  Rock  or  soothing  piano  music  during the compilation
+process?   Just  find  a  music module of your liking and assign it to this
+option.
+
+You  can load any tracker module, AMOS music, Iff sample, MED music (if the
+MED.library  is  in  your  Libs:  folder).  Simply click on the little disk
+icon  available  only when the option is set to 'YES'.
+The option requires ram:
+
+ * The size of your module (CHIP RAM)
+
+                      {[ISetUp2  ,4,3] Back to Compiler Shell Setup menu }
+
+
+Warn with a Bell sound?
+ 
+With  this  option  you  can  play  a  Bell  sound  when the compilation is
+finished.   It  will  not be activated if you play a Tracker or MED module.
+It's useful for when you compile a huge program or batch of files - you can
+do something else while the compiler is hard at work.
+
+                      {[ISetUp2  ,4,3] Back to Compiler Shell Setup menu }
+
+
+Animated buttons when under pointer?
+
+If you like animated buttons when the mouse pointer moves over their active
+zone  area then set this option to 'YES', otherwise do like me and set them
+to 'NO' - the choice is yours!  This option requires a little ram:
+
+ * 12K of FAST RAM to store the different frames.
+
+                      {[ISetUp2  ,4,3] Back to Compiler Shell Setup menu }
+
+
+Compiler System Setup Button
+
+This  button  takes  you  to the Compiler System Setup panel.  Here you can
+modify many of the internal filenames used by the compiler.
+
+This  is  only  recommended for advanced users who fully understand how the
+compiler works.
+
+                      {[ISetUp3  ,4,3] The Compiler System Setup panel }
+
+                         {[IMain_SetUp,4,3] Back to Setup main menu }
+
+
+Compiler System Setup panel (Expert Users only)
+
+Here  you can modify the default settings of the APcmp compiler and all the
+its system messages and directories.
+
+                        {[ISUp3_defcom   ,4,3]     Default Command Line    }
+                        {[ISUp3_gosysfile,4,3]    Compiler system files    }
+                        {[ISUp3_gocmpmess,4,3]    CLI compiler messages    }
+                        {[ISUp3_gocmperr ,4,3]   Compiler Error Messages   }
+
+                        {[IMain_SetUp    ,4,3]   Back to Setup main menu   }
+
+
+Default Command Line Editor
+
+APcmp  has it's own default CLI command line.  Selecting this button allows
+you to view the command line and edit it to your own needs.
+
+The default command line is only used compiling takes place from the CLI or
+from  AMOSPro Direct mode with the 'COMPILE' instruction.  It has no affect
+if you compile with the compiler shell, this is because the settings of the
+compiler shell over-ride the settings of the default command line.
+
+Please refer to your manual for more information on the available options.
+
+                     {[ISetUp3  ,4,3] Back to Compiler System Setup menu }
+
+
+Compiler System files Editor
+
+Clicking on this button brings up a selector box, inside of which is listed
+all  the Compiler System files and paths.  Simply click on the filename you
+want to alter and edit the text in the resulting edit box.
+
+Ensure you know what you are doing!
+
+                     {[ISUp3_sysfile ,4,3] The compiler system files in detail }
+
+                     {[ISetUp3       ,4,3] Back to Compiler System Setup menu  }
+
+
+The compiler system files
+
+This  list  of filenames hold all the important information required by the
+compiler  to  do  its  job  of  compiling.  Each file is very important and
+shouldn't be modified unless you know exactly what you are doing.  Improper
+setting will probably cause compilation errors.
+
+If  the  worst  came  to  the worst, you would have to restore the compiler
+configuration to its original state by loading up the file:
+
+ "AMOSPro_Compiler:Default_Config/AMOSPro_Compiler_Config"
+
+using the "Load Config" option in the Compiler Shell Main Setup panel.
+
+
+Here's a description of each files significance.
+		
+1 - Default Compiler configuration file.
+
+Default filename: S:AMOSPro_Interpreter_Config.
+
+This  string  holds  the path and filename of the Interpreter configuration
+file.   The compiler needs this file to extract important settings like the
+number of bobs, the default screen definition etc.
+
+You must be very careful should you change it.
+
+
+2 - Main Compiler routines.
+
+Default filename: "Compiler.Lib"
+
+
+This  string  contains  the  name  of  the  compiler routine library.  This
+library  contains  all  the functions that cannot be compiled together with
+the  routines  used  by  the  interpreter.  These include commands like the
+loops, branches and the tests etc.  You shouldn't change it, unless you get
+new  libraries which perform special tasks.  In this case all the necessary
+information would be given with the library.
+
+
+3 - AMOS.library name.
+
+Default filename: "amos.library"
+
+This  filename  points  to  the system library which holds all the code for
+screen manipulation.  The filename will only be required by the compiler if
+you choose to merge the AMOS.Library with your compiled program.
+
+
+4 - Name of the CLI header
+
+Default filename:  "Header_CLI.Lib"
+
+This  string  points  to  a file within your APSystem folder.  This file is
+used  as  a  header  for  files  compiled  as CLI type.  The header is 100%
+machine language and performs all the necessary operations to initialise an
+AMOSPro Compiled program.
+
+
+5- Name of the CLI header with 'backstart' option.
+
+Default filename:  "Header_Backstart.Lib"
+
+This  string  points  to  a file within your APSystem folder.  This file is
+used  as  a  header for files compiled as CLI and have the option to run in
+the  background  enabled.  The header is 100% machine language and performs
+all  the necessary operations to initialise an AMOSPro Compiled program and
+return to the CLI while the program continues to run.
+
+
+6- Name of the AMOS header.
+
+Default filename:  "Header_AMOS.AMOS"
+
+This  string  points  to  a file within your APSystem folder.  This file is
+used  as a header for files compiled as AMOS Type.  In fact, this file is a
+small AMOSPro program with a SET BUFFER command and a closed procedure.  If
+you  so  wish,  you  can  modify  this  program  by  adding  whatever  code
+(preferably remarks) before the _COMPILED procedure.  In no case should you
+remove the 'SET BUFFER' or the _COMPILED procedure.
+
+
+7- Name of the default icon.
+
+Default filename:  "Def_Compiled"
+
+This  name  points to a file within your APSystem folder.  This file is the
+icon  saved along with your Compiled program when the option "To Workbench"
+is selected.  The icon is just a normal Amigados ".info" file.  You can add
+as  many icons as you like into your APSystem folder and change this string
+to point to the one you'd like to use each time you compile.
+
+
+8- Temporary files pathname
+
+Default filename:  "Ram:"
+
+This  name  is  an  optional  pathname used to store temporary files during
+compilation.   Work  files  that will be saved, loaded and erased from this
+path include:
+
+ * Tokenised programs when compiling Ascii files
+ * Compiled programs when AMOS Pro users compile programs directly to and
+   from the Editor using the Shell.
+
+All the temporary files are deleted after they've served their use.
+
+It's best if you specify a fast device such as the ram-disc or a hard-disc.
+
+
+9 - Temporary program pathname
+
+Default filename:  Ram:Temp_Program.AMOS
+
+When  Compiling  from the current editor window in either the Compiler Shell
+or  with  Tiny  Shell,  the  compiler saves out a temporary program during
+compilation, and deletes it when finished.
+
+This  string  holds  the name and path of this program.  If you are short of
+memory, you can change this string to point to your Hard-disc or even floppy
+drive.   Doing  this  will  ensure you can use the facility of compiling the
+current program from the editor, even on a small machine.
+
+
+10- Temporary compiled program pathname
+
+Default filename: Ram:Compiled_Program.AMOS
+
+A temporary file will be created if you compile to an AMOS Pro editor
+window from the Shell or Tiny Compilers.
+  
+As  with  string  9,  you  can  save  ram  by  changing the pathname to your
+hard-disc or even floppy drive.
+
+
+                     {[ISetUp3  ,4,3] Back to Compiler System Setup menu }
+
+
+CLI compiler messages Editor
+ 
+By clicking on the CLI Compiler messages button you'll enter a dialogue box
+which  lists  them  all..  Click on the one you want to modify and then you
+can edit the string.
+
+                     {[ISUP3_cmpmess ,4,3] The CLI compiler messages in detail }
+
+                     {[ISetUp3  ,4,3] Back to Compiler System Setup menu  }
+
+The CLI compiler messages in detail
+
+When  you  call the compiler from the CLI (by using the command "APCmp") or
+when you compile from direct mode (by using the "COMPILE" instruction), the
+AMOSpro  Compiler  outputs  different  messages to keep you informed on the
+compiling process.
+
+These  messages can be altered without any worry of upsetting the compiler.
+So  if  you feel the need to customise the compiler's progress reports then
+be our guest.
+
+If  you  enter  an empty string it won't be printed at all.  This means you
+can create a quiet compiler if you wish.
+
+1 - 4 Title strings.
+These  four  strings  are  printed  whenever  you  call  APCmp and echo the
+Compiler's credits.
+
+5 - Tokenising program.
+If  the  program  is  an  ascii file, APCmp will print this file before the
+tokenisation process begins.
+
+6 - Testing program.
+If  the program needs tested then this string is printed before the testing
+process begins.
+
+7 - Opening libraries.
+APCmp  opens  all  the  main  libraries and extensions before compiling and
+prints this message.
+
+8 - Compiling program.
+Printed at the start of the code generation.
+
+9 - Copying library routines.
+Printed  when APCmp copies the different routines from the libraries to the
+compiled program.
+
+10 - 
+Printed for each library routine copied. Usually this string is empty.
+
+11 - Copying system data.
+Printed when APCmp begins the copy of the AMOS.library if required.
+
+12 - Copying memory banks.
+Printed if the program contains memory banks to be copied.
+
+13 - Opening source.
+Printed  when  APCmp opens the source program.  This may take a little time
+on a floppy disc if APCmp loads the entire program into RAM.
+
+14 - Closing object.
+Printed  when APCmp closes the object program.  This may take a little time
+on a floppy disc if APCmp saves the entire compiled code from RAM.
+
+15 - Total memory used:
+This  information  line  will  be  printed  at  the  end  of  a  successful
+compilation.
+
+16 - Object length:
+This is the final object length report and is printed at the end of the
+compilation.
+
+17 -  bytes.
+Printed after a number which represents a report in bytes!
+
+
+                     {[ISetUp3  ,4,3] Back to Compiler System Setup menu  }
+
+
+Compiler Error messages Editor
+ 
+Clicking  on  this  button displays a list of Error messages.  Click on the
+one you want to modify and then you can edit the string.
+
+
+                     {[ISUp3_cmperr  ,4,3]    The error messages in detail     }
+
+                     {[ISetUp3  ,4,3] Back to Compiler System Setup menu  }
+
+
+The Compiler Error messages in detail
+
+*** To be done later as some new messages may pop up before APCmp is over!
+
+
+Load Config Button
+
+By clicking on it you can load any Compiler configuration file from a disk.
+
+                        {[IMain_Setup,4,3] Back To Main Setup panel help }
+
+Save As Default Button
+
+By clicking on it you can save the current Compiler configuration into the
+default configuration file. Note that the previous default configuration
+will then be overwritten and lost.
+
+                        {[IMain_Setup,4,3] Back To Main Setup panel help }
+
+Save Config Button
+
+By  clicking  on  it  you  can save the current Compiler configuration to a
+different  file  on the disk.  A requester will ask you for the name of the
+file.    To  save  the  configuration  as  a  default  one  just  click  on
+the {[ISetup_SaveDefault,4,3]Save Default} button.
+
+
+                        {[IMain_Setup,4,3] Back To Main Setup panel help }
+
+

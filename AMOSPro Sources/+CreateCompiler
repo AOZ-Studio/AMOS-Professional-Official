@@ -1,0 +1,3 @@
+.Key Drv
+Format drive <Drv> Name AMOSPro_Compiler NOICONS
++MakeCompiler <Drv>

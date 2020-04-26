@@ -1,0 +1,55 @@
+Date: Fri, 11 Aug 1995 10:51:42 +0200 (METDST)
+From: Branko Collin <bcollin@mpi.nl>
+To: Andy Church <achurch@binx.mbhs.edu>
+Subject: Re: Bug report
+Mime-Version: 1.0
+
+On Thu, 10 Aug 1995, Andy Church wrote:
+
+> >First the good news: The colours are indeed fixed! The menus are still 
+> >green on black, but so are the menus of a lot of pre-AGA and even some 
+> >during-AGA software. Also the text is back to normal.
+> 
+>   Finally!  You have no idea how long those menus have been bugging me.  In
+> older versions the menus would sometimes stretch the entire height of the
+> screen for no apparent reason.
+>
+
+I have no idea what you're talking about?!? I have never encountered any 
+'stretched' menus.
+ 
+> >However, the reading of of the text gadget still causes an error, number 
+> >8000 0004 to be exact. I used the program I sent you for testing it.
+> 
+>   Sigh.  I'll go back and look at stuff again.
+> 
+
+I did some more testing. I did the following things:
+-I inserted a Wait Key before the Igadget Read$ command: flip back to 
+Amos to press the key and: error 8000 000B.
+-I inserted an Iwait Key before Igadget Read$: error 8000 0004.
+-I made a minimal program. See below for the pseudo code version. Result: 
+error 8000 0004.
+'	Iscreen open
+	Reserve Igadget 1
+	Set Igadget String 1
+	Repeat Until Igadget Read$ = "Quit"	'
+
+> >Intuition Guide v.1.3b:
+-I noticed on the "Set Screen Title" page a link to "=Iscreen Title 
+Height" that is not on the "Screen Commands" page. What does it do 
+anyway. Can't you just use something like Text Height (or whatever the 
+command is) to determine how high the titlebar will be?
+-I tried to test the new commands, but the tokeniser decided against it.
+Set Iscreen Title	becomes		Set Iscreen TITLE
+=Iscreen Title Height	becomes		=Iscreen TITLE HEIGHT
+Set Iwindow Title	becomes		Set Iwindow TITLE
+
+Although I was looking for bugs, I did not use any system in looking. I 
+currently have not got much time on my hands (not entirely true, as I am 
+trying to learn E at the same time). I suggest that you put some old 
+betatesters back to work, considering the ease I stumble across these 
+bugs (even though most of them are small).
+
+.... .  .    .      .           .            .      .    .  . ....
+   Branko Collin                                 bcollin@mpi.nl

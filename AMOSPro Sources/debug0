@@ -1,0 +1,3 @@
+Copy +Debug0.s +Debug.s
+Delete +Debug_On
+Delete +Debug_2On

@@ -1,0 +1,45 @@
+Date: Thu, 10 Aug 1995 13:31:56 +0200 (METDST)
+From: Branko Collin <bcollin@mpi.nl>
+To: Andrew Church <achurch@binx.mbhs.edu>
+Subject: Bug report
+Mime-Version: 1.0
+
+
+First the good news: The colours are indeed fixed! The menus are still 
+green on black, but so are the menus of a lot of pre-AGA and even some 
+during-AGA software. Also the text is back to normal.
+
+However, the reading of of the text gadget still causes an error, number 
+8000 0004 to be exact. I used the program I sent you for testing it.
+
+I am now trying to get to grips with E and EYacc, so testing will be a bit 
+slow these days. However, I did manage to go through the docs, and these 
+are the faults I discovered:
+Intuition Guide v.1.3b:
+-Contents screen:
+	-There is no registration link. Is this because these are the 
+'registered' docs?
+	-Index button does not do anything.
+-What does the Intuition Extension need to run:
+	-It does not mention that it does not run under pre-2.0 Amos Pro. 
+I know it does in the notes, but why not mention it here?
+	-What are KS 1.3b and Amos 1.3b?
+-The future:
+	-I believe you already put in Window and Screen title.
+manipulation commands.
+-Window Commands:
+	-The link "Set Iwindow Title" points to "Set Iscreen Title".
+-Screen Commands: 
+	-The link "Set Iscreen Title" will generate an error.
+-Command Index:
+	-The link "Set Iwindow Title" points to "Set Iscreen Title".
+	-"Set Iscreen Title" is not in the index.
+
+I have not tested the new commands yet.
+
+.......................................................................
+.       Branko Collin          .  'Zij ontmoetten elkaar in Gent,     .
+.                              .   parel van de Belgische Ardennen    .
+.   //  u249026@vm.uci.kun.nl  .   en overbekend om zijn prachtige    .
+. \X/   bcollin@mpi.nl         .   tulpenvelden.' - Wereld Nonsens    .
+.......................................................................

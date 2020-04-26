@@ -1,0 +1,28 @@
+From: "D.S. IRVING" <gen3dsi@SOUTH-02.NOVELL.LEEDS.AC.UK>
+Organization: University of Leeds
+To: Andy Church <achurch@dragon.res.cmu.edu>
+Date: Thu, 29 Feb 1996 18:08:53 GMT
+Subject: Re: My  Sample-Play-via-MIDI Amos Utility....
+Return-receipt-to: "D.S. IRVING" <gen3dsi@SOUTH-02.NOVELL.LEEDS.AC.UK>
+X-mailer: Pegasus Mail for Windows (v2.23)
+
+Hello,
+
+I just remembered a problem I encountered with your intuition 
+extension....
+
+I have a problem with the 'igadget down' command in that it doesn't 
+always seem to respond correctly...also perhaps because of this if 
+you have a hit gadget ( i use one for left and right arrows for a 
+scroll bar) and you move the mouse off the gadget whilst the mouse button 
+is still down, the program interprets the hit gadget as being 
+depressed all the time. So when you let go of the mouse button, the 
+slider will continue to move, as it is processing the gadget as being 
+hit still. I hope you understood that! Anyway I was wondering if the 
+intuition extension has been updated and rereleased at all and how I 
+could get hold of it. Also are there any sample programs anyone has 
+written anywhere.....for example, for creating a scroll list. I've 
+written my own but it's a bit slow and cumbersome.
+
+Thanks,
+JOE.

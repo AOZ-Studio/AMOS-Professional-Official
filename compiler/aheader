@@ -1,0 +1,3 @@
+echo "***Assembling Header Files"
+c/Genam FROM compiler/+Header.s TO AMOS/APSystem/Header_CLI.Lib
+c/Genam FROM compiler/+Header_Backstart.s TO AMOS/APSystem/Header_Backstart.Lib

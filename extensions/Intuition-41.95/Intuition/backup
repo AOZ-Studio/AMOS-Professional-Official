@@ -1,0 +1,7 @@
+makedir t:int
+copy ~(#?.uu) t:int all
+copy /extasm.c t:int
+t:int
+lha -rx m ram:Intuition.lha #?
+rm Intuition:#? all
+mv ram:Intuition.lha Intuition:

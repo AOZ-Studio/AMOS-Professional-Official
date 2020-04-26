@@ -1,0 +1,146 @@
+Date: Fri, 15 Dec 1995 10:29:58 +0100 (MET)
+From: calendin <calendin@massilia.univ-mrs.fr>
+To: Church Andy <achurch@cmu.edu>
+Subject: Bug Report 2
+Mime-Version: 1.0
+
+
+Hi Andy !
+
+Another bug report ! (what a cruel world ;-))
+
+
+BUGS :
+
+All these bugs occur under AMOS Pro 2.0, both under my normal
+everyhthing-is-patched-system, and under a very minimal environment (boot
+with no startup-sequence).
+
+
+- If I set a string gadget with a too small height (8 with the standard
+topaz font, for ex.), my system crashes. You should handle this error...
+
+
+- The "Igadget Active" with no arguments crashes. I simply define a Hit
+gadget, and run the "Igadget Active" command with no parameters. Then
+various effects appear (mouse frozen, display totally corrupted, and so on),
+and all crash my system... If I put an argument, it works...
+
+
+- If I try the ICls command, it crashes ! I opened a 4 bitplanes hires laced
+screen, then if do a Icls 4 I've got a software failure ! MCP says that it's
+an "Illegal address access (ie: odd)". Icls without arguments works.
+
+
+
+- Rhhaaa ! Bugs ! Bugs ! Bugs everywhere ! ;-)
+If I try to copy a portion of a screen to another place into the same
+screen, I've got a system crash ! On the hires screen described in the
+previous paragraph, I do something like Iscreen copy 0,0,0,320,200 to
+0,30,10 --> crash (I tried other values, and that did the same). MCP says
+that it's a "Line 1111 Emulator error" (???). Any idea ?
+
+
+- Same for the Iget Icon instruction. The Ipaste Icon instruction works
+fine, but I had to test it with an already defined icon bank. If I try to
+get an icon via Iget Icon, there's a crash (and I reserved a place in the
+icon bank, though (in fact I try to replace an already existing icon with
+one grabbed from the intuition screen)). MCP says "Illegal instruction"...
+
+
+- Oups ! If you use the "No Icon Mask" before using Ipaste Icon, then the
+pasted icons will be completely corrupted !!
+
+
+- Hem... Sorry but I didn't manage to understand the way sliders work. I
+want to define a vertical slider : I use the following definition.
+
+    Set Igadget Vslider 1,64,80,14,140,1500,0,1,0
+
+So, I should have a slider really smaller than the slider bar, but my slider
+fills totally the bar, so it's impossible to move it. I change the values
+randomly, but no change happens. Could you explain me what the SIZE value
+stands for (that's really not clear in the doc). I tried an horizontal
+slider. Here the slider is smaller than the title bar, but if I change
+values, nothing happens (it always has the same size). And if I click
+on the slider bar but not on the slider itself, the slider doesn't move (it
+should do, no ?) ! Does I have to handle it manually ? How ? Well...
+HEEEEEEEEELP !!!!
+
+
+Well, with all these system failures, I begin to wonder if there's not a
+fundamental problem between your extension and my beloved AMIGA... I forgot
+to tell you that I've a 68030 processor... But I don't think it's the cause
+of the problem. What's your configuration ?
+
+
+
+
+
+
+SUGGESTIONS :
+
+Here is a list of suggestions. Importance vary from *** (very important) to
+* (not so important) :
+
+
+** - Is it possible to write underlined, bold or italic text with the ITEXT
+command ? If not, it would be good to add this feature...
+
+
+* - What about implementing intuition screen zones ?
+
+
+*** - If you have 2 screens (or more) on the same display, there's no way to
+know on which screen is the mouse pointer. What about a Imouse Screen ?
+
+
+*** - Well, I think that the reqtools provides a string requester (function
+rtGetStringA). What about adding it as "A$=Irequest String (title$,maxcars)"
+? The 2.0 version of ReqTools is even able to display text above the entry
+gadget and more than one response gadget !
+
+
+*** - A "Iload Iff" command would be greatly apreciated !
+
+
+* - What about the palette feature of reqtools too ?
+
+
+
+
+CONCLUSION :
+
+The more I use your extension, the more I like it !! (even if I get nasty
+bugs :-( ). It's very comprehensive, and a pleasure to use... I think it's
+certainly THE major add on to AMOS that everybody should own. Indeed, even
+if other extensions improve development facilities, yours brings a
+fundamental evolution to our favourite language. If you'd decide to involve
+seriously into this project, I'm sure it could become a great commercial
+product (we could discuss about that). To give you an idea, the DevOs
+package (similar to Intos) is sold in France about 400 french francs (about
+$80 !) and is difficult to use (rather basic system calls). I know people
+working for the French Amiga press, so advertising could be possible with an
+article... Well, that's just a proposal (personnaly I've no interest in
+this)...
+
+I hope that this bug report will help you and that all these f****** bugs
+will be removed (that's a bit frustrating to see my AMIGA crash every 2
+minutes...). Your extension is a great program : It deserves an effort from
+your part (send me debugged version as soon as possible, since I can't do
+many things with this one) !
+
+See you !
+
+
+I'll send you collector just now !
+
+___          *
+_|_|       * |*
+_|_|   _    \| *
+_|_|  | |  *-|/
+    __`:'__ \_/
+   /._/|\_.\      MiNd CoNtRoL...
+  /  _.|,_  \
+ /   \_/_/   \    Fred. Calendini (calendin@massilia.univ-mrs.fr)
+/_____________\

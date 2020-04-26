@@ -1,0 +1,201 @@
+@database Shanghai.guide
+@$VER: Shanghai.guide 40.1 (03/07/94)
+
+@node main "Shanghai"
+
+Shanghai is an ancient Chinese solitaire game.  The original version
+was played with ivory or stone tiles by sailors thousands of years
+ago.  With the advent of computers, dozens of computer versions of the
+game have appeared, some called Shanghai, some called Mah Jongg, but
+all equally fun.
+
+	@{" About the game " link About}
+	@{" How to play    " link HowToPlay}
+
+@endnode
+
+@node About "About Shanghai"
+@next HowToPlay
+
+Shanghai is played with 144 tiles; the object is to remove all the
+tiles from the board.  There are 42 distinct tiles:
+
+
+Craks - 1 through 9.  These are the numerical digits of Chinese; each
+        one has a Chinese character below the symbol for the number.
+ _____   _____   _____   _____   _____   _____   _____   _____   _____
+| ___1| | ___2| | ___3| | ___4| |/__ 5| | ___6| | ___7| | /\ 8| | __ 9|
+|     | | ___ | | ___ | | \_/ | ||++  | | / \ | |  l_ | |     | | |l  |
+|     | |     | | ___ | |     | | --- | |     | |     | |     | |     |
+|     | |     | |     | |     | |     | |     | |     | |     | |     |
+|_____| |_____| |_____| |_____| |_____| |_____| |_____| |_____| |_____|
+
+Dots - 1 through 9.
+ _____   _____   _____   _____   _____   _____   _____   _____   _____
+|  _ 1| |    2| |    3| |    4| |    5| |    6| |    7| | OO 8| |    9|
+| / \ | |  O  | | O   | | O O | | O O | | O O | |O O O| | OO  | | OOO |
+|(   )| |     | |  O  | |     | |  O  | | O O | |O O  | | OO  | | OOO |
+| \_/ | |  O  | |   O | | O O | | O O | | O O | |O O  | | OO  | | OOO |
+|_____| |_____| |_____| |_____| |_____| |_____| |_____| |_____| |_____|
+
+Bamboos - 1 through 9.  The 1 bamboo has a picture of a bird.
+ _____   _____   _____   _____   _____   _____   _____   _____   _____
+|    1| |    2| |    3| |    4| |    5| |    6| |    7| |    8| |    9|
+|     | |  I  | |  I  | | I I | | I I | | I I | |  I  | |I/\I | | III |
+|     | |     | |     | |     | |  I  | | I I | | III | |     | | III |
+|     | |  I  | | I I | | I I | | I I | | I I | | III | |I\/I | | III |
+|_____| |_____| |_____| |_____| |_____| |_____| |_____| |_____| |_____|
+
+Dragons - 3 types.  One looks like a grid; one is the familiar Chinese
+          serpent; and one has a "C" in the upper right corner.
+
+Winds - North, South, East, and West, represented by the appropriate
+        letter in the upper right corner and the Chinese character.
+
+Seasons - Summer, Winter, Spring, and Autumn.  Summer is represented by
+          a sun and "SUM"; Winter, by a snowflake and "WIN"; Spring, by
+          a flower and "SPR"; and Autumn, by a leaf and "AUT".
+
+Flowers - 4 different flowers, represented by "MUM" (chrysanthemum),
+          "PLUM" (plum), "ORC" (orchid), and "BAM" (bamboo).
+
+
+There are four of each tile, except for the seasons and flowers, of
+which there are only one each.
+
+
+The object of Shanghai is to remove all the tiles from the board.  This
+is accomplished by finding two tiles that "match" and removing the
+pair.  Any two identical tiles match; any season matches any other
+season, and any flower matches any other flower.
+
+In itself, this does not sound complex.  However, there is an
+additional limitation on removing tiles: the tile must be "free",
+meaning that it must have at least one long edge free (i.e. one long
+edge that is not adjacent to any other tile), and it must not have any
+tiles on top of it.
+
+
+The initial setup of the board looks like this diagram:
+
+                        TOP VIEW
+     __  __  __  __  __  __  __  __  __  __  __  __
+    |  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |
+    |__||__||__||__||__||__||__||__||__||__||__||__|
+             __  __  __  __  __  __  __  __ 
+            |  ||  ||  ||  ||  ||  ||  ||  |
+            |__||__||__||__||__||__||__||__|
+         __  __  __  __  __  __  __  __  __  __ 
+        |  ||  ||  ||  ||  ||  ||  ||  ||  ||  |
+        |__||__||__||__||__||__||__||__||__||__|
+     __  __  __  __  __  __  __  __  __  __  __  __
+    |  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |
+ __ |__||__||__||__||__||  __  ||__||__||__||__||__| __  __
+|  | __  __  __  __  __   |  |   __  __  __  __  __ |  ||  |
+|__||  ||  ||  ||  ||  || |__| ||  ||  ||  ||  ||  ||__||__|
+    |__||__||__||__||__||__  __||__||__||__||__||__|
+         __  __  __  __  __  __  __  __  __  __ 
+        |  ||  ||  ||  ||  ||  ||  ||  ||  ||  |
+        |__||__||__||__||__||__||__||__||__||__|
+             __  __  __  __  __  __  __  __ 
+            |  ||  ||  ||  ||  ||  ||  ||  |
+            |__||__||__||__||__||__||__||__|
+     __  __  __  __  __  __  __  __  __  __  __  __
+    |  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |
+    |__||__||__||__||__||__||__||__||__||__||__||__|
+
+
+                       FRONT VIEW
+                           __
+                          |__|
+                         __  __
+                        |__||__|
+                     __  __  __  __
+                    |__||__||__||__|
+                 __  __  __  __  __  __
+                |__||__||__||__||__||__|
+ __  __  __  __  __  __  __  __  __  __  __  __  __  __  __
+|__||__||__||__||__||__||__||__||__||__||__||__||__||__||__|
+
+
+                        SIDE VIEW
+                           __
+                          |__|
+                         __  __
+                        |__||__|
+                     __  __  __  __
+                    |__||__||__||__|
+                 __  __  __  __  __  __
+                |__||__||__||__||__||__|
+             __  __  __  _ __ _  __  __  __
+            |__||__||__||_|__|_||__||__||__|
+
+
+Note the four "special tiles": one on top that covers the four central
+tiles, and three on the sides that block the two central rows.  These
+four tiles should be removed as soon as possible.
+
+@endnode
+
+@node HowToPlay
+@prev About
+@next Boards
+
+When Shanghai starts up, a random board number from 0 to 65535 will be
+chosen and displayed.  Most of the time, this will be a board you have
+not played before.  The playing screen looks like this:
+ _______________________________________________________
+|                                                       |
+|                [Board displayed here]                 |
+|                                                       |
+|  F1 - statistics   F2 - undo move     F3 - new board  |
+|  F4 - next board   F5 - replay board  Esc- exit       |
+|                                                       |
+| Board 12345*                          Tiles left: 144 |
+|_______________________________________________________|
+
+The bottom line indicates which board number you are playing and how
+many tiles remain to be removed.  A '*' following the board number
+indicates you have played the board before but have not won it; a '!'
+means that you have won the board.
+
+The controls for the game are:
+
+Left mouse button - select a tile to remove.  If you have not selected
+                    any other tiles, the tile's border is highlighted
+                    to show that it is selected.  If you then click on
+                    the same tile again, it is deselected and the
+                    border returns to the normal black.
+
+                    If, however, you have already selected a tile, then
+                    the tile already selected and the tile you clicked
+                    on are removed, assuming they are a legal match.
+
+Right mouse button - If you have not selected a tile, clicking the
+                     right mouse button will look for all the possible
+                     moves you can make, and show them to you one at a
+                     time.  Press any key or click a mouse button to
+                     see the next one; press Esc to cancel.
+
+F1 - Show the statistics for the current game, and for all the boards
+     that have been played.  If you hold Shift while pressing F1, you
+     will instead get a list of all the boards you have won and all the
+     boards you have played but not won.
+
+F2 - Replaces the last pair of tiles you removed.  You can keep doing
+     this all the way back to the beginning of the game.
+
+F3 - Lets you pick a new board to play.  The board number at the lower
+     left corner of the screen will disappear; you can type in the
+     board number you want, which must be between 0 and 65535
+     inclusive.  Press Return to start playing the board
+
+F4 - Starts playing the next board (the board whose number is one
+     greater than the current board).  If you are on board 65535, this
+     will take you to board 0.
+
+F5 - Starts the current board over again.
+
+Esc - exits the game.
+
+@endnode

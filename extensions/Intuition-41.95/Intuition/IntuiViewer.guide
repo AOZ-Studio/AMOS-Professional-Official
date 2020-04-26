@@ -1,0 +1,62 @@
+@database IntuiViewer.guide
+@$VER: IntuiViewer.guide 40.1 (07/05/94)
+
+@node main "IntuiViewer - an Intuition-compatible picture viewer"
+
+This file documents IntuiViewer, a program written in AMOS to display pictures
+in an Intuition-friendly way.
+
+IntuiViewer is copyright © 1994 Andrew Church, but may be distributed freely
+as long as (1) it remains unmodified, (2) all files (the executable, source
+code, and this document) are distributed together, and (3) no fee, other than
+a minimal copying fee, is charged for the program.
+
+	@{" Description " link Description} - Exactly what does it do?
+	@{" Usage       " link Usage} - How do I use it?
+
+	@{" What's the Intuition Extension? " link Intuition.guide/main}
+
+@endnode
+
+@node Description "IntuiViewer - Description"
+@next Usage
+
+IntuiViewer is a program written in AMOS (and a bit of assembler) that
+displays pictures.  Now, this kind of program would not be hard to write in
+AMOS - except that IntuiViewer, as its name implies, displays the pictures on
+Intuition screens.  And to do that, it uses the Intuition Extension.
+
+Naturally, since I'm the author of the extension as well, this program shows
+off some of the capabilities of the extension. :-)  Although the program is
+not yet very complex, due to both my lack of much knowledge of graphics file
+formats and the current state of the Intuition Extension.  (I could have
+waited to add more features before releasing the extension, but then I'd never
+release it. :-) )  As I add more functionality to the extension, this program
+will improve as well.
+
+@endnode
+
+@node Usage
+@prev Description
+
+To run IntuiViewer, either double-click on its icon from the Workbench, type
+"IntuiViewer" from the Shell, or load it into AMOS and run it.
+
+When the program starts, it immediately brings the Workbench display to the
+front if necessary.  Then it opens a window and prints a welcome message, and
+puts up a file requester.  Here, you can choose any IFF ILBM picture you
+want.  If the file is not a valid IFF ILBM file, or if it cannot be displayed
+for whatever reason (too many colours, out of memory, etc.), a requester will
+pop up telling you what went wrong.  Otherwise, a new screen will open up and
+the picture will be displayed.  The screen is a standard Intuition screen;
+you can send it behind the Workbench screen with RightAmiga-M, or bring the
+Workbench screen to the front with RAmiga-N.  If you do this, you'll notice
+that the IntuiViewer window contains information about the file.  When you're
+done looking at the picture, press Escape (either the IntuiViewer window or
+the picture must be the active window - click on one, if necessary) to kill
+it.  At this point, the file requester will reappear.  You can select a new
+file if you want, or click on Cancel (or press RAmiga-C) to quit IntuiViewer.
+Clicking on the close gadget of the IntuiViewer window will also quit the
+program.
+
+@endnode

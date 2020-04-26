@@ -1,0 +1,43 @@
+Date: Fri, 22 Mar 1996 23:04:01 -0500
+From: Mark Coles <joehick@ophelia.waterloo.net>
+To: achurch@goober.mbhs.edu
+Subject: Bugs
+Mime-Version: 1.0
+
+Well found a few.
+
+First, `A=Iwindow Status Wb(1)' gets a syntax error and the WB part gets 
+all capitalized.
+
+As before, activating gadgets immediately generates a `suspend or reboot' 
+error and as soon as I click on suspend, the machine locks up.
+
+This is the program that generated the errors:
+
+Iwindow Open Wb 1,80,25,480,150,"YTest",4102
+Set Iwindow Wb 1
+A=Iwindow On Wb
+'A returns True
+B=Iwindow StatusWB(1)
+'The interpreter does that to the line and it is a syntax error
+
+Reserve Igadget 1
+Set Igadget Toggle 1,50,50,16,16,False
+Igadget Active
+
+Iclear All
+Iwait Key
+
+Iwindow Close Wb
+
+Well met and godspeed,
+                      Giark
+                                     joehick@ophelia.waterloo.net
+     ______  ______    _____  .------------------------------------------.
+    / ____/ / __  /   / ___ \ !     AMOS games, utilities, demos, etc.   !
+   / /__   / /_/ /   / /  / / !                                          !
+  / ___/  / ___  |  / /  / /  !       CyberSpace BBS (519)579-0072       !
+ / /     / /__/ /  / /  / /   !       on A2000 28MHz (519)579-0173       !
+/_/     /______/  /_/  /_/    !                                          !
+   Fly By Nite Videe-Oh!      !  FBN Amiga 500 020 14MHz 1C/5F RAM 3.1OS !
+                              `------------------------------------------'

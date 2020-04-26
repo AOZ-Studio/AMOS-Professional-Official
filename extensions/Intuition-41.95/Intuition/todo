@@ -1,0 +1,31 @@
+Bugs / things to be changed:
+----------------------------
+Boolean gadgets have the wrong border imagery (side edges should be
+    thickness 2)
+Set Igadget Hslider and Set Igadget Vslider should be moved into one
+    routine
+Menus: fix long blank space at bottom
+Menus: commseq, active/inactive, banks
+Menus: add NextSelect handling
+Make Set Imenu more font-sensitive
+SAFE_GRPOS and FAST_WRITEPIXEL need work
+??? Iflood - replace gfxlib call with my version
+Optimisation: use dregs instead of stack to save regs
+
+---
+Future additions:
+---
+Ipaste Bob
+Graphic file load/save (IFF [,GIF] [,JPEG])
+Directory requester
+??? WB/KS version
+WB screen info
+Allow Iscreen Open without BaseWin; Iwindow Open Base; resizable BaseWin?
+  - Allow no BaseWin in utility routines (e.g. FindIwin)
+Use BackFill hook (2.0) for backgrounds?
+MUI
+Commodoties
+AppIcon windows
+Window "freezing" (e.g. when requesters are active) -> rtLockWindow
+Mode limits for screen mode requester
+Change mouse pointer

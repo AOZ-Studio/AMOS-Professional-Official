@@ -1,0 +1,110 @@
+Amos Iscreen Copy a To b
+Amos Iscreen Copy a,x,y,w,h To b,x,y
+=Ichoice
+Icls
+Icls col
+Icls col,x1,y1 To x2,y2
+Iclw
+Iclw col
+Iclw col,x1,y1 To x2,y2
+=Ierr
+=Ierr$
+Ierror
+=Ierrtrap
+=Ifont Base
+=Ifont$
+Igadget Active
+Igadget Active All
+=Igadget Down
+Igadget Inactive
+Igadget Inactive All
+Igadget Off
+Igadget Off All
+Igadget On
+Igadget On All
+=Igadget Read
+Iget Icon
+Iget Icon Palette
+Iget Sprite Palette
+=Iget$
+Igr Writing
+Imenu Off
+Imenu On
+=Imouse Key
+=Imouse X
+=Imouse Y
+Ipaste Icon
+=Iread Char$
+=Iread Int
+=Iread Str$
+=Ireq Scr Colour
+=Ireq Scr Height
+=Ireq Scr Mode
+=Ireq Scr Width
+Irequest Def Title
+Irequest Error
+=Irequest File$
+=Irequest File Multi$
+=Irequest File Next$
+=Irequest Font$
+=Irequest Message
+=Irequest Screen
+=Irequest Warning
+=Iscan
+Iscreen Offset
+Iscreen Open Public n,w,h,cols,mode[,title$]
+Iscreen Open Public n,w,h,cols,mode,title$,displayID
+=Ishift
+Itrap Off
+Itrap On
+Iwait
+Iwait Key
+Iwait Mouse
+Iwait Vbl
+=Iwindow
+Iwindow Activate
+=Iwindow Active
+=Iwindow Active Base
+=Iwindow Active Num
+=Iwindow Actual Width
+=Iwindow Actual Width(n)
+=Iwindow Actual Height
+=Iwindow Actual Height(n)
+=Iwindow Base
+Iwindow Close
+Iwindow Close Wb
+=Iwindow Height
+=Iwindow Height(n)
+Iwindow Move
+=Iwindow On Wb
+Iwindow Open
+Iwindow Open Wb
+Iwindow Size
+=Iwindow Status
+Iwindow To Back
+Iwindow To Back n
+Iwindow to Front
+Iwindow to Front n
+=Iwindow Width
+=Iwindow Width(n)
+=Iwindow X
+=Iwindow X(n)
+=Iwindow Y
+=Iwindow Y(n)
+=Ixgr
+=Iygr
+Set Igadget Hslider
+Set Igadget Int
+Set Igadget String
+Set Igadget Toggle
+Set Igadget Value
+Set Igadget Value$
+Set Igadget Vslider
+Set Imenu
+Set Ipens
+Set Iwindow
+Set Iwindow Wb
+=X Ihard
+=X Iscreen
+=Y Ihard
+=Y Iscreen

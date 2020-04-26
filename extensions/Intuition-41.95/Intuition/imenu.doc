@@ -1,0 +1,50 @@
+@node C_Imenu "Intuition Extension 1.1 Command: Imenu$"
+@next C_ImouseKey
+@prev C_ImenuOnOff
+
+IMENU$
+------
+
+Imenu$(menu [,item [,sub]])=s$
+s$=Imenu$(menu [,item [,sub]])
+
+Defines a menu, item, or subitem.  Menu is the menu number; it can
+range from 1 to 31.  Item, the item number, can be 1-63, and sub, the
+subitem number, can be 1-31.
+
+A menu is a set of options that the user can select to control the
+actions of a program.  A menu can contain zero or more items -
+although a menu with zero items is not very useful! - which are drawn
+underneath the menu when it is selected; that is, when the user
+presses the right mouse button and moves the pointer over the menu
+name.  Each of those items can have zero or more subitems.  If a menu
+item has subitems, then when the user places the pointer over the menu
+item, the list of subitems appears to the right of the menu item.
+
+By checking which menu item the user has selected (see the @{"=Ichoice " link C_Ichoice}
+function), you can act appropriately; for example, when the user
+chooses the "Quit" function, your program would close down and exit.
+
+The first form of Imenu$ creates or removes a menu, item, or subitem,
+depending on how many of menu, item, and sub you pass to Imenu$.  When
+a menu is initially created, it contains no items; a newly-created
+item contains no subitems.  The menu's or item's string is set to s$.
+If s$ is empty, the appropriate menu/item (along with all subitems) is
+deleted.
+
+The second form of Imenu$ returns the current string for the given
+menu/item.  If it does not exist, an empty string is returned.
+
+In either case, an out-of-range value will cause an Illegal Function
+Call error; a value of 0 is equivalent to omitting the parameter.  If
+any parameter is included (and non-zero), all the parameters before it
+must also be included and non-zero.  So calling Imenu$(1,0,2) will
+result in an error.
+
+In order for the user to be able to use the menus you have created,
+you will need to use the @{" Imenu On " link C_ImenuOnOff} instruction.  Once menus are
+activated, you cannot make any changes without first deactivating them
+(with @{" Imenu Off " link C_ImenuOnOff}).
+
+@endnode
+

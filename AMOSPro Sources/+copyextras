@@ -1,0 +1,36 @@
+
+IF EXISTS AP2:+Debug_On
+	ECHO "------------------------------------------------------------------"
+	ECHO "---------------------------Mode debug ON--------------------------"
+	ECHO "------------------------------------------------------------------"
+ENDIF
+
++Assigns
+
+Compiler
+
+Delete APC_Extras:Compiler_Help/#? ALL
+
+Copy AMOSPro_System:Interpreter_Config.AMOS		APC_Extras:
+Copy AMOSPro_System:Editor_Config.AMOS			APC_Extras:
+
+Copy AMOSPro_Extras:Compiler_Examples			APC_Extras:Compiler_Examples ALL
+Copy AMOSPro_Extras:Compiler_Help/Compiler_Help.Txt	APC_Extras:Compiler_Help/
+Copy AMOSPro_Extras:Compiler_Help/Compiler_Help.Map	APC_Extras:Compiler_Help/
+Copy AMOSPro_Extras:Boot_Disk_Maker.AMOS		APC_Extras:
+
+APCmp AMOSPro_Accessories:AMOSPro_Help/AMOSPro_Help.AMOS TO AMOSPro_Extras:Compiler_Help/AMOSPro_Help TYPE=1 NOERR NODEF LIBS=APro:APSystem/
+Copy AMOSPro_Extras:Compiler_Help/AMOSPro_Help TO APC_Extras:Compiler_Help/
+
+APCmp AMOSPro_System:Interpreter_Config.AMOS TO AMOSPro_Extras:Interpreter_Config TYPE=1 NOERR NODEF LIBS=APro:APSystem/
+Copy AMOSPro_Extras:Interpreter_Config TO APC_Extras:
+
+Copy AMOSPro_Accessories:AMOSPro_Help/AMOSPro_Help.AMOS TO APC_Extras:Compiler_Help/
+
+Delete APC_Extras:Compiler_Examples/AMOS_Versions/#?.Bak
+Delete APC_Extras:Compiler_Examples/AMOS_Versions/Galax/#?.Bak
+Delete APC_Extras:Compiler_Examples/Easy-AMOS_Versions/#?.Bak
+Delete APC_Extras:Compiler_Examples/Graphics/#?.Bak
+Delete APC_Extras:#?.Bak
+
+Francois
