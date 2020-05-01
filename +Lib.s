@@ -20591,13 +20591,13 @@ SlDInit	dc.b 0,0,0,1,4,4,4,1
 	GfxCa5	SetDrMd
 ; Appelle le programme
 	bset	#0,Dia_RFlags(a4)	Faire un effacement
-	bclr	#1,Dia_RFlags(a4)	Runn�?
+	bclr	#1,Dia_RFlags(a4)	Runne?
 	bclr	#2,Dia_RFlags(a4)	Pas FREEZE
 	Rbsr	L_Dia_ClearKey		Plus de touches
 	Rbsr	L_Dia_Loop
 	Rbsr	L_Dia_ClearKey		Plus de touches
 	btst	#1,Dia_RFlags(a4)
-	bne.s	.Runn�
+	bne.s	.Runne
 ; Initialise pour les tests
 	Rbsr	L_Dia_EdFirst		Premiere ligne EDIT
 	Rbsr	L_Dia_Patch
@@ -20614,7 +20614,7 @@ SlDInit	dc.b 0,0,0,1,4,4,4,1
 	rts
 ; Un RUn a eu lieu!
 ; ~~~~~~~~~~~~~~~~~
-.Runn�	move.l	a4,a0			Efface le canal
+.Runne		move.l	a4,a0			Efface le canal
 	Rbsr	L_Dia_EffChanA0
 	move.w	Dia_Return(a4),d1
 	ext.l	d1
