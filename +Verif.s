@@ -4853,7 +4853,7 @@ Prg_Load
 .Load	move.l	16(a2),d3
 	move.l	d3,d1
 	tst.w	(sp)
-	beq.s	.Sin�
+	beq.s	.Sine
 	bmi.s	.2Joor
 ; Charge si possible
 	cmp.l	Prg_StTTexte(a6),d1
@@ -4861,7 +4861,7 @@ Prg_Load
 	add.l	#256,d1
 	bra.s	.Papo
 ; Adapter si necessaire
-.Sin�	cmp.l	Prg_StTTexte(a6),d1
+.Sine		cmp.l	Prg_StTTexte(a6),d1
 	blt.s	.CBon
 ; Adapter!
 .2Joor	add.l	#256,d1
