@@ -1,2 +1,26 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# ...Unless the name matches the following
+# overriding patterns
+
+# Definitively text files
+aall text
+acomp text
+adata text
+aedit text
+aext text
+alib text
+amon text
+*.asc text
+*.s text
+*.i text
+*.h text
+
+# Ensure those won't be messed up with
+*.info binary
+*.amos binary
+*.anim binary
+*.iff binary
+*.abk binary
+*.bin binary
